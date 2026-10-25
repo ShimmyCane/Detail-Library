@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Library</title>
+</head>
+<body>
+    <h1>Detail Library</h1>
+    <div id="app">
+        <div id="details-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;"></div>
+    </div>
+    <script>
+        fetch('/api/details')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('details-list');
+                data.forEach(detail => {
+                    const div = document.createElement('div');
+                    div.style.border = "1px solid #ccc";
+                    div.style.padding = "10px";
+                    div.innerHTML = `
+                        <img src="/data/images/${detail.filename}" style="width: 100%; height: auto;">
+                        <h3>${detail.filename}</h3>
+                        <p>${detail.description || 'No description'}</p>
+                    `;
+                    list.appendChild(div);
+                });
+            });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+# Index.html Summary
+
+## Table of Contents
+1. **[CSS Styles](#css-styles)**: Grid layout for thumbnails.
+2. **[JavaScript Logic](#javascript-logic)**: Data fetching and rendering.
+3. **[Data Structure](#data-structure)**: Details of `details.json` format.
+
+## CSS Styles
+- `.gallery-grid`: Manages responsiveness. Adjust `minmax(250px, 1fr)` to change image density.
+- `.detail-card`: Individual container. Add `border-color` or `box-shadow` here for styling tweaks.
+
+## JavaScript Logic
+- `fetch('details.json')`: Asynchronous call to load the library.
+- `data.forEach(...)`: Logic for generating HTML per item.
+- **Note**: The client-side cannot modify the JSON directly via standard `fetch`.
+
+## Data Structure (Expected in `details.json`)
+```json
+[
+  {
+    "filename": "string",
+    "description": "string",
+    "tags": ["array", "of", "strings"]
+  }
+]
+```
+*How to tweak*: To add new details, run `generate_metadata.py`. To update descriptions/tags, edit `details.json` manually for now.

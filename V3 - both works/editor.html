@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Details</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #editor-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; display: flex; flex-direction: column; }
+        img { width: 100%; height: 200px; object-fit: contain; background: #f9f9f9; margin-bottom: 10px; border-radius: 4px; }
+        textarea { width: 100%; height: 80px; margin: 5px 0; box-sizing: border-box; }
+        input { width: 100%; margin: 5px 0; box-sizing: border-box; }
+        .save-container { position: fixed; bottom: 20px; right: 20px; }
+        button { padding: 15px 30px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Manage Details</h1>
+    <div id="filters">
+        <strong>Filter by tags:</strong>
+        <div id="tag-container"></div>
+        <label><input type="checkbox" id="show-only-new" onchange="render()"> Show only new/review</label>
+    </div>
+    <div id="editor-list">Loading...</div>
+    
+    <div class="save-container">
+        <button onclick="saveData()">Save Changes (Console)</button>
+    </div>
+
+    <script>
+        let currentData = [];
+
+        fetch('details.json')
+            .then(res => res.json())
+            .then(data => {
+                currentData = data;
+                render();
+            });
+
+        function render() {
+            const list = document.getElementById('editor-list');
+            const showOnlyNew = document.getElementById('show-only-new').checked;
+            list.innerHTML = '';
+
+            currentData.forEach((item, index) => {
+                if (showOnlyNew && item.status !== 'new' && item.status !== 'needs_review') return;
+
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.innerHTML = `
+                    <img src="images/${item.filename}" alt="${item.filename}" onerror="this.style.display='none'">
+                    <strong>${item.filename} ${item.status ? `(${item.status})` : ''}</strong>
+                    <label>Description:</label>
+                    <textarea onchange="update(${index}, 'description', this.value)">${item.description || ''}</textarea>
+                    <label>Tags (comma separated):</label>
+                    <input type="text" value="${(item.tags || []).join(', ')}" onchange="update(${index}, 'tags', this.value)">
+                    <button onclick="markReviewed(${index})">Mark Reviewed</button>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function update(index, field, value) {
+            if (field === 'tags') {
+                currentData[index].tags = value.split(',').map(t => t.trim()).filter(t => t !== "");
+            } else {
+                currentData[index][field] = value;
+            }
+        }
+
+        function markReviewed(index) {
+            currentData[index].status = 'reviewed';
+            render();
+        }
+
+        function saveData() {
+            console.log(JSON.stringify(currentData, null, 2));
+            alert("Check the browser console (F12) to copy the updated JSON content.");
+        }
+    </script>
+</body>
+</html>
+
