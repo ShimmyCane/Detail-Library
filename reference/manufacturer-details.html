@@ -109,6 +109,9 @@
         </div>
     </details>
 
+    <!-- Bundles built by tools/build_reference.py. Loaded as scripts so the index also works from disk. -->
+    <script src="csi/divisions.js"></script>
+    <script src="research/leads.js"></script>
     <script>
         'use strict';
         // Reads csi/manifest.json, then every division file it lists. Each entry: csi, title, maker, format, url, note.
@@ -244,30 +247,19 @@
         }
 
         function load() {
-            fetch('csi/manifest.json').then(function (r) {
-                if (!r.ok) throw new Error('manifest ' + r.status);
-                return r.json();
-            }).then(function (m) {
-                return Promise.all(m.files.map(function (f) {
-                    return fetch('csi/' + f).then(function (r) {
-                        if (!r.ok) throw new Error(f + ' ' + r.status);
-                        return r.json();
-                    });
-                }));
-            }).then(function (docs) {
-                docs.sort(function (a, b) { return a.division.localeCompare(b.division); });
-                docs.forEach(function (doc) {
-                    addDivisionOption(doc.division, doc.title);
-                    doc.entries.forEach(function (e) {
-                        DETAILS.push(Object.assign({}, e, { division_title: doc.title }));
-                    });
+            if (!window.CSI_DIVISIONS) {
+                statusEl.textContent = 'Could not load the index. Run python3 tools/build_reference.py to rebuild csi/divisions.js.';
+                return;
+            }
+            window.CSI_DIVISIONS.slice().sort(function (a, b) { return a.division.localeCompare(b.division); }).forEach(function (doc) {
+                addDivisionOption(doc.division, doc.title);
+                doc.entries.forEach(function (e) {
+                    DETAILS.push(Object.assign({}, e, { division_title: doc.title }));
                 });
-                render();
-                var id = location.hash.slice(1);
-                if (findById(id)) show(id);
-            }).catch(function (e) {
-                statusEl.textContent = 'Could not load the index (' + e.message + '). Serve this folder over http, not file://.';
             });
+            render();
+            var id = location.hash.slice(1);
+            if (findById(id)) show(id);
         }
 
         document.querySelectorAll('th button').forEach(function (b) {
@@ -281,18 +273,15 @@
         division.addEventListener('change', render);
         function loadLeads() {
             var tbody = document.getElementById('leads');
-            fetch('research/leads.json').then(function (r) {
-                if (!r.ok) throw new Error('leads ' + r.status);
-                return r.json();
-            }).then(function (doc) {
-                tbody.innerHTML = doc.entries.map(function (e) {
-                    var link = e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Open ↗</a>' : '<span class="muted">none</span>';
-                    return '<tr><td>' + esc(e.category) + '</td><td class="code">' + esc(e.csi) + '</td><td>' + esc(e.manufacturer) +
-                        '</td><td><span class="status ' + esc(e.status) + '">' + esc(e.status.replace('_', ' ')) + '</span></td><td class="muted">' + esc(e.note) + '</td><td>' + link + '</td></tr>';
-                }).join('');
-            }).catch(function (e) {
-                tbody.innerHTML = '<tr><td colspan="6" class="muted">Could not load research leads (' + esc(e.message) + ').</td></tr>';
-            });
+            if (!window.RESEARCH_LEADS) {
+                tbody.innerHTML = '<tr><td colspan="6" class="muted">Research leads not bundled. Run python3 tools/build_reference.py.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = window.RESEARCH_LEADS.entries.map(function (e) {
+                var link = e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Open ↗</a>' : '<span class="muted">none</span>';
+                return '<tr><td>' + esc(e.category) + '</td><td class="code">' + esc(e.csi) + '</td><td>' + esc(e.manufacturer) +
+                    '</td><td><span class="status ' + esc(e.status) + '">' + esc(e.status.replace('_', ' ')) + '</span></td><td class="muted">' + esc(e.note) + '</td><td>' + link + '</td></tr>';
+            }).join('');
         }
 
         load();

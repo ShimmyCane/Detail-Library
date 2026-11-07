@@ -88,6 +88,12 @@
 
     // Newest first. Add an entry here for each change worth noting.
     var VERSION_LOG = [
+        { version: '0.8', date: '2026-11-07', changes: [
+            'Home page: Library is one link (items 2 and 3 merged); V3 is item 3',
+            'Library page follows Quick Detail: card background choice (on white, dark, black on white), sort by name, folder, licence or type, folder and device tags',
+            'Tags you add in the viewer are kept in this browser only; folder tags come from images/raw/',
+            'Manufacturer index loads from disk: division and research bundles built by tools/build_reference.py',
+            'Manufacturer index shows all 13 divisions and the research leads'] },
         { version: '0.7', date: '2026-11-07', changes: ['Settings page with notes (saved in this browser) and this version log', 'Home page links to the V3 previous version'] },
         { version: '0.6', date: '2026-11-07', changes: ['Side-by-side preview on the manufacturer index: hover, focus or click Preview to view a detail', 'Preview links are anchors, so a URL with the hash opens that item'] },
         { version: '0.5', date: '2026-11-07', changes: ['Home page with links to the manufacturer index, assets, cloud library and V3', 'Per-division CSI JSON files (division 07 first) with a manifest', 'Manufacturer index loads every division file and filters by division'] },
