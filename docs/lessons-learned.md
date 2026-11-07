@@ -36,9 +36,13 @@ Short notes from the build sessions, so the same problems are not solved twice.
 ## Cloud library
 
 - The cloud library is the Supabase project "Architecture" (`xabgankckrcuhcgdolrg`). Quick Detail owns the `sketch_*` tables. The Quick Detail code is in `ShimmyCane/quick-detail` (read-only from this session).
-- Do not write to Supabase from the library. The library is GitHub files only.
+- The library started as GitHub files only. The user later asked for a cloud library in the same Supabase project as Quick Detail, so the library now copies items to and from it. Writes need the owner sign-in (RLS checks the email in the JWT). Copies are by value: the original stays where it was.
 
 ## Later sessions
+
+- **Same database, same rules.** Quick Detail's cloud tables allow only the owner account (row level security on the email in the JWT). The library's cloud tab uses the same sign-in, so it needs no extra access.
+- **Copy by value.** A cloud copy is a Quick Detail sheet with the image as an `image` item (JPEG data URL, 12 in. wide). Copying the same item again updates its row, because the row key comes from the item's path.
+- **Test what you can.** The Supabase CDN and the owner sign-in cannot be reached from the build sandbox, so the cloud path is tested by reading the code and the database policies, not by running it.
 
 - **Pages opened from disk.** `fetch` of JSON fails on `file://`, so a page that works from a server can look empty when opened from disk. The user saw missing divisions this way. Bundle data as `.js` files (`tools/build_reference.py`) and test with a `file://` URL as well as a server.
 - **Local tags.** Tags a user adds are kept in localStorage, keyed by file path, and never written to the repo. Folder tags stay the shared tags.
