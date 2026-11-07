@@ -7,7 +7,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 213518.png",
@@ -16,7 +19,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 213749.png",
@@ -25,7 +31,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 214053.png",
@@ -34,7 +43,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 214416.png",
@@ -43,7 +55,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 214759.png",
@@ -52,7 +67,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 214902.png",
@@ -61,7 +79,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 215021.png",
@@ -70,7 +91,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 220347.png",
@@ -79,7 +103,10 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   },
   {
     "id": "images/raw/Screenshot 2026-09-20 221808.png",
@@ -88,6 +115,9 @@ window.LIBRARY_ITEMS = [
     "kind": "raster",
     "ext": "png",
     "folder": "",
-    "tags": []
+    "tags": [],
+    "licence": "unverified",
+    "credit": "",
+    "source": ""
   }
 ];

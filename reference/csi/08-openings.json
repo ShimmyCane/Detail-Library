@@ -1,0 +1,175 @@
+{
+  "division": "08",
+  "title": "Openings",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "08 50 00",
+      "title": "Architectural tools: Andersen 2D elevations and details",
+      "maker": "Andersen (via Heritage Windows dealer)",
+      "format": "DWG / DXF / PDF",
+      "url": "https://heritagewindows.com/architectural-tools",
+      "note": "Dealer-hosted download page. Check the listed products include the sill, head and jamb sections you need"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD062A KCAD index: 1600UT SS curtain wall",
+      "maker": "Kawneer",
+      "format": "PDF",
+      "url": "https://www.kawneer.com/kawneer_files/products/4702%20-%201600UT%20SS%20Curtain%20Wall/CAD/KCDD062A/KCDD062A%20KCAD%20INDEX.pdf",
+      "note": "Manufacturer CAD index. Full-size details in DWG/DXF (AutoCAD 2010). Check the index for the exact drawing"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD062B KCAD index: 1600UT SS curtain wall",
+      "maker": "Kawneer",
+      "format": "PDF",
+      "url": "https://www.kawneer.com/kawneer_files/products/4702%20-%201600UT%20SS%20Curtain%20Wall/CAD/KCDD062B/KCDD062B%20KCAD%20INDEX.pdf",
+      "note": "Manufacturer CAD index. DWG/DXF"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD062C KCAD index: 1600UT SS curtain wall",
+      "maker": "Kawneer",
+      "format": "PDF",
+      "url": "https://www.kawneer.com/kawneer_files/products/4702%20-%201600UT%20SS%20Curtain%20Wall/CAD/KCDD062C/KCDD062C%20KCAD%20INDEX.pdf",
+      "note": "Manufacturer CAD index. DWG/DXF"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD223 KCAD index: 1620UT SSG curtain wall",
+      "maker": "Kawneer",
+      "format": "DOCX",
+      "url": "https://www.kawneer.us/kawneer_files/products/4701%20-%201620UT-1620UT%20SSG%20Curtain%20Wall%20System/CAD/KCDD223/KCDD223%20KCAD%20INDEX.docx",
+      "note": "Manufacturer CAD index (Word). Lists the drawing set"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "Glazed aluminum curtain walls: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/content-type/cad/openings-08/glazed-aluminum-curtain-walls-084413",
+      "note": "Listing page. ARCAT downloads require its licence agreement"
+    },
+    {
+      "csi": "08 11 13",
+      "title": "Standard steel door and frame profiles and anchor details (SDI drawings)",
+      "maker": "Steel Door Institute",
+      "format": "DWG",
+      "url": "https://steeldoor.org/drawings/",
+      "note": "Standard profiles, not Steelcraft-specific. Use with the manufacturer's current catalogue"
+    },
+    {
+      "csi": "08 11 13",
+      "title": "Metal doors and frames: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/content-type/cad/openings-08/metal-doors-and-frames-081100",
+      "note": "Listing page. Filter by manufacturer. Licence agreement applies"
+    },
+    {
+      "csi": "08 42 00",
+      "title": "Entrance systems CAD listing (sliding and swing automatic doors)",
+      "maker": "ASSA ABLOY Entrance Systems (via ARCAT)",
+      "format": "DWG",
+      "url": "https://www.arcat.com/company/assa-abloy-entrance-systems-30906/cad/assa-abloy-entrance-systems--2703",
+      "note": "ARCAT listing for ASSA ABLOY entrance products. Licence agreement applies"
+    },
+    {
+      "csi": "08 42 00",
+      "title": "Surface-mounted sliding doors (SL500) CAD",
+      "maker": "ASSA ABLOY (via ARCAT)",
+      "format": "DWG",
+      "url": "https://www.arcat.com/product/surface-mounted-sliding-doors-125778/cad?tree=true",
+      "note": "ARCAT product CAD page"
+    },
+    {
+      "csi": "08 52 00",
+      "title": "Essential picture window: technical specifications and architectural detail manual",
+      "maker": "Marvin",
+      "format": "PDF / DXF / Revit",
+      "url": "https://www.marvin.com/support/technical-specifications/essential-picture-window",
+      "note": "Support page. Architectural detail manual and detail files (DXF) listed on the page"
+    },
+    {
+      "csi": "08 52 00",
+      "title": "Essential double-hung window: technical specifications",
+      "maker": "Marvin",
+      "format": "PDF / DXF / Revit",
+      "url": "https://www.marvin.com/support/technical-specifications/essential-double-hung-window",
+      "note": "Support page with detail files"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "YWE 60T window wall details (head, sill, jamb, corners)",
+      "maker": "YKK AP",
+      "format": "DXF / PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/windowwall/ywe60t/details/1422",
+      "note": "Product details page. Download DXF from the page. Check the revision"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "YHC 300IG curtain wall details",
+      "maker": "YKK AP",
+      "format": "DXF / PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/curtainwall/yhc300ig/details/2890",
+      "note": "Product details page with anchor details"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "YCW 750IG curtain wall details (anchors)",
+      "maker": "YKK AP",
+      "format": "DXF / PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/curtainwall/ycw750ig/details/2866449",
+      "note": "Product details page"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "Field-glazed sill capture: installation manual",
+      "maker": "YKK AP",
+      "format": "PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/instman/03-4014-11_old_sill_fieldglazed_capt.pdf",
+      "note": "Direct PDF. Note: the sill filler is being discontinued from Aug 2025. Confirm you have the current sill version"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "AP-Series IGU curtain wall: head, sill and jamb details",
+      "maker": "Riot Glass Framing (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/product/ap-series-igu-214411/cad",
+      "note": "ARCAT product CAD page. Full-frame and surface-mount jamb details. Licence agreement applies"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "PS 400TU spec sheet (head and horizontal details)",
+      "maker": "Tubelite",
+      "format": "PDF",
+      "url": "https://media.tubeliteusa.com/wp-content/uploads/2024/10/19135628/PS_400TU_SG_7.5_Alum_PP.pdf",
+      "note": "Direct PDF. Product spec with standard head and horizontal details. Contact Tubelite engineering for expansion details"
+    },
+    {
+      "csi": "08 62 00",
+      "title": "Commercial skylight CAD and BIM downloads",
+      "maker": "VELUX America",
+      "format": "DWG / BIM / PDF",
+      "url": "https://veluxusa.com/professional/cases",
+      "note": "Professional CAD drawings section. Filter for commercial curb-mount units"
+    },
+    {
+      "csi": "08 62 00",
+      "title": "Professional tools: drawings and specifications",
+      "maker": "VELUX America",
+      "format": "Web page",
+      "url": "https://www.veluxusa.com/professional/tools",
+      "note": "Professional tools hub. Flashing and installation resources"
+    },
+    {
+      "csi": "08 62 00",
+      "title": "Longlight modular skylight cross-section (DWG)",
+      "maker": "DesignsCAD (third-party, paid)",
+      "format": "DWG",
+      "url": "https://designscad.com/downloads/velux-longlight-modular-skylight-cross-section-cad-detail/",
+      "note": "Third-party paid file. Section view, not a curb detail. Verify against VELUX"
+    }
+  ]
+}

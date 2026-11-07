@@ -1,0 +1,135 @@
+{
+  "division": "06",
+  "title": "Wood, Plastics, and Composites",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "06 16 00",
+      "title": "APA panel wall sheathing",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/apa-panel-wall-sheathing/",
+      "note": "Typical detail page. Sheathing in two orientations with WRB and siding"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "R20 wall: 2x4 framing",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/r20-wall-2x4-framing/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "R21 wall: advanced framing techniques",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/r21-wall-advanced-framing-techniques/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "R20 wall: insulated headers",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/r20-wall-insulated-headers/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 16 00",
+      "title": "Wood structural panel overlap",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/wood-structural-panel-overlap/",
+      "note": "Typical detail page. Overlap for raised-heel trusses"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "Method CS-PF: continuously sheathed portal frame panel",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/method-cs-pf-continuously-sheathed-portal-frame-panel-construction/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 05 23",
+      "title": "CAD library (connectors and framing details)",
+      "maker": "Simpson Strong-Tie (Australia regional site)",
+      "format": "DWG",
+      "url": "https://direct.strongtie.com.au/resources/cad",
+      "note": "CAD library page with a downloadable table of connector drawings. Regional site, so check the matching US library for US models"
+    },
+    {
+      "csi": "06 63 00",
+      "title": "Architect specification: TimberTech decking",
+      "maker": "TimberTech (AZEK)",
+      "format": "PDF",
+      "url": "https://www.timbertech.com/wp-content/uploads/2021/12/Architect-Specification-TimberTech-Decking.pdf",
+      "note": "Specification, not a detail. Refers to ICC-ES reports for fastening"
+    },
+    {
+      "csi": "06 63 00",
+      "title": "Decking installation guide (2021)",
+      "maker": "TimberTech (AZEK)",
+      "format": "PDF",
+      "url": "https://www.timbertech.com/wp-content/uploads/2021/05/TimberTech-AZEK-Decking-Installation-Guide-ENG-2021.pdf",
+      "note": "Installation guide with framing and fastening notes"
+    },
+    {
+      "csi": "06 63 00",
+      "title": "Architect specification: Trex Transcend decking",
+      "maker": "Trex",
+      "format": "PDF",
+      "url": "https://documents.trex.com/is/content/Trex/Arch-Spec-Trex-Transcend-Decking-PDF.pdf",
+      "note": "Specification. States composite decking is not for structural use"
+    },
+    {
+      "csi": "06 17 00",
+      "title": "TJI joists: ICC-ES ESR-1153 evaluation (Florida copy, R10)",
+      "maker": "Weyerhaeuser (TJI)",
+      "format": "PDF",
+      "url": "https://www.floridabuilding.org/upload/PR_Tech_Docs/FL1630_R10_AE_ESR-1153.pdf",
+      "note": "Code evaluation report with connection requirements (75 lbf lateral, rollover restraint). Check the current report"
+    },
+    {
+      "csi": "06 17 00",
+      "title": "BCI joists product data",
+      "maker": "Boise Cascade",
+      "format": "PDF",
+      "url": "https://www.buildsite.com/pdf/boisecascade/BCI-Joists-Product-Data-2954953.pdf",
+      "note": "Product data sheet. Connection and framing notes"
+    },
+    {
+      "csi": "06 17 00",
+      "title": "AJS joists product data",
+      "maker": "Boise Cascade",
+      "format": "PDF",
+      "url": "https://www.buildsite.com/pdf/boisecascade/AJS-Joists-Product-Data-2954889.pdf",
+      "note": "Product data sheet. Floor and roof framing details, cantilevers, web stiffeners"
+    },
+    {
+      "csi": "06 17 00",
+      "title": "MTP W7000 West specifier guide",
+      "maker": "Boise Cascade",
+      "format": "PDF",
+      "url": "https://cdn.mediavalet.com/usva/boisecascade/_DgIlMz1RkGNT741XBfSEA/L72LS7z6e0yzaPGtlDC7Fw/Original/MTP-W7000%20West%20Specifier%20Guide.pdf",
+      "note": "Specifier guide. Check for the detail sections before relying on it"
+    },
+    {
+      "csi": "06 18 00",
+      "title": "Glulam connection details",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "Web page",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/technical-guides/glulam-connection-details/",
+      "note": "Technical guide page with free download. Illustrated connection guidance"
+    },
+    {
+      "csi": "06 18 00",
+      "title": "Index of mass timber connections",
+      "maker": "WoodWorks",
+      "format": "Web page",
+      "url": "https://www.woodworks.org/resources/index-of-mass-timber-connections",
+      "note": "Index of connection details; WoodWorks says details are free in PDF, DWG and Revit"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "division": "22",
+  "title": "Plumbing",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "22 13 19",
+      "title": "9710 / 9715 drain CAD drawing",
+      "maker": "Jay R. Smith",
+      "format": "DWG / PDF",
+      "url": "https://jrsmith.com/resource-library/9710-9715-drain-cad-drawing",
+      "note": "Manufacturer resource page for the CAD drawing"
+    },
+    {
+      "csi": "22 13 19",
+      "title": "Smith trench drain brochure",
+      "maker": "Jay R. Smith",
+      "format": "PDF",
+      "url": "https://jrsmith.com/resource-library/smith-trench-drain-brochure-pdf",
+      "note": "Product brochure. Use with the CAD drawing to confirm models"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "division": "04",
+  "title": "Masonry",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "04 20 00",
+      "title": "Commercial flashing details (builder notes 6A)",
+      "maker": "Canada Brick",
+      "format": "PDF",
+      "url": "https://canadabrick.com/wp-content/uploads/sites/2/2017/06/63120-6A-Commercial-Flashing-Details.pdf",
+      "note": "Direct PDF. Corner, column and sill conditions. Canadian edition"
+    },
+    {
+      "csi": "04 40 00",
+      "title": "Stone veneer technical drawings (interior and exterior)",
+      "maker": "Coronado Stone",
+      "format": "Web page",
+      "url": "https://www.coronado.com/TechnicalDrawings",
+      "note": "Technical drawings page, from the installation guide. Format not confirmed"
+    },
+    {
+      "csi": "04 40 00",
+      "title": "Standard stone installation guide (2020)",
+      "maker": "Coronado Stone",
+      "format": "PDF",
+      "url": "https://coronado.com/mt-content/uploads/2021/02/coronadostone-installationguide2020.pdf",
+      "note": "Direct PDF. Interior application table and surface prep. Interior non-moisture areas need 1 layer of WRB"
+    },
+    {
+      "csi": "04 40 00",
+      "title": "Stone veneer CAD drawings (Eldorado and others)",
+      "maker": "caddetailsblog.com (third-party)",
+      "format": "CAD",
+      "url": "https://caddetailsblog.com/post/12-cad-drawings-of-stone-products-to-update-your-home",
+      "note": "Third-party page. Eldorado profiles listed; file formats not confirmed"
+    }
+  ]
+}

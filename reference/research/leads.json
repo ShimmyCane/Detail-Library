@@ -1,0 +1,397 @@
+{
+  "_about": "Research leads and gaps for the manufacturer index. status: lead (to check), not_found (searched, nothing usable), restricted (licence or permission needed), excluded. Items here are NOT in the index until checked and added to a division file.",
+  "updated": "2026-11-07",
+  "entries": [
+    {
+      "category": "Sources",
+      "csi": "—",
+      "manufacturer": "4specs",
+      "status": "not_found",
+      "note": "Recommended starting point. Not reachable from the build sandbox and no 4specs pages came up in search. Needs checking from a machine that can reach it."
+    },
+    {
+      "category": "Sources",
+      "csi": "09 21 16",
+      "manufacturer": "Sweets (Dodge Data & Analytics)",
+      "status": "lead",
+      "note": "CAD hub is in the index. Product-level CAD pages by manufacturer still to open (account needed).",
+      "url": "https://sweets.construction.com/QuickLinks/caddetails"
+    },
+    {
+      "category": "Sources",
+      "csi": "—",
+      "manufacturer": "NRCA (roofing CAD details)",
+      "status": "restricted",
+      "note": "Paid CAD set of roofing details. Not added.",
+      "url": "https://www.nrca.net/RoofingNews/nrca-offers-construction-details-in-electronic-format-.4-20-2021.9497/details/story"
+    },
+    {
+      "category": "Sources",
+      "csi": "—",
+      "manufacturer": "Heinze CAD portal (Germany)",
+      "status": "lead",
+      "note": "Lists many manufacturers' CAD details (Rockfon, VELUX, James Hardie Europe). Some need a login; German-language.",
+      "url": "https://www.heinze.de/"
+    },
+    {
+      "category": "Sources",
+      "csi": "—",
+      "manufacturer": "BIA Technical Notes (gobrick.com)",
+      "status": "lead",
+      "note": "Free technical notes (e.g. TN 7, 18A, 21B, 28D). Only Scribd copies were seen, which are unverified. Open the official notes on the BIA site.",
+      "url": "https://www.gobrick.com/"
+    },
+    {
+      "category": "Sources",
+      "csi": "—",
+      "manufacturer": "APA Resource Library (CAD, about 200 details)",
+      "status": "lead",
+      "note": "APA says nearly 200 wood-frame CAD details are downloadable (March 2023 update). Only the typical-detail pages are in the index so far.",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/"
+    },
+    {
+      "category": "Doors",
+      "csi": "08 11 13",
+      "manufacturer": "Steelcraft",
+      "status": "not_found",
+      "note": "No DWG or CAD download found. Try the Allegion / Steelcraft resources area or a rep request."
+    },
+    {
+      "category": "Doors",
+      "csi": "08 71 00",
+      "manufacturer": "Schlage / Allegion",
+      "status": "not_found",
+      "note": "No CAD results for Schlage. Try Allegion's BIM library."
+    },
+    {
+      "category": "Doors",
+      "csi": "08 71 00",
+      "manufacturer": "Hager",
+      "status": "not_found",
+      "note": "No CAD results for Hager."
+    },
+    {
+      "category": "Doors",
+      "csi": "08 42 00",
+      "manufacturer": "ASSA ABLOY",
+      "status": "lead",
+      "note": "Entrance products on ARCAT are in the index. Locks and hardware not found.",
+      "url": "https://www.arcat.com/company/assa-abloy-entrance-systems-30906/cad/assa-abloy-entrance-systems--2703"
+    },
+    {
+      "category": "Windows",
+      "csi": "08 51 00",
+      "manufacturer": "Pella",
+      "status": "not_found",
+      "note": "No Pella CAD found. Try the ARCAT Pella company page or Pella's own CAD downloads."
+    },
+    {
+      "category": "Windows",
+      "csi": "08 52 00",
+      "manufacturer": "Andersen",
+      "status": "lead",
+      "note": "Dealer-hosted tools are in the index. Check whether Andersen publishes its own sill/head/jamb DWGs."
+    },
+    {
+      "category": "Windows",
+      "csi": "08 44 00",
+      "manufacturer": "Oldcastle / EFCO / Tubelite",
+      "status": "lead",
+      "note": "Only Tubelite PS 400TU is in the index. Ask Tubelite engineering for sill and jamb DWGs; Oldcastle and EFCO not searched."
+    },
+    {
+      "category": "Cladding",
+      "csi": "07 46 00",
+      "manufacturer": "LP SmartSide",
+      "status": "lead",
+      "note": "Not searched yet."
+    },
+    {
+      "category": "Cladding",
+      "csi": "07 46 00",
+      "manufacturer": "Accoya / Kebony",
+      "status": "lead",
+      "note": "Kebony CCS Details CAD (DWG zip) is on its product page. Accoya rainscreen DWG not found.",
+      "url": "https://kebony.com/"
+    },
+    {
+      "category": "Cladding",
+      "csi": "07 42 13",
+      "manufacturer": "Alucobond (3A Composites)",
+      "status": "lead",
+      "note": "ARCAT pages are in the index. Check the 3A Composites site for the current technical details.",
+      "url": "https://www.3acomposites.com/"
+    },
+    {
+      "category": "Cladding",
+      "csi": "04 40 00",
+      "manufacturer": "Eldorado Stone / Boral",
+      "status": "lead",
+      "note": "Eldorado installation procedures are on eldoradostone.com. Boral CAD not found.",
+      "url": "https://www.eldoradostone.com/"
+    },
+    {
+      "category": "Firestop",
+      "csi": "07 84 00",
+      "manufacturer": "3M firestop",
+      "status": "not_found",
+      "note": "No 3M CAD found. The 3M Fire Barrier literature refers to a third-party Fire Resistance Directory for tested designs."
+    },
+    {
+      "category": "Firestop",
+      "csi": "07 84 00",
+      "manufacturer": "Tremco firestop",
+      "status": "not_found",
+      "note": "No Tremco firestop joint CAD found."
+    },
+    {
+      "category": "Firestop",
+      "csi": "07 84 00",
+      "manufacturer": "Hilti US CAD",
+      "status": "lead",
+      "note": "US specifications and CAD page is in the index. Head-of-wall details are on Hilti Q&A pages only.",
+      "url": "https://www.us.hilti.com/content/hilti/W1/US/en/business/business/engineering/specifications-and-cad-details.html"
+    },
+    {
+      "category": "Gypsum",
+      "csi": "09 21 16",
+      "manufacturer": "CertainTeed / Saint-Gobain BIM library",
+      "status": "lead",
+      "note": "Named as the place for DWG, Revit and PDF UL assemblies. Not opened.",
+      "url": "https://bimlibrary.saint-gobain.com/certainteed"
+    },
+    {
+      "category": "Gypsum",
+      "csi": "09 21 16",
+      "manufacturer": "Clark Dietrich / Marino\\Ware",
+      "status": "lead",
+      "note": "Framing library is in the index. Marino\\Ware (H-Stud area separation) not searched."
+    },
+    {
+      "category": "Ceilings",
+      "csi": "09 51 00",
+      "manufacturer": "USG ceilings",
+      "status": "lead",
+      "note": "Perimeter datasheet only. USG Middle East and US ceiling CAD not found."
+    },
+    {
+      "category": "Ceilings",
+      "csi": "09 51 00",
+      "manufacturer": "CertainTeed ceilings",
+      "status": "lead",
+      "note": "An AEC Info product page mentions CAD. Not opened.",
+      "url": "https://aecinfo.com/certainteed-ceilings/acoustical-ceiling-tiles-panels/product-cad.html"
+    },
+    {
+      "category": "Metal",
+      "csi": "05 05 23",
+      "manufacturer": "Simpson Strong-Tie (US)",
+      "status": "lead",
+      "note": "Australian CAD library is in the index. US CAD library not opened.",
+      "url": "https://www.strongtie.com/"
+    },
+    {
+      "category": "Metal",
+      "csi": "05 31 00",
+      "manufacturer": "Vulcraft / Nucor / Wheeling",
+      "status": "lead",
+      "note": "Not searched yet."
+    },
+    {
+      "category": "Concrete",
+      "csi": "03 30 00",
+      "manufacturer": "Euclid Chemical",
+      "status": "not_found",
+      "note": "No Euclid results from search."
+    },
+    {
+      "category": "Concrete",
+      "csi": "03 15 00",
+      "manufacturer": "Dayton Superior / Hilti anchors",
+      "status": "lead",
+      "note": "Not searched yet."
+    },
+    {
+      "category": "Waterproofing",
+      "csi": "07 10 00",
+      "manufacturer": "Carlisle WIP (below-grade)",
+      "status": "not_found",
+      "note": "Below-grade CAD not found. Carlisle Coatings & Waterproofing drainage composite is in the index."
+    },
+    {
+      "category": "Roofing",
+      "csi": "07 31 13",
+      "manufacturer": "GAF / Owens Corning shingles",
+      "status": "not_found",
+      "note": "No official CAD found. Many low-quality .web.app pages came up; excluded."
+    },
+    {
+      "category": "Roofing",
+      "csi": "08 62 00",
+      "manufacturer": "Kalwall / Major skylights",
+      "status": "lead",
+      "note": "Not searched yet."
+    },
+    {
+      "category": "Signage",
+      "csi": "10 14 00",
+      "manufacturer": "ASI",
+      "status": "restricted",
+      "note": "ASI drawings are restricted (not to be copied without written permission). Request project CAD from ASI."
+    },
+    {
+      "category": "Stone / pavers",
+      "csi": "32 14 00",
+      "manufacturer": "Belgard (own site)",
+      "status": "lead",
+      "note": "Only the LADetails page is in the index. Check belgard.com for CAD.",
+      "url": "https://www.belgard.com/"
+    },
+    {
+      "category": "Pavers",
+      "csi": "32 14 00",
+      "manufacturer": "Schluter (own site)",
+      "status": "lead",
+      "note": "ARCAT listings are in the index. Check schluter.com for CAD.",
+      "url": "https://www.schluter.com/"
+    },
+    {
+      "category": "Image sources",
+      "csi": "—",
+      "manufacturer": "Library of Congress, Internet Archive, Met, Art Institute of Chicago, Smithsonian, NREL/DOE, NIST",
+      "status": "lead",
+      "note": "Public-domain image sources, listed in sources/sources.json. Not reachable from the build sandbox; pull manually."
+    },
+    {
+      "category": "Plumbing",
+      "csi": "22 13 19",
+      "manufacturer": "Zurn",
+      "status": "not_found",
+      "note": "No official CAD download found. Only a low-quality page; Zurn's own site still to check.",
+      "url": "https://www.zurn.com/"
+    },
+    {
+      "category": "Plumbing",
+      "csi": "22 13 19",
+      "manufacturer": "Sloan",
+      "status": "not_found",
+      "note": "Nothing relevant in search."
+    },
+    {
+      "category": "HVAC",
+      "csi": "23 37 13",
+      "manufacturer": "Greenheck",
+      "status": "not_found",
+      "note": "No manufacturer CAD found. Check greenheck.com product pages."
+    },
+    {
+      "category": "HVAC",
+      "csi": "23 37 13",
+      "manufacturer": "Price Industries",
+      "status": "not_found",
+      "note": "No manufacturer CAD found."
+    },
+    {
+      "category": "Stairs and railings",
+      "csi": "05 51 00",
+      "manufacturer": "Wagner",
+      "status": "lead",
+      "note": "CADdetails blog lists Wagner railing and stair CAD with view and download buttons. Files not opened.",
+      "url": "https://caddetailsblog.com/post/discover-20-cad-drawings-for-railings-stair-solutions-for-your-2024-design-projects"
+    },
+    {
+      "category": "Stairs and railings",
+      "csi": "05 52 00",
+      "manufacturer": "Blumcraft",
+      "status": "not_found",
+      "note": "No Blumcraft results."
+    },
+    {
+      "category": "Elevators",
+      "csi": "14 21 00",
+      "manufacturer": "Otis / KONE / Schindler",
+      "status": "lead",
+      "note": "Only planning portals found (Schindler plan, KONE planning tools). No DWG libraries seen. Check each planning tool for pit and machine-room drawings."
+    },
+    {
+      "category": "Fire suppression",
+      "csi": "21 13 13",
+      "manufacturer": "Viking",
+      "status": "not_found",
+      "note": "No CAD download found. Viking Technical Services is the contact for drawings."
+    },
+    {
+      "category": "Drainage",
+      "csi": "33 41 00",
+      "manufacturer": "Advanced Drainage Systems (ADS)",
+      "status": "lead",
+      "note": "Search said ADS has CAD drawings on its site. Site not confirmed; adspipe.com was from general knowledge, not from search."
+    },
+    {
+      "category": "Countertops",
+      "csi": "12 36 00",
+      "manufacturer": "Wilsonart",
+      "status": "lead",
+      "note": "Decorative edge page at wilsonart.com/laminate-edge-options. Not opened.",
+      "url": "https://www.wilsonart.com/laminate-edge-options"
+    },
+    {
+      "category": "Countertops",
+      "csi": "12 36 00",
+      "manufacturer": "Corian (DuPont) and Formica",
+      "status": "lead",
+      "note": "Manufacturer sites listed on a spec document. No CAD seen.",
+      "url": "https://www.corian.com/"
+    },
+    {
+      "category": "Retaining walls",
+      "csi": "32 32 00",
+      "manufacturer": "Tensar",
+      "status": "not_found",
+      "note": "No Tensar DWG library found. Public FDOT standard added to the index."
+    },
+    {
+      "category": "Decking",
+      "csi": "06 63 00",
+      "manufacturer": "Trex 2025 installation guide",
+      "status": "lead",
+      "note": "Online flipbook guide. Structural connection details not confirmed. Check trex.com for a PDF version."
+    },
+    {
+      "category": "Wood framing",
+      "csi": "06 17 00",
+      "manufacturer": "Weyerhaeuser (own site)",
+      "status": "lead",
+      "note": "TJI evaluation report added from Florida copy. Weyerhaeuser connection PDFs not found; check weyerhaeuser.com."
+    },
+    {
+      "category": "Masonry",
+      "csi": "04 22 00",
+      "manufacturer": "NCMA TEK notes (ncma.org)",
+      "status": "lead",
+      "note": "Wall-detail TEK notes are referenced (e.g. TEK 05-06A). Only Scribd copies seen; use the NCMA originals. TR 090B is a paid annotated detail set.",
+      "url": "https://ncma.org/"
+    },
+    {
+      "category": "Precast",
+      "csi": "03 41 00",
+      "manufacturer": "PCI connections manual",
+      "status": "lead",
+      "note": "A PCI connections manual exists. No download link found; check pci.org."
+    },
+    {
+      "category": "Precast",
+      "csi": "03 41 00",
+      "manufacturer": "Oldcastle / Smith-Midland / Coreslab",
+      "status": "not_found",
+      "note": "No connection-detail PDFs found for these three."
+    },
+    {
+      "category": "Concrete",
+      "csi": "03 30 00",
+      "manufacturer": "Euclid concrete floor systems design guide",
+      "status": "lead",
+      "note": "Scribd copy showed only the cover. Check Euclid's technical library."
+    }
+  ]
+}

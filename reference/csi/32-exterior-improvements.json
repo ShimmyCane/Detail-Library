@@ -1,0 +1,63 @@
+{
+  "division": "32",
+  "title": "Exterior Improvements",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "32 14 00",
+      "title": "DuraMat permeable pavers: CAD details",
+      "maker": "Unilock (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/product/unilock-dura-mat-permeable-pavers-193623/cad?tree=true",
+      "note": "ARCAT product CAD page. Licence agreement applies"
+    },
+    {
+      "csi": "32 14 00",
+      "title": "ADA pavers: CAD details",
+      "maker": "Unilock (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/product/unilock-ada-pavers-217060/cad?tree=true",
+      "note": "ARCAT product CAD page. Includes ADA paver edge and base details. Licence agreement applies"
+    },
+    {
+      "csi": "32 14 00",
+      "title": "Unilock CAD library (all products)",
+      "maker": "Unilock (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/company/unilock-49478/cad",
+      "note": "ARCAT company CAD list. Edge conditions, curbs and permeable base details. Licence agreement applies"
+    },
+    {
+      "csi": "32 14 00",
+      "title": "Belgard paver product details (LADetails)",
+      "maker": "Belgard (via LADetails)",
+      "format": "CAD / PDF",
+      "url": "https://landscapearchitect.com/ladetails/landscape-product/pavers-concrete/belgard/papyrustrade-paver",
+      "note": "Third-party library page. Check Belgard's own technical support for current CAD"
+    },
+    {
+      "csi": "32 32 00",
+      "title": "Miragrid geogrid brochure",
+      "maker": "TenCate Mirafi",
+      "format": "PDF",
+      "url": "https://cdn.shopify.com/s/files/1/1777/4839/files/geogrid-brochure.pdf",
+      "note": "Product brochure. Geogrid for segmental retaining walls"
+    },
+    {
+      "csi": "32 32 00",
+      "title": "Miragrid 2XT installation sheet",
+      "maker": "TenCate Mirafi",
+      "format": "PDF",
+      "url": "https://cdn.shopify.com/s/files/1/1777/4839/files/BRO_2XT_tcm29-17004.pdf",
+      "note": "Placement guidance: geogrid between rows of block, per block manufacturer's instructions"
+    },
+    {
+      "csi": "32 32 00",
+      "title": "Temporary Tensar geogrid retaining walls (FDOT standard)",
+      "maker": "Florida DOT (with Tensar)",
+      "format": "PDF",
+      "url": "https://www.fdot.gov/docs/default-source/content-docs/roadway/ds/04/int/e/05125.pdf",
+      "note": "Public agency standard. Typical cross-sections and geogrid placement"
+    }
+  ]
+}

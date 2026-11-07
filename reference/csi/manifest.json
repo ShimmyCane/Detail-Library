@@ -1,5 +1,17 @@
 {
   "files": [
-    "07-thermal-and-moisture.json"
+    "03-concrete.json",
+    "04-masonry.json",
+    "05-metals.json",
+    "06-wood-plastics-composites.json",
+    "07-thermal-and-moisture.json",
+    "08-openings.json",
+    "09-finishes.json",
+    "10-specialties.json",
+    "21-fire-suppression.json",
+    "22-plumbing.json",
+    "23-hvac.json",
+    "26-electrical.json",
+    "32-exterior-improvements.json"
   ]
 }

@@ -1,0 +1,143 @@
+{
+  "division": "09",
+  "title": "Finishes",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "09 51 00",
+      "title": "SH-0003-3 detail package (includes 7800 wall angle perimeter)",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0003-3%20Package.pdf",
+      "note": "Armstrong detail sheets. Verify the product and system before use"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0024-3 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0024-3%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0014-2 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0014-2%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0012-2 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0012-2%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0010-2 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0010-2%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Frameall grid system master sheet (flat and wall angle details)",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/Frameall%20Grid%20System%20Master%20Sheet%209-4-24.pdf",
+      "note": "Dated 9-4-24. Includes flat and wall angle details"
+    },
+    {
+      "csi": "09 21 16",
+      "title": "Gypsum board assemblies: CAD details hub (USG and others)",
+      "maker": "Sweets (Dodge Data & Analytics)",
+      "format": "PDF / DWG",
+      "url": "https://sweets.construction.com/QuickLinks/caddetails",
+      "note": "Sweets CAD details hub. Choose the manufacturer and product; Sweets requires an account"
+    },
+    {
+      "csi": "09 22 16",
+      "title": "CDBS Pilot Trak rim board connection",
+      "maker": "ClarkDietrich",
+      "format": "PDF",
+      "url": "https://www.clarkdietrich.com/sites/default/files/media/cad/CDBS_Pilot_Trak_Rim%20Board.pdf",
+      "note": "Direct PDF from ClarkDietrich's CAD library"
+    },
+    {
+      "csi": "09 22 16",
+      "title": "CDBS Pilot Trak box header connection",
+      "maker": "ClarkDietrich",
+      "format": "PDF",
+      "url": "https://www.clarkdietrich.com/sites/default/files/media/cad/CDBS_Pilot_Trak_BoxHeader_Connection.pdf",
+      "note": "Direct PDF from ClarkDietrich's CAD library"
+    },
+    {
+      "csi": "09 22 16",
+      "title": "CAD framing details library (500+ details)",
+      "maker": "ClarkDietrich",
+      "format": "PDF / DWG / Revit",
+      "url": "https://www.clarkdietrich.com/cad-framing-details",
+      "note": "Download hub for ClarkDietrich framing details. Revit families on the architects resources page"
+    },
+    {
+      "csi": "09 21 16",
+      "title": "UL U419 fire-rated assembly (Design Studio)",
+      "maker": "USG Design Studio",
+      "format": "DWG / Revit / PDF",
+      "url": "https://www.usg.com/content/usgcom/en/design-studio/wall-assemblies/assembly-detail.30198.html",
+      "note": "USG Design Studio assembly page. Confirm the UL design number and listing in UL Product iQ before use"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Creating transitions with Infinity (perimeter tech note)",
+      "maker": "Rockfon",
+      "format": "PDF",
+      "url": "https://www.rockfon.com/syssiteassets/rockfon-na/installation/tech-datanote/rockfon_technote_creating_transitions_with_infinity.pdf",
+      "note": "Direct PDF. Wall angle and trim perimeter. Shows 1 in. x 2 in. wall angle with Infinity trim"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Chicago Metallic 4200 Integrity perimeter tech note",
+      "maker": "Rockfon (Chicago Metallic)",
+      "format": "PDF",
+      "url": "https://www.rockfon.com/syssiteassets/rockfon-na/installation/tech-datanote/rockfon_tech_note_chi_metallic_4200_integrity_perimeter_v3-3.pdf",
+      "note": "Direct PDF. Perimeter details with 1480 wall angle, shadowline and seismic clip options"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Concealed ceiling systems CDX seismic installation guide",
+      "maker": "Rockfon",
+      "format": "PDF",
+      "url": "https://www.rockfon.com/syssiteassets/rockfon-na/installation/install-guide/rockfon-concealed-acoustical-ceiling-systems-cdx-for-seismic-category-d-e-f-applications-installation-guide.pdf",
+      "note": "Direct PDF. Includes 1420 wall angle and 1454 concealed boxed wall angle"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Rockfon ceiling construction details (CAD)",
+      "maker": "Rockfon (via heinze.de)",
+      "format": "DWG / DXF",
+      "url": "https://www.heinze.de/cad-details-von/rockfon/4741388/",
+      "note": "CAD portal, German. Some files need a free login"
+    },
+    {
+      "csi": "09 30 00",
+      "title": "Tile setting materials and accessories: CAD listing",
+      "maker": "Schluter Systems (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/downloads/35372-schluter/cad/Q:tile%20setting%20materials%20and%20accessories?mf=04",
+      "note": "ARCAT listing of Schluter profiles (SCHIENE, QUADEC, JOLLY). Licence agreement applies"
+    },
+    {
+      "csi": "09 30 00",
+      "title": "Thin-set quarry tiling: CAD listing",
+      "maker": "Schluter Systems (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/downloads/35372-schluter/cad/Q:thin%20set%20quarry%20tiling?mf=04",
+      "note": "ARCAT listing. Licence agreement applies"
+    }
+  ]
+}

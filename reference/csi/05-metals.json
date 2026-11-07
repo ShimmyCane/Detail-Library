@@ -1,0 +1,23 @@
+{
+  "division": "05",
+  "title": "Metals",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "05 31 00",
+      "title": "Vulcraft steel roof and floor deck: 2026 LRFD catalog",
+      "maker": "Vulcraft (Nucor)",
+      "format": "PDF",
+      "url": "https://vulcraft.com/catalogs/Deck/VulcraftDeckSolutions_2026_LRFD.pdf",
+      "note": "Product catalog with deck profiles and load tables. Not a detail set. Most current catalog found"
+    },
+    {
+      "csi": "05 31 00",
+      "title": "Deck resources (stock details and BIM tools)",
+      "maker": "Vulcraft (Nucor)",
+      "format": "Web page",
+      "url": "https://vulcraft.com/resources",
+      "note": "Resources page. Lists deck stock details; check that the files are editable CAD"
+    }
+  ]
+}

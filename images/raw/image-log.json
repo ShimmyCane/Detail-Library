@@ -1,0 +1,176 @@
+{
+  "_about": "One record per file under images/raw/, written by generate_library.py. licence, credit and source come from licences.json. first_seen is kept across runs. Do not edit by hand.",
+  "count": 10,
+  "files": [
+    {
+      "path": "images/raw/Screenshot 2026-09-20 213457.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 213457",
+      "kind": "raster",
+      "bytes": 45246,
+      "sha256": "aafdd400cebe6419a932204e6ec1f9a6e3dc731d80c0817d3f19dc2407d24789",
+      "pixels": [
+        947,
+        712
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 213518.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 213518",
+      "kind": "raster",
+      "bytes": 35682,
+      "sha256": "9c6740e9c3d379d0d92cd360ec43bb5b3fd8f1eb7570669fd99e31b8ff0cf5c9",
+      "pixels": [
+        925,
+        709
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 213749.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 213749",
+      "kind": "raster",
+      "bytes": 36864,
+      "sha256": "976137d3363c8a01caedba9d7638b986aa40841c76d206e3a4c1569d934a870e",
+      "pixels": [
+        881,
+        707
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 214053.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 214053",
+      "kind": "raster",
+      "bytes": 62846,
+      "sha256": "f13d25bb4a50f759cea6a03464c8c8fb7e73d51da58b0dfec7d2bbbf3a28f1e4",
+      "pixels": [
+        1131,
+        929
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 214416.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 214416",
+      "kind": "raster",
+      "bytes": 85916,
+      "sha256": "eeb1d556905ec9c966e1469fcce232408eccf32a6322675238f16f396d48628b",
+      "pixels": [
+        1099,
+        905
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 214759.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 214759",
+      "kind": "raster",
+      "bytes": 72652,
+      "sha256": "1f6a137857f4ab0aa5cebd16e8240e088a02a3416a224e7a5705cc4cc57fe61c",
+      "pixels": [
+        1162,
+        918
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 214902.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 214902",
+      "kind": "raster",
+      "bytes": 83225,
+      "sha256": "3f11b9a6baae74792637a01262d7c337d193d29fcdab2980e2249c05f5abb1f9",
+      "pixels": [
+        1192,
+        934
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 215021.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 215021",
+      "kind": "raster",
+      "bytes": 47667,
+      "sha256": "27d7b0bdb4a48e3f7868a6544d17d7181bff6424518dbae8eeea66f43039c001",
+      "pixels": [
+        1405,
+        903
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 220347.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 220347",
+      "kind": "raster",
+      "bytes": 47858,
+      "sha256": "46abcd0d3b9ed92f2c3d6515530f3a77448e70d205d009e3f25c363744bdc8a6",
+      "pixels": [
+        783,
+        907
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    },
+    {
+      "path": "images/raw/Screenshot 2026-09-20 221808.png",
+      "folder": "",
+      "title": "Screenshot 2026-09-20 221808",
+      "kind": "raster",
+      "bytes": 50126,
+      "sha256": "79f21c5be91855d9e78657d52999885b9035a3d6d01f658c01bd763e47c4d7bc",
+      "pixels": [
+        1155,
+        926
+      ],
+      "licence": "unverified",
+      "credit": "",
+      "source": "",
+      "first_seen": "2026-11-07T05:53:32Z",
+      "last_checked": "2026-11-07T05:53:32Z"
+    }
+  ]
+}

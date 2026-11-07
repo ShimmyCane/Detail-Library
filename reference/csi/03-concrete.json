@@ -1,0 +1,71 @@
+{
+  "division": "03",
+  "title": "Concrete",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "03 11 13",
+      "title": "Below-grade ICF detail (LC-BG-P-01)",
+      "maker": "Nudura",
+      "format": "PDF",
+      "url": "https://www.nudura.com/fileshare/Technical_Resources/Detail_Drawings/Light_Com_Res/LC-BG-P-01.pdf",
+      "note": "Direct PDF. Insulated concrete form, light commercial residential below-grade detail"
+    },
+    {
+      "csi": "03 30 00",
+      "title": "Watertight concrete and SikaProof A CAD drawings (Sika Ireland)",
+      "maker": "Sika",
+      "format": "DWG / PDF",
+      "url": "https://irl.sika.com/en/construction/waterproofing/cad-drawings/sika-proof-a.html",
+      "note": "Download page. Waterproofing admixture details. Regional site; confirm the US equivalent"
+    },
+    {
+      "csi": "03 15 00",
+      "title": "Joint filler: elongation, separation and repair (CP-14)",
+      "maker": "Euclid Chemical",
+      "format": "PDF",
+      "url": "https://www.buildsite.com/pdf/euclid/Euclid-Chemical-Joint-Filler-Elongation-Separation-and-Repair-1811937.pdf",
+      "note": "Technical bulletin. Confirm the detail drawings in the full document"
+    },
+    {
+      "csi": "03 15 00",
+      "title": "Floor and wall detail downloads: joint details, expansion and control joints",
+      "maker": "Sika",
+      "format": "Web page",
+      "url": "https://usa.sika.com/en/construction/floor-wall/documents/details.html",
+      "note": "Download hub with PDF details, including expansion and control joint details"
+    },
+    {
+      "csi": "03 15 00",
+      "title": "Watertight concrete: construction joint detail (WTC09.B)",
+      "maker": "Sika (UK)",
+      "format": "PDF",
+      "url": "https://gbr.sika.com/dam/dms/gb01/v/WTC09.B%20SIKA%20WATERTIGHT%20CONCRETE%20-%20CONSTRUCTION%20JOINT%20DETAIL.pdf",
+      "note": "UK use only per Sika's note. Reference only for US projects"
+    },
+    {
+      "csi": "03 41 00",
+      "title": "Connection details for prefabricated bridge elements (FHWA manual)",
+      "maker": "FHWA (US DOT)",
+      "format": "Web page",
+      "url": "https://www.fhwa.dot.gov/bridge/prefab/if09010",
+      "note": "Public federal manual. Precast connection details for deck, pier and abutment. PDF on the page"
+    },
+    {
+      "csi": "03 41 00",
+      "title": "Precast technical information and connection details",
+      "maker": "Molin",
+      "format": "Web page",
+      "url": "https://molin.com/technical-information",
+      "note": "Precast connection detail PDFs. Not one of the named manufacturers; check each file"
+    },
+    {
+      "csi": "03 45 00",
+      "title": "Technical drawings (precast panels and connections)",
+      "maker": "Canadian Precast/Prestressed Concrete Institute (CPCI)",
+      "format": "Web page",
+      "url": "https://www4.cpci.ca/en/resources/technical_drawings/",
+      "note": "Downloadable precast technical drawings, including panel and connection details. Canadian"
+    }
+  ]
+}
