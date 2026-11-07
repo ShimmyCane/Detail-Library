@@ -1,0 +1,23 @@
+{
+  "division": "26",
+  "title": "Electrical",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "26 05 33",
+      "title": "CFB10NEMA floor box spec sheet (with DWG link)",
+      "maker": "Hubbell",
+      "format": "PDF",
+      "url": "https://hubbellcdn.com/specsheet/WDK_CA-CFB10NEMA-SPEC-EN.pdf",
+      "note": "Spec sheet dated 4/2025 with an AutoCAD drawing link. Check that the model matches the spec"
+    },
+    {
+      "csi": "26 05 33",
+      "title": "EFB floor box template",
+      "maker": "Legrand (Wiremold)",
+      "format": "PDF",
+      "url": "https://www.legrand.ca/p/print/EFB-TEMPLATE.pdf",
+      "note": "1:1 layout template for the floor box. A layout aid, not a full detail"
+    }
+  ]
+}

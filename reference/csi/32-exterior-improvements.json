@@ -34,6 +34,30 @@
       "format": "CAD / PDF",
       "url": "https://landscapearchitect.com/ladetails/landscape-product/pavers-concrete/belgard/papyrustrade-paver",
       "note": "Third-party library page. Check Belgard's own technical support for current CAD"
+    },
+    {
+      "csi": "32 32 00",
+      "title": "Miragrid geogrid brochure",
+      "maker": "TenCate Mirafi",
+      "format": "PDF",
+      "url": "https://cdn.shopify.com/s/files/1/1777/4839/files/geogrid-brochure.pdf",
+      "note": "Product brochure. Geogrid for segmental retaining walls"
+    },
+    {
+      "csi": "32 32 00",
+      "title": "Miragrid 2XT installation sheet",
+      "maker": "TenCate Mirafi",
+      "format": "PDF",
+      "url": "https://cdn.shopify.com/s/files/1/1777/4839/files/BRO_2XT_tcm29-17004.pdf",
+      "note": "Placement guidance: geogrid between rows of block, per block manufacturer's instructions"
+    },
+    {
+      "csi": "32 32 00",
+      "title": "Temporary Tensar geogrid retaining walls (FDOT standard)",
+      "maker": "Florida DOT (with Tensar)",
+      "format": "PDF",
+      "url": "https://www.fdot.gov/docs/default-source/content-docs/roadway/ds/04/int/e/05125.pdf",
+      "note": "Public agency standard. Typical cross-sections and geogrid placement"
     }
   ]
 }

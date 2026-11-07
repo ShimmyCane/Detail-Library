@@ -354,6 +354,14 @@
       "format": "DWG / PDF",
       "url": "https://www.arcat.com/content-type/cad/thermal-and-moisture-protection-07/slate-shingles-073126",
       "note": "Listing page. Includes EcoStar synthetic slate flashing. Licence agreement applies"
+    },
+    {
+      "csi": "07 14 00",
+      "title": "Sikalastic 320 engineering detail catalog",
+      "maker": "Sika",
+      "format": "PDF",
+      "url": "https://usa.sika.com/dam/dms/us01/v/Sikalastic%20320%20Engineering%20Detail%20Catalog.pdf",
+      "note": "Direct PDF. US fluid-applied waterproofing details"
     }
   ]
 }

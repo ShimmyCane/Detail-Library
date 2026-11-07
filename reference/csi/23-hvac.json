@@ -1,0 +1,15 @@
+{
+  "division": "23",
+  "title": "Heating, Ventilating, and Air Conditioning (HVAC)",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "23 37 13",
+      "title": "Grilles: CAD details (2D sections)",
+      "maker": "Titus (via aecinfo)",
+      "format": "DWG / PDF",
+      "url": "https://aecinfo.com/titus/grilles/product.html",
+      "note": "Third-party aggregator page that hosts the Titus CAD. Check the current file against the Titus catalog"
+    }
+  ]
+}

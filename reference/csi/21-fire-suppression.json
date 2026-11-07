@@ -1,0 +1,23 @@
+{
+  "division": "21",
+  "title": "Fire Suppression",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "21 13 13",
+      "title": "Vic Blocks 3D library instructions",
+      "maker": "Victaulic",
+      "format": "PDF",
+      "url": "https://victaulic.com/assets/uploads/cad_packages/Instructions/Vic_Blocks_3D.pdf",
+      "note": "Instructions for the Victaulic 3D block library (couplings, fittings, valves). Product blocks, not penetration details"
+    },
+    {
+      "csi": "21 13 13",
+      "title": "Vic ISO 2.0 CAD instructions",
+      "maker": "Victaulic",
+      "format": "PDF",
+      "url": "https://victaulic.com/assets/uploads/cad_packages/Instructions/Vic_ISO_2.0_Instructions.pdf",
+      "note": "Instructions for Victaulic's isometric CAD package"
+    }
+  ]
+}

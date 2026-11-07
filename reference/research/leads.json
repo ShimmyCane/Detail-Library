@@ -261,6 +261,137 @@
       "manufacturer": "Library of Congress, Internet Archive, Met, Art Institute of Chicago, Smithsonian, NREL/DOE, NIST",
       "status": "lead",
       "note": "Public-domain image sources, listed in sources/sources.json. Not reachable from the build sandbox; pull manually."
+    },
+    {
+      "category": "Plumbing",
+      "csi": "22 13 19",
+      "manufacturer": "Zurn",
+      "status": "not_found",
+      "note": "No official CAD download found. Only a low-quality page; Zurn's own site still to check.",
+      "url": "https://www.zurn.com/"
+    },
+    {
+      "category": "Plumbing",
+      "csi": "22 13 19",
+      "manufacturer": "Sloan",
+      "status": "not_found",
+      "note": "Nothing relevant in search."
+    },
+    {
+      "category": "HVAC",
+      "csi": "23 37 13",
+      "manufacturer": "Greenheck",
+      "status": "not_found",
+      "note": "No manufacturer CAD found. Check greenheck.com product pages."
+    },
+    {
+      "category": "HVAC",
+      "csi": "23 37 13",
+      "manufacturer": "Price Industries",
+      "status": "not_found",
+      "note": "No manufacturer CAD found."
+    },
+    {
+      "category": "Stairs and railings",
+      "csi": "05 51 00",
+      "manufacturer": "Wagner",
+      "status": "lead",
+      "note": "CADdetails blog lists Wagner railing and stair CAD with view and download buttons. Files not opened.",
+      "url": "https://caddetailsblog.com/post/discover-20-cad-drawings-for-railings-stair-solutions-for-your-2024-design-projects"
+    },
+    {
+      "category": "Stairs and railings",
+      "csi": "05 52 00",
+      "manufacturer": "Blumcraft",
+      "status": "not_found",
+      "note": "No Blumcraft results."
+    },
+    {
+      "category": "Elevators",
+      "csi": "14 21 00",
+      "manufacturer": "Otis / KONE / Schindler",
+      "status": "lead",
+      "note": "Only planning portals found (Schindler plan, KONE planning tools). No DWG libraries seen. Check each planning tool for pit and machine-room drawings."
+    },
+    {
+      "category": "Fire suppression",
+      "csi": "21 13 13",
+      "manufacturer": "Viking",
+      "status": "not_found",
+      "note": "No CAD download found. Viking Technical Services is the contact for drawings."
+    },
+    {
+      "category": "Drainage",
+      "csi": "33 41 00",
+      "manufacturer": "Advanced Drainage Systems (ADS)",
+      "status": "lead",
+      "note": "Search said ADS has CAD drawings on its site. Site not confirmed; adspipe.com was from general knowledge, not from search."
+    },
+    {
+      "category": "Countertops",
+      "csi": "12 36 00",
+      "manufacturer": "Wilsonart",
+      "status": "lead",
+      "note": "Decorative edge page at wilsonart.com/laminate-edge-options. Not opened.",
+      "url": "https://www.wilsonart.com/laminate-edge-options"
+    },
+    {
+      "category": "Countertops",
+      "csi": "12 36 00",
+      "manufacturer": "Corian (DuPont) and Formica",
+      "status": "lead",
+      "note": "Manufacturer sites listed on a spec document. No CAD seen.",
+      "url": "https://www.corian.com/"
+    },
+    {
+      "category": "Retaining walls",
+      "csi": "32 32 00",
+      "manufacturer": "Tensar",
+      "status": "not_found",
+      "note": "No Tensar DWG library found. Public FDOT standard added to the index."
+    },
+    {
+      "category": "Decking",
+      "csi": "06 63 00",
+      "manufacturer": "Trex 2025 installation guide",
+      "status": "lead",
+      "note": "Online flipbook guide. Structural connection details not confirmed. Check trex.com for a PDF version."
+    },
+    {
+      "category": "Wood framing",
+      "csi": "06 17 00",
+      "manufacturer": "Weyerhaeuser (own site)",
+      "status": "lead",
+      "note": "TJI evaluation report added from Florida copy. Weyerhaeuser connection PDFs not found; check weyerhaeuser.com."
+    },
+    {
+      "category": "Masonry",
+      "csi": "04 22 00",
+      "manufacturer": "NCMA TEK notes (ncma.org)",
+      "status": "lead",
+      "note": "Wall-detail TEK notes are referenced (e.g. TEK 05-06A). Only Scribd copies seen; use the NCMA originals. TR 090B is a paid annotated detail set.",
+      "url": "https://ncma.org/"
+    },
+    {
+      "category": "Precast",
+      "csi": "03 41 00",
+      "manufacturer": "PCI connections manual",
+      "status": "lead",
+      "note": "A PCI connections manual exists. No download link found; check pci.org."
+    },
+    {
+      "category": "Precast",
+      "csi": "03 41 00",
+      "manufacturer": "Oldcastle / Smith-Midland / Coreslab",
+      "status": "not_found",
+      "note": "No connection-detail PDFs found for these three."
+    },
+    {
+      "category": "Concrete",
+      "csi": "03 30 00",
+      "manufacturer": "Euclid concrete floor systems design guide",
+      "status": "lead",
+      "note": "Scribd copy showed only the cover. Check Euclid's technical library."
     }
   ]
 }
