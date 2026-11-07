@@ -12,7 +12,7 @@
         // Public values, the same ones Quick Detail ships. Row level security protects the data.
         key: 'sb_publishable_kncKodoYJZ6ByexwWM_TtQ_OpW68M5f',
         // Set this to the Quick Detail app's address, so "Open in Quick Detail" opens it in a new tab.
-        quickDetailUrl: '',
+        quickDetailUrl: 'https://shimmycane.github.io/Quick-Detail/',
         source: 'detail-library'
     };
 
@@ -87,7 +87,8 @@
             name: entry.title,
             scale: 'image',
             tags: entry.tags || [],
-            items: [{ id: 'img-1', kind: 'image', src: image.dataUrl, at: [0, 0], w: w, h: h, name: entry.title }],
+            // noPrint: the picture is a background underlay in Quick Detail, under the drawing, and never prints.
+            items: [{ id: 'img-1', kind: 'image', src: image.dataUrl, at: [0, 0], w: w, h: h, name: entry.title, noPrint: true }],
             metadata: {
                 source: CFG.source,
                 path: entry.path || null,
