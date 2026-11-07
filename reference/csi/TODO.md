@@ -26,10 +26,10 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 | 04 | Masonry | [~] one entry |
 | 06 | Wood, Plastics and Composites | [~] APA and Simpson |
 | 07 | Thermal and Moisture Protection | [~] roofing and waterproofing only |
-| 08 | Openings | [~] one entry |
+| 08 | Openings | [~] Andersen and Kawneer curtain wall |
 | 03 | Concrete | [ ] |
 | 05 | Metals | [ ] |
-| 09 | Finishes | [ ] |
+| 09 | Finishes | [~] Armstrong ceilings and Sweets hub |
 | 10 | Specialties | [ ] |
 | 11 | Equipment | [ ] |
 | 12 | Furnishings | [ ] |
@@ -87,7 +87,7 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 - [ ] 07 62 00 Sheet metal flashing and trim (Berger, Metal-Era)
 - [ ] 07 71 00 Roof specialties: edge metal, copings (Centria, Metal Sales)
 - [ ] 07 72 00 Roof accessories: hatches, curbs (Bilco, Babcock-Davis)
-- [ ] 07 84 00 Firestopping (Hilti, 3M, Specified Technologies)
+- [~] 07 84 00 Firestopping: Hilti added (3M, Specified Technologies still to do)
 - [ ] 07 92 00 Joint sealants (Tremco, Sika, Dow, Pecora, BASF)
 - [~] 07 10 00 Waterproofing: Tremco A-BSW-P-06 added
 - [ ] 07 95 00 Expansion control (Watson Bowman, Emseal)
@@ -99,15 +99,15 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 - [ ] 08 11 00 Metal doors and frames (Steelcraft, Ceco, Curries)
 - [ ] 08 14 00 Wood doors (Masonite, JELD-WEN)
 - [ ] 08 41 00 Storefronts (Kawneer, YKK AP, EFCO, Oldcastle)
-- [ ] 08 44 00 Curtain walls (Kawneer, YKK AP, Tubelite)
+- [~] 08 44 00 Curtain walls: Kawneer KCAD indexes added (YKK AP, Tubelite still to do)
 - [ ] 08 71 00 Door hardware (Schlage, Assa Abloy, Hager)
 - [ ] 08 80 00 Glazing (Viracon, Guardian, PPG, Vitro)
 
 ### 09 Finishes
-- [ ] 09 21 16 Gypsum board assemblies (USG, CertainTeed, National Gypsum, Georgia-Pacific)
+- [~] 09 21 16 Gypsum board assemblies: Sweets CAD hub added (USG, CertainTeed, National Gypsum, Georgia-Pacific still to do)
 - [ ] 09 22 16 Metal stud framing (ClarkDietrich, Marino\Ware)
 - [ ] 09 30 00 Tile (Daltile, Mapei, Laticrete)
-- [ ] 09 51 00 Acoustical ceilings (Armstrong, USG, Rockfon)
+- [~] 09 51 00 Acoustical ceilings: Armstrong detail packages added (USG, Rockfon still to do)
 - [ ] 09 65 00 Resilient flooring (Armstrong, Mannington, Tarkett)
 - [ ] 09 68 00 Carpet (Mohawk, Interface, Shaw)
 - [ ] 09 91 00 Painting (Sherwin-Williams, Benjamin Moore, PPG)

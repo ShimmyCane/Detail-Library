@@ -130,6 +130,38 @@
       "format": "PDF / DWG",
       "url": "https://www.bmigroup.com/ie/downloads/design-master-cad-library/",
       "note": "Download page for the free CAD library"
+    },
+    {
+      "csi": "07 84 00",
+      "title": "Firestop CAD details (Canada): mechanical, electrical, cast-in penetrations",
+      "maker": "Hilti (Canada)",
+      "format": "PDF / DWG",
+      "url": "https://www.hilti.ca/content/dam/urgent-folder/w1/pdf/cad-details/CAD%20Details_CA-EN_November2017_Firestop.pdf",
+      "note": "Dated November 2017. Canadian ratings and codes; confirm for US projects"
+    },
+    {
+      "csi": "07 84 00",
+      "title": "Specifications and CAD details (US)",
+      "maker": "Hilti (US)",
+      "format": "PDF / DWG",
+      "url": "https://www.us.hilti.com/content/hilti/W1/US/en/business/business/engineering/specifications-and-cad-details.html",
+      "note": "Download page for US firestop CAD details"
+    },
+    {
+      "csi": "07 84 00",
+      "title": "Firestopping: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/content-type/cad/thermal-and-moisture-protection-07/firestopping-078400",
+      "note": "Listing page. ARCAT downloads require its licence agreement"
+    },
+    {
+      "csi": "07 62 00",
+      "title": "Base flashing for gypsum wall on metal studs (CAD)",
+      "maker": "Malarkey Roofing Products (via ARCAT)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/details/malarkey/prod2093.html",
+      "note": "Product CAD page on ARCAT. Licence agreement applies"
     }
   ]
 }

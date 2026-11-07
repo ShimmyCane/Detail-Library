@@ -1,0 +1,63 @@
+{
+  "division": "09",
+  "title": "Finishes",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "09 51 00",
+      "title": "SH-0003-3 detail package (includes 7800 wall angle perimeter)",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0003-3%20Package.pdf",
+      "note": "Armstrong detail sheets. Verify the product and system before use"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0024-3 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0024-3%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0014-2 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0014-2%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0012-2 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0012-2%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "SH-0010-2 detail package",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/SH-0010-2%20Package.pdf",
+      "note": "Armstrong detail sheets"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Frameall grid system master sheet (flat and wall angle details)",
+      "maker": "Armstrong Ceilings",
+      "format": "PDF",
+      "url": "https://armstrongceilings.com/static/assets/commceilingsna/cadrevit/Frameall%20Grid%20System%20Master%20Sheet%209-4-24.pdf",
+      "note": "Dated 9-4-24. Includes flat and wall angle details"
+    },
+    {
+      "csi": "09 21 16",
+      "title": "Gypsum board assemblies: CAD details hub (USG and others)",
+      "maker": "Sweets (Dodge Data & Analytics)",
+      "format": "PDF / DWG",
+      "url": "https://sweets.construction.com/QuickLinks/caddetails",
+      "note": "Sweets CAD details hub. Choose the manufacturer and product; Sweets requires an account"
+    }
+  ]
+}

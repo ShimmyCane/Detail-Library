@@ -10,6 +10,46 @@
       "format": "DWG / DXF / PDF",
       "url": "https://heritagewindows.com/architectural-tools",
       "note": "Dealer-hosted download page. Check the listed products include the sill, head and jamb sections you need"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD062A KCAD index: 1600UT SS curtain wall",
+      "maker": "Kawneer",
+      "format": "PDF",
+      "url": "https://www.kawneer.com/kawneer_files/products/4702%20-%201600UT%20SS%20Curtain%20Wall/CAD/KCDD062A/KCDD062A%20KCAD%20INDEX.pdf",
+      "note": "Manufacturer CAD index. Full-size details in DWG/DXF (AutoCAD 2010). Check the index for the exact drawing"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD062B KCAD index: 1600UT SS curtain wall",
+      "maker": "Kawneer",
+      "format": "PDF",
+      "url": "https://www.kawneer.com/kawneer_files/products/4702%20-%201600UT%20SS%20Curtain%20Wall/CAD/KCDD062B/KCDD062B%20KCAD%20INDEX.pdf",
+      "note": "Manufacturer CAD index. DWG/DXF"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD062C KCAD index: 1600UT SS curtain wall",
+      "maker": "Kawneer",
+      "format": "PDF",
+      "url": "https://www.kawneer.com/kawneer_files/products/4702%20-%201600UT%20SS%20Curtain%20Wall/CAD/KCDD062C/KCDD062C%20KCAD%20INDEX.pdf",
+      "note": "Manufacturer CAD index. DWG/DXF"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "KCDD223 KCAD index: 1620UT SSG curtain wall",
+      "maker": "Kawneer",
+      "format": "DOCX",
+      "url": "https://www.kawneer.us/kawneer_files/products/4701%20-%201620UT-1620UT%20SSG%20Curtain%20Wall%20System/CAD/KCDD223/KCDD223%20KCAD%20INDEX.docx",
+      "note": "Manufacturer CAD index (Word). Lists the drawing set"
+    },
+    {
+      "csi": "08 44 13",
+      "title": "Glazed aluminum curtain walls: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/content-type/cad/openings-08/glazed-aluminum-curtain-walls-084413",
+      "note": "Listing page. ARCAT downloads require its licence agreement"
     }
   ]
 }
