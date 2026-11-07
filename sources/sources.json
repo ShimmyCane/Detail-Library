@@ -1,5 +1,5 @@
 {
-  "_about": "Sources the Detail Library can pull public-domain architectural details from. Only sources marked public domain (or CC0) go into images/raw/. 'reachable_from_sandbox' records what the build sandbox could reach on the test date; a False value means download manually or from a machine with access. Lower priority number = try first.",
+  "_about": "Sources the Detail Library can pull public-domain architectural details from. Each file added to images/raw/ carries a licence tag (Public domain, CC0, CC BY or CC BY-SA) in images/raw/licences.json. 'reachable_from_sandbox' records what the build sandbox could reach on the test date; a False value means download manually or from a machine with access. Lower priority number = try first.",
   "updated": "2026-11-07",
   "sources": [
     {
@@ -148,6 +148,65 @@
       "pull_method": "none (links only)",
       "reachable_from_sandbox": null,
       "download_status": "Excluded by the public-domain rule.",
+      "tested": "2026-11-07",
+      "priority": null,
+      "excluded_from_library": true
+    },
+    {
+      "id": "open-access-research",
+      "name": "Open-access research papers (journals, repositories)",
+      "kind": "archive",
+      "licence_filter": "CC BY or CC BY-SA only (check licence per article)",
+      "licence_tag": "CC BY / CC BY-SA",
+      "good_for": [
+        "Building-envelope research with detail drawings and assembly diagrams"
+      ],
+      "pull_method": "manual, or repository API (e.g. Crossref licence metadata)",
+      "reachable_from_sandbox": false,
+      "download_status": "Not tested from sandbox.",
+      "tested": "2026-11-07",
+      "priority": 3
+    },
+    {
+      "id": "university-oer",
+      "name": "University open educational resources and course notes",
+      "kind": "site",
+      "licence_filter": "CC BY or CC BY-SA only (check each course page)",
+      "licence_tag": "CC BY / CC BY-SA",
+      "good_for": [
+        "Construction and detailing course material, studio drawings"
+      ],
+      "pull_method": "manual",
+      "reachable_from_sandbox": false,
+      "download_status": "Not tested from sandbox.",
+      "tested": "2026-11-07",
+      "priority": 4
+    },
+    {
+      "id": "trade-association-details",
+      "name": "Trade association and manufacturer downloads (open licence only)",
+      "kind": "site",
+      "licence_filter": "Only where the publisher states CC BY or CC BY-SA. Default is all rights reserved: link only.",
+      "licence_tag": "CC BY / CC BY-SA (only if stated)",
+      "good_for": [
+        "Wall, roof and joint details where the publisher has licensed them openly"
+      ],
+      "pull_method": "manual",
+      "reachable_from_sandbox": false,
+      "download_status": "Not tested from sandbox.",
+      "tested": "2026-11-07",
+      "priority": 4
+    },
+    {
+      "id": "graphic-standards",
+      "name": "Architectural graphic standards (Architectural Graphic Standards, Neufert and similar)",
+      "kind": "book",
+      "licence_filter": "Excluded. Current editions are all rights reserved.",
+      "licence_tag": null,
+      "good_for": [],
+      "pull_method": "none",
+      "reachable_from_sandbox": null,
+      "download_status": "Excluded.",
       "tested": "2026-11-07",
       "priority": null,
       "excluded_from_library": true

@@ -14,6 +14,10 @@ import json
 BASE_DIR = Path(__file__).resolve().parent
 RAW_DIR = BASE_DIR / "images" / "raw"
 OUT_FILE = BASE_DIR / "library-data.js"
+LICENCES_FILE = RAW_DIR / "licences.json"
+
+# Allowed licence tags. Anything else is reported and shown as "unverified".
+ALLOWED_LICENCES = ["Public domain", "CC0", "CC BY", "CC BY-SA"]
 
 # Raster images are shown as pictures. Vector files (SVG) and PDFs are kept at full quality.
 KINDS = {
@@ -27,9 +31,17 @@ KINDS = {
 }
 
 
+def load_licences():
+    if not LICENCES_FILE.exists():
+        return {}
+    data = json.loads(LICENCES_FILE.read_text(encoding="utf-8"))
+    return data.get("files", {})
+
+
 def build_entries():
     if not RAW_DIR.exists():
         return []
+    licences = load_licences()
     entries = []
     for path in sorted(RAW_DIR.rglob("*"), key=lambda p: p.as_posix().lower()):
         if not path.is_file() or path.name.startswith("."):
@@ -39,6 +51,12 @@ def build_entries():
             continue
         folders = list(path.relative_to(RAW_DIR).parts[:-1])
         rel = path.relative_to(BASE_DIR).as_posix()  # e.g. images/raw/roof/flashing/detail.svg
+        key = path.relative_to(RAW_DIR).as_posix()   # key used in licences.json
+        info = licences.get(key, {})
+        licence = info.get("licence", "unverified")
+        if licence != "unverified" and licence not in ALLOWED_LICENCES:
+            print(f"Warning: {key} has a licence not in ALLOWED_LICENCES: {licence}")
+            licence = "unverified"
         entries.append({
             "id": rel,
             "path": rel,
@@ -47,6 +65,9 @@ def build_entries():
             "ext": path.suffix.lower().lstrip("."),
             "folder": "/".join(folders),  # "" for files directly in images/raw/
             "tags": folders,
+            "licence": licence,
+            "credit": info.get("credit", ""),
+            "source": info.get("source", ""),
         })
     return entries
 

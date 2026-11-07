@@ -105,6 +105,7 @@
         .thumb img, .thumb canvas { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
         .card-title { font-weight: 600; font-size: 14px; overflow-wrap: anywhere; }
         .meta { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+        .badge.warn { color: #9a5b00; border-color: #9a5b00; }
         .badge {
             font-size: 11px;
             text-transform: uppercase;
@@ -133,6 +134,7 @@
         }
         .viewer-head h2 { font-size: 16px; margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
         .viewer-body { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: #ffffff; }
+        .viewer-credit { font-size: 12px; color: var(--muted); padding: 6px 14px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
         .viewer-body img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .viewer-body iframe { width: 100%; height: 100%; border: 0; }
         .link-btn { color: var(--accent); text-decoration: none; font-size: 14px; }
@@ -155,6 +157,14 @@
                 <option value="vector">Vector (SVG)</option>
                 <option value="pdf">PDF</option>
             </select>
+            <select id="licence" aria-label="Licence">
+                <option value="all">All licences</option>
+                <option value="Public domain">Public domain</option>
+                <option value="CC0">CC0</option>
+                <option value="CC BY">CC BY</option>
+                <option value="CC BY-SA">CC BY-SA</option>
+                <option value="unverified">Unverified</option>
+            </select>
             <select id="sort" aria-label="Sort">
                 <option value="name">Name</option>
                 <option value="folder">Folder</option>
@@ -175,6 +185,7 @@
                 <button class="close-btn" id="viewer-close" aria-label="Close">×</button>
             </div>
             <div class="viewer-body" id="viewer-body"></div>
+            <div class="viewer-credit" id="viewer-credit"></div>
         </div>
     </dialog>
 
@@ -187,19 +198,21 @@
             'use strict';
 
             var items = Array.isArray(window.LIBRARY_ITEMS) ? window.LIBRARY_ITEMS : [];
-            var state = { query: '', kind: 'all', sort: 'name', tags: [] };
+            var state = { query: '', kind: 'all', licence: 'all', sort: 'name', tags: [] };
 
             var els = {
                 count: document.getElementById('count'),
                 search: document.getElementById('search'),
                 kind: document.getElementById('kind'),
                 sort: document.getElementById('sort'),
+                licence: document.getElementById('licence'),
                 tags: document.getElementById('tags'),
                 grid: document.getElementById('grid'),
                 empty: document.getElementById('empty'),
                 dialog: document.getElementById('viewer'),
                 dTitle: document.getElementById('viewer-title'),
                 dOpen: document.getElementById('viewer-open'),
+                dCredit: document.getElementById('viewer-credit'),
                 dBody: document.getElementById('viewer-body'),
                 dClose: document.getElementById('viewer-close')
             };
@@ -226,6 +239,7 @@
 
             function matches(item) {
                 if (state.kind !== 'all' && item.kind !== state.kind) return false;
+                if (state.licence !== 'all' && item.licence !== state.licence) return false;
                 for (var i = 0; i < state.tags.length; i++) {
                     if (item.tags.indexOf(state.tags[i]) < 0) return false;
                 }
@@ -315,6 +329,7 @@
 
             function openViewer(item) {
                 els.dTitle.textContent = item.title;
+                els.dCredit.textContent = [item.licence, item.credit, item.source].filter(Boolean).join(' · ');
                 els.dOpen.href = urlOf(item.path);
                 els.dBody.innerHTML = '';
                 if (item.kind === 'pdf') {
@@ -352,6 +367,11 @@
                     badge.textContent = kindLabel(item.kind);
                     meta.appendChild(badge);
                     meta.appendChild(document.createTextNode(item.folder || 'unsorted'));
+                    var lic = document.createElement('span');
+                    lic.className = 'badge' + (item.licence === 'unverified' ? ' warn' : '');
+                    lic.textContent = item.licence;
+                    lic.title = item.credit ? 'Credit: ' + item.credit : (item.licence === 'unverified' ? 'No licence recorded in licences.json' : '');
+                    meta.appendChild(lic);
 
                     card.appendChild(thumb);
                     card.appendChild(title);
@@ -387,6 +407,7 @@
             });
             els.kind.addEventListener('change', function () { state.kind = els.kind.value; render(); });
             els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
+            els.licence.addEventListener('change', function () { state.licence = els.licence.value; render(); });
             els.dClose.addEventListener('click', function () { els.dialog.close(); });
             els.dialog.addEventListener('click', function (e) { if (e.target === els.dialog) els.dialog.close(); });
             els.dialog.addEventListener('close', function () { els.dBody.innerHTML = ''; });
