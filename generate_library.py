@@ -9,12 +9,20 @@ library.html reads library-data.js. There is no database: the GitHub files are t
 Each folder under images/raw/ is a category, and a file's folders become its tags.
 """
 from pathlib import Path
+import hashlib
 import json
+from datetime import datetime, timezone
+
+try:
+    from PIL import Image
+except ImportError:  # dimensions are optional
+    Image = None
 
 BASE_DIR = Path(__file__).resolve().parent
 RAW_DIR = BASE_DIR / "images" / "raw"
 OUT_FILE = BASE_DIR / "library-data.js"
 LICENCES_FILE = RAW_DIR / "licences.json"
+LOG_FILE = RAW_DIR / "image-log.json"
 
 # Allowed licence tags. Anything else is reported and shown as "unverified".
 ALLOWED_LICENCES = ["Public domain", "CC0", "CC BY", "CC BY-SA"]
@@ -72,6 +80,60 @@ def build_entries():
     return entries
 
 
+def sha256_of(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def dimensions_of(path, kind):
+    if kind != "raster" or Image is None:
+        return None
+    try:
+        with Image.open(path) as im:
+            return [im.width, im.height]
+    except Exception:
+        return None
+
+
+def update_image_log(entries):
+    """Writes images/raw/image-log.json: one record per file. Keeps first_seen dates across runs."""
+    old = {}
+    if LOG_FILE.exists():
+        try:
+            old = {r["path"]: r for r in json.loads(LOG_FILE.read_text(encoding="utf-8")).get("files", [])}
+        except (ValueError, KeyError):
+            old = {}
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    records = []
+    for e in entries:
+        file_path = BASE_DIR / e["path"]
+        prev = old.get(e["path"], {})
+        records.append({
+            "path": e["path"],
+            "folder": e["folder"],
+            "title": e["title"],
+            "kind": e["kind"],
+            "bytes": file_path.stat().st_size,
+            "sha256": sha256_of(file_path),
+            "pixels": dimensions_of(file_path, e["kind"]),
+            "licence": e["licence"],
+            "credit": e["credit"],
+            "source": e["source"],
+            "first_seen": prev.get("first_seen", now),
+            "last_checked": now,
+        })
+    doc = {
+        "_about": "One record per file under images/raw/, written by generate_library.py. licence, credit and source come from licences.json. first_seen is kept across runs. Do not edit by hand.",
+        "count": len(records),
+        "files": records,
+    }
+    LOG_FILE.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return len(records)
+
+
 def main():
     entries = build_entries()
     body = json.dumps(entries, indent=2, ensure_ascii=False)
@@ -81,6 +143,7 @@ def main():
         encoding="utf-8",
     )
     print(f"Wrote {len(entries)} items to {OUT_FILE.name}")
+    print(f"Logged {update_image_log(entries)} files to {LOG_FILE.relative_to(BASE_DIR).as_posix()}")
 
 
 if __name__ == "__main__":

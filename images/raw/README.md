@@ -16,4 +16,6 @@ Staging area for the Detail Library. Nothing here is published until it is selec
 3. Selected details leave this folder. Where they go next is not decided yet.
 4. Push selected details to the Quick Detail cloud library.
 
+`image-log.json` is written by the generator. It has one record per file: size, SHA-256, pixel size, licence, credit, source, and the first and last dates it was seen.
+
 Run `python3 ../../generate_library.py` after changing files, then open `library.html` to browse them.
