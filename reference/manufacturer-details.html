@@ -37,6 +37,11 @@
         .badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
         .empty { padding: 24px; color: var(--muted); text-align: center; }
 
+        .research { margin-top: 18px; }
+        .research summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+        .status { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
+        .status.not_found { color: #9a5b00; border-color: #9a5b00; }
+        .status.restricted { color: #a33; border-color: #a33; }
         .preview { position: sticky; top: 12px; min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--card); overflow: hidden; }
         .preview-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
         .preview-head h2 { font-size: 15px; margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
@@ -92,6 +97,17 @@
             <div class="preview-foot" id="pv-note"></div>
         </aside>
     </div>
+
+    <details class="research" id="research">
+        <summary>Research leads and gaps (not yet in the index)</summary>
+        <p class="note">Leads to check, items searched but not found, and restricted sources. Anything here is only added to the index once it is checked and listed in a division file.</p>
+        <div class="list">
+            <table>
+                <thead><tr><th>Category</th><th>CSI</th><th>Manufacturer / source</th><th>Status</th><th>Note</th><th>Link</th></tr></thead>
+                <tbody id="leads"></tbody>
+            </table>
+        </div>
+    </details>
 
     <script>
         'use strict';
@@ -263,7 +279,24 @@
         });
         filter.addEventListener('input', render);
         division.addEventListener('change', render);
+        function loadLeads() {
+            var tbody = document.getElementById('leads');
+            fetch('research/leads.json').then(function (r) {
+                if (!r.ok) throw new Error('leads ' + r.status);
+                return r.json();
+            }).then(function (doc) {
+                tbody.innerHTML = doc.entries.map(function (e) {
+                    var link = e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener noreferrer">Open ↗</a>' : '<span class="muted">none</span>';
+                    return '<tr><td>' + esc(e.category) + '</td><td class="code">' + esc(e.csi) + '</td><td>' + esc(e.manufacturer) +
+                        '</td><td><span class="status ' + esc(e.status) + '">' + esc(e.status.replace('_', ' ')) + '</span></td><td class="muted">' + esc(e.note) + '</td><td>' + link + '</td></tr>';
+                }).join('');
+            }).catch(function (e) {
+                tbody.innerHTML = '<tr><td colspan="6" class="muted">Could not load research leads (' + esc(e.message) + ').</td></tr>';
+            });
+        }
+
         load();
+        loadLeads();
     </script>
 </body>
 </html>
