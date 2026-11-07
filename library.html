@@ -6,14 +6,8 @@
     <title>Detail Library</title>
     <style>
         :root {
-            --paper: #fbfbf8;
-            --ink: #1d1d1b;
-            --muted: #6b6b66;
-            --line: #d9d9d2;
-            --card: #ffffff;
-            --accent: #2a5db0;
-            --accent-ink: #ffffff;
-            --sheet: #ffffff;
+            --paper: #fbfbf8; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d9d2;
+            --card: #ffffff; --accent: #2a5db0; --accent-ink: #ffffff; --sheet: #ffffff;
         }
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
@@ -29,26 +23,33 @@
         body { margin: 0; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.4; }
         a { color: var(--accent); }
         header { position: sticky; top: 0; z-index: 2; background: var(--paper); border-bottom: 1px solid var(--line); padding: 14px 16px; }
-        .title-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+        .title-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
         h1 { font-size: 20px; margin: 0; font-weight: 600; }
         .count { color: var(--muted); font-size: 14px; }
         .home { margin-left: auto; font-size: 14px; }
         .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-        input[type="search"], input[type="text"], select {
+        input[type="search"], input[type="text"], input[type="email"], input[type="password"], select {
             font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px;
         }
         input[type="search"] { flex: 1 1 200px; min-width: 0; }
-        .chip {
+        .chip, button.plain, button.primary {
             font: inherit; font-size: 13px; color: var(--ink); background: var(--card);
             border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer;
         }
+        button.plain { border-radius: 6px; }
+        button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); border-radius: 6px; }
         .chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-        .seg { display: inline-flex; gap: 0; }
+        .seg { display: inline-flex; }
         .seg .chip { border-radius: 0; }
         .seg .chip:first-child { border-radius: 999px 0 0 999px; }
         .seg .chip:last-child { border-radius: 0 999px 999px 0; }
+        button:disabled { opacity: 0.5; cursor: default; }
         .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-        .local-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+        .note { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+        .warn { color: #9a5b00; }
+        .cloudbox { border: 1px solid var(--line); border-radius: 10px; background: var(--card); padding: 12px; margin-bottom: 14px; display: grid; gap: 8px; }
+        .cloudbox .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .cloudbox input { flex: 1 1 180px; min-width: 0; }
         main { padding: 16px; }
         .empty { color: var(--muted); padding: 40px 0; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
@@ -56,7 +57,7 @@
             background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px;
             cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0;
         }
-        .card:focus-visible, .chip:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+        .card:focus-visible, .chip:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
             outline: 2px solid var(--accent); outline-offset: 2px;
         }
         .thumb {
@@ -68,10 +69,7 @@
         body.bg-mono .thumb img, body.bg-mono .thumb canvas { filter: grayscale(1) contrast(1.1); }
         .card-title { font-weight: 600; font-size: 14px; overflow-wrap: anywhere; }
         .meta { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-        .badge {
-            font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
-            border: 1px solid var(--line); border-radius: 4px; padding: 0 5px;
-        }
+        .badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
         .badge.warn { color: #9a5b00; border-color: #9a5b00; }
         .user-tag { font-size: 11px; background: var(--paper); border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; padding: 0 5px; }
         dialog {
@@ -80,19 +78,16 @@
         }
         dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
         .viewer { display: flex; flex-direction: column; height: 100%; }
-        .viewer-head { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
-        .viewer-head h2 { font-size: 16px; margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+        .viewer-head { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+        .viewer-head h2 { font-size: 16px; margin: 0; flex: 1 1 200px; min-width: 0; overflow-wrap: anywhere; }
         .viewer-body { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: var(--sheet); }
         .viewer-body img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .viewer-body iframe { width: 100%; height: 100%; border: 0; }
-        .viewer-foot { border-top: 1px solid var(--line); padding: 8px 14px; display: grid; gap: 6px; }
+        .viewer-foot { border-top: 1px solid var(--line); padding: 10px 14px; display: grid; gap: 8px; max-height: 40vh; overflow: auto; }
         .viewer-credit { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
-        .tag-editor { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-        .tag-editor input { flex: 1 1 160px; min-width: 0; }
-        .link-btn { color: var(--accent); text-decoration: none; font-size: 14px; }
-        .link-btn:hover { text-decoration: underline; }
+        .inline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .inline input { flex: 1 1 200px; min-width: 0; }
         .close-btn { font: inherit; background: none; border: 0; color: var(--ink); font-size: 22px; cursor: pointer; line-height: 1; }
-        button.plain { font: inherit; font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
         @media (max-width: 480px) {
             header, main { padding: 12px; }
             .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -105,10 +100,14 @@
         <div class="title-row">
             <h1>Library</h1>
             <span class="count" id="count"></span>
+            <div class="seg" role="tablist" aria-label="Where to look">
+                <button class="chip on" role="tab" data-view="local" aria-selected="true">Local</button>
+                <button class="chip" role="tab" data-view="cloud" aria-selected="false">Cloud</button>
+            </div>
             <a class="home" href="index.html">← Home</a>
         </div>
         <div class="controls">
-            <input type="search" id="search" placeholder="Search title, folder or tag" aria-label="Search the library">
+            <input type="search" id="search" placeholder="Search name, folder or tag" aria-label="Search the library">
             <select id="kind" aria-label="File type">
                 <option value="all">All types</option>
                 <option value="raster">Images</option>
@@ -136,131 +135,202 @@
             </div>
         </div>
         <div class="tags" id="tags" role="group" aria-label="Filter by folder or tag"></div>
-        <p class="local-note">Folder tags come from images/raw/. Tags you add are kept in this browser only.</p>
+        <p class="note" id="note"></p>
     </header>
     <main>
+        <section class="cloudbox" id="cloudbox" hidden aria-label="Cloud library"></section>
         <div class="grid" id="grid"></div>
-        <p class="empty" id="empty" hidden>Nothing matches.</p>
+        <p class="empty" id="empty" hidden></p>
     </main>
 
     <dialog id="viewer" aria-label="Detail viewer">
         <div class="viewer">
             <div class="viewer-head">
                 <h2 id="viewer-title"></h2>
-                <a class="link-btn" id="viewer-open" target="_blank" rel="noopener">Open file</a>
+                <a class="btn-link" id="viewer-file" target="_blank" rel="noopener">Open file</a>
+                <button class="plain" id="viewer-qd" hidden>Open in Quick Detail</button>
                 <button class="close-btn" id="viewer-close" aria-label="Close">×</button>
             </div>
             <div class="viewer-body" id="viewer-body"></div>
             <div class="viewer-foot">
                 <div class="viewer-credit" id="viewer-credit"></div>
-                <div class="tag-editor" id="viewer-tags"></div>
+                <div class="inline">
+                    <label for="viewer-name" class="note">Name</label>
+                    <input type="text" id="viewer-name" maxlength="120">
+                    <button class="plain" id="viewer-rename">Save name</button>
+                </div>
+                <div class="inline" id="viewer-tags"></div>
+                <div class="inline" id="viewer-actions"></div>
+                <p class="note" id="viewer-msg" role="status"></p>
             </div>
         </div>
     </dialog>
 
-    <!-- The library itself: generated by generate_library.py from images/raw/. -->
+    <!-- Library items: generated by generate_library.py from images/raw/. -->
     <script src="library-data.js"></script>
+    <!-- Storage on this device, then the cloud copy (same Supabase project as Quick Detail). -->
+    <script src="library-store.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script src="library-cloud.js"></script>
     <!-- pdf.js renders the first page of each PDF as its thumbnail. The page still works without it. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
         (function () {
             'use strict';
 
-            var items = Array.isArray(window.LIBRARY_ITEMS) ? window.LIBRARY_ITEMS : [];
-            var TAG_KEY = 'detailLibrary.tags.v1';
-            var BG_KEY = 'detailLibrary.bg.v1';
-            var state = { query: '', kind: 'all', licence: 'all', sort: 'name', tags: [], bg: 'sheet', current: null };
-            var storageOk = true;
+            var repoItems = Array.isArray(window.LIBRARY_ITEMS) ? window.LIBRARY_ITEMS : [];
+            var S = window.DLStore;
+            var C = window.DLCloud;
+            var MAX_PX = 1600, THUMB_PX = 320;
+
+            var state = {
+                view: 'local', query: '', kind: 'all', licence: 'all', sort: 'name', tags: [],
+                entries: [], cloudRows: null, cloudError: '', session: null, current: null, urls: {}
+            };
 
             var els = {
                 count: document.getElementById('count'),
+                note: document.getElementById('note'),
                 search: document.getElementById('search'),
                 kind: document.getElementById('kind'),
-                sort: document.getElementById('sort'),
                 licence: document.getElementById('licence'),
+                sort: document.getElementById('sort'),
                 tags: document.getElementById('tags'),
+                cloudbox: document.getElementById('cloudbox'),
                 grid: document.getElementById('grid'),
                 empty: document.getElementById('empty'),
                 dialog: document.getElementById('viewer'),
                 dTitle: document.getElementById('viewer-title'),
-                dOpen: document.getElementById('viewer-open'),
-                dCredit: document.getElementById('viewer-credit'),
+                dFile: document.getElementById('viewer-file'),
+                dQd: document.getElementById('viewer-qd'),
                 dBody: document.getElementById('viewer-body'),
+                dCredit: document.getElementById('viewer-credit'),
+                dName: document.getElementById('viewer-name'),
+                dRename: document.getElementById('viewer-rename'),
                 dTags: document.getElementById('viewer-tags'),
+                dActions: document.getElementById('viewer-actions'),
+                dMsg: document.getElementById('viewer-msg'),
                 dClose: document.getElementById('viewer-close')
             };
 
-            // Local storage can be blocked or full. Everything still works without it; tags just are not kept.
-            function readJSON(key, fallback) {
-                try {
-                    var raw = window.localStorage.getItem(key);
-                    return raw ? JSON.parse(raw) : fallback;
-                } catch (e) {
-                    storageOk = false;
-                    return fallback;
-                }
-            }
-            function writeJSON(key, value) {
-                try {
-                    window.localStorage.setItem(key, JSON.stringify(value));
-                } catch (e) {
-                    storageOk = false;
-                }
-            }
-
-            var userTags = readJSON(TAG_KEY, {});
-            if (!userTags || typeof userTags !== 'object') userTags = {};
-
-            // Encodes each part of a path so names with spaces or # still resolve.
             function urlOf(path) {
                 return path.split('/').map(encodeURIComponent).join('/');
+            }
+
+            function kindOf(mime, name) {
+                var n = (name || '').toLowerCase();
+                if (mime === 'application/pdf' || /\.pdf$/.test(n)) return 'pdf';
+                if (mime === 'image/svg+xml' || /\.svg$/.test(n)) return 'vector';
+                return 'raster';
             }
 
             function kindLabel(kind) {
                 return kind === 'raster' ? 'image' : kind === 'vector' ? 'svg' : 'pdf';
             }
 
-            function userTagsOf(item) {
-                var t = userTags[item.path];
-                return Array.isArray(t) ? t : [];
-            }
-
-            // Folder tags from images/raw/ plus tags added on this device.
-            function tagsOf(item) {
-                var out = item.tags.slice();
-                userTagsOf(item).forEach(function (t) { if (out.indexOf(t) < 0) out.push(t); });
+            function unique(list) {
+                var out = [];
+                list.forEach(function (t) { if (t && out.indexOf(t) < 0) out.push(t); });
                 return out;
             }
 
-            function sortItems(list) {
-                var copy = list.slice();
-                copy.sort(function (a, b) {
+            // ---- Entries: one shape for repo files, local copies and cloud copies ----
+            function repoEntries() {
+                return repoItems.map(function (item) {
+                    var key = 'repo:' + item.path;
+                    var title = S.nameOverride(key) || item.title;
+                    return {
+                        key: key, source: 'repo', path: item.path, title: title, originTitle: item.title,
+                        kind: item.kind, licence: item.licence, credit: item.credit || '', origin: item.source || '',
+                        folder: item.folder, folderTags: item.tags.slice(), userTags: S.localTags(key)
+                    };
+                });
+            }
+
+            function localEntries(copies) {
+                return copies.map(function (c) {
+                    var key = 'local:' + c.id;
+                    return {
+                        key: key, source: 'local', id: c.id, title: S.nameOverride(key) || c.name, originTitle: c.name,
+                        kind: c.kind, licence: c.licence || 'unverified', credit: c.credit || '', origin: c.source || '',
+                        folder: '', folderTags: [], userTags: S.localTags(key), blob: c.blob, cloudId: c.cloudId || null
+                    };
+                });
+            }
+
+            function cloudEntries(rows) {
+                return rows.map(function (r) {
+                    var m = r.metadata || {};
+                    return {
+                        key: 'cloud:' + r.id, source: 'cloud', id: r.id, localId: r.local_id,
+                        title: r.name, originTitle: r.name, kind: m.kind || 'raster',
+                        licence: m.licence || 'unverified', credit: m.credit || '', origin: m.origin_url || '',
+                        folder: '', folderTags: [], userTags: Array.isArray(r.tags) ? r.tags : [], thumb: m.thumb || ''
+                    };
+                });
+            }
+
+            function allTagsOf(e) {
+                return unique(e.folderTags.concat(e.userTags));
+            }
+
+            function loadLocal() {
+                if (!S) return Promise.resolve([]);
+                return S.allCopies().then(function (copies) { return localEntries(copies); }).catch(function (err) {
+                    els.note.textContent = 'Local copies are unavailable here: ' + err.message;
+                    return [];
+                });
+            }
+
+            function loadCloud() {
+                if (!C || !C.ready()) {
+                    state.cloudError = 'The cloud library did not load. Check the connection and reload.';
+                    return Promise.resolve([]);
+                }
+                return C.session().then(function (s) {
+                    state.session = s;
+                    if (!s) { state.cloudError = ''; return []; }
+                    return C.list().then(function (rows) {
+                        state.cloudError = '';
+                        state.cloudRows = rows;
+                        return cloudEntries(rows);
+                    });
+                }).catch(function (err) {
+                    state.cloudError = err.message || String(err);
+                    return [];
+                });
+            }
+
+            function refresh() {
+                var base = repoEntries();
+                var job = state.view === 'local'
+                    ? loadLocal().then(function (local) { return base.concat(local); })
+                    : loadCloud();
+                return job.then(function (list) {
+                    state.entries = list;
+                    render();
+                });
+            }
+
+            // ---- Filters and sorting ----
+            function matches(e) {
+                if (state.kind !== 'all' && e.kind !== state.kind) return false;
+                if (state.licence !== 'all' && e.licence !== state.licence) return false;
+                var own = allTagsOf(e);
+                for (var i = 0; i < state.tags.length; i++) {
+                    if (own.indexOf(state.tags[i]) < 0) return false;
+                }
+                if (!state.query) return true;
+                return (e.title + ' ' + e.folder + ' ' + own.join(' ')).toLowerCase().indexOf(state.query) >= 0;
+            }
+
+            function sortEntries(list) {
+                return list.slice().sort(function (a, b) {
                     if (state.sort === 'folder') return a.folder.localeCompare(b.folder) || a.title.localeCompare(b.title);
                     if (state.sort === 'licence') return a.licence.localeCompare(b.licence) || a.title.localeCompare(b.title);
                     if (state.sort === 'type') return a.kind.localeCompare(b.kind) || a.title.localeCompare(b.title);
                     return a.title.localeCompare(b.title) || a.folder.localeCompare(b.folder);
                 });
-                return copy;
-            }
-
-            function matches(item) {
-                if (state.kind !== 'all' && item.kind !== state.kind) return false;
-                if (state.licence !== 'all' && item.licence !== state.licence) return false;
-                var own = tagsOf(item);
-                for (var i = 0; i < state.tags.length; i++) {
-                    if (own.indexOf(state.tags[i]) < 0) return false;
-                }
-                if (!state.query) return true;
-                return (item.title + ' ' + item.folder + ' ' + own.join(' ')).toLowerCase().indexOf(state.query) >= 0;
-            }
-
-            // Every folder and device tag, once, for the chips. Picking several keeps files that have all of them.
-            function allTags() {
-                var seen = {};
-                items.forEach(function (item) {
-                    tagsOf(item).forEach(function (t) { seen[t] = true; });
-                });
-                return Object.keys(seen).sort(function (a, b) { return a.localeCompare(b); });
             }
 
             function renderTags() {
@@ -270,23 +340,23 @@
                 all.textContent = 'All';
                 all.addEventListener('click', function () { state.tags = []; render(); });
                 els.tags.appendChild(all);
-                allTags().forEach(function (tag) {
+                var seen = [];
+                state.entries.forEach(function (e) { allTagsOf(e).forEach(function (t) { if (seen.indexOf(t) < 0) seen.push(t); }); });
+                seen.sort(function (a, b) { return a.localeCompare(b); }).forEach(function (tag) {
                     var on = state.tags.indexOf(tag) >= 0;
                     var b = document.createElement('button');
                     b.className = 'chip' + (on ? ' on' : '');
                     b.setAttribute('aria-pressed', String(on));
                     b.textContent = tag;
                     b.addEventListener('click', function () {
-                        state.tags = on
-                            ? state.tags.filter(function (x) { return x !== tag; })
-                            : state.tags.concat([tag]);
+                        state.tags = on ? state.tags.filter(function (x) { return x !== tag; }) : state.tags.concat([tag]);
                         render();
                     });
                     els.tags.appendChild(b);
                 });
             }
 
-            // Thumbnails are drawn when a card scrolls into view, so a large library stays light.
+            // ---- Thumbnails ----
             var observer = 'IntersectionObserver' in window
                 ? new IntersectionObserver(function (entries) {
                     entries.forEach(function (entry) {
@@ -297,34 +367,44 @@
                 }, { rootMargin: '200px' })
                 : null;
 
-            function makeThumb(item) {
+            // Object URLs for local copies, so each blob is turned into a URL once.
+            function blobUrl(e) {
+                if (!state.urls[e.key]) state.urls[e.key] = URL.createObjectURL(e.blob);
+                return state.urls[e.key];
+            }
+
+            function srcOf(e) {
+                if (e.source === 'repo') return urlOf(e.path);
+                if (e.source === 'local') return blobUrl(e);
+                return e.thumb;
+            }
+
+            function makeThumb(e) {
                 var wrap = document.createElement('div');
                 wrap.className = 'thumb';
-                if (item.kind === 'pdf') {
+                if (e.kind === 'pdf') {
                     var canvas = document.createElement('canvas');
                     wrap.appendChild(canvas);
-                    wrap.addEventListener('show', function () { renderPdfThumb(item, canvas, wrap); });
-                } else {
+                    wrap.addEventListener('show', function () { drawPdfFirstPage(e.source === 'repo' ? urlOf(e.path) : blobUrl(e), canvas, wrap); });
+                } else if (srcOf(e)) {
                     var img = document.createElement('img');
-                    img.alt = item.title;
+                    img.alt = e.title;
                     img.loading = 'lazy';
-                    img.src = urlOf(item.path);
+                    img.src = srcOf(e);
                     wrap.appendChild(img);
+                } else {
+                    wrap.textContent = kindLabel(e.kind).toUpperCase();
                 }
                 return wrap;
             }
 
-            function renderPdfThumb(item, canvas, wrap) {
-                if (!window.pdfjsLib) {
-                    wrap.textContent = 'PDF';
-                    return;
-                }
-                window.pdfjsLib.getDocument(urlOf(item.path)).promise
+            function drawPdfFirstPage(src, canvas, wrap) {
+                if (!window.pdfjsLib) { wrap.textContent = 'PDF'; return; }
+                window.pdfjsLib.getDocument(src).promise
                     .then(function (doc) { return doc.getPage(1); })
                     .then(function (page) {
                         var base = page.getViewport({ scale: 1 });
-                        var width = wrap.clientWidth || 260;
-                        var vp = page.getViewport({ scale: width / base.width });
+                        var vp = page.getViewport({ scale: (wrap.clientWidth || 260) / base.width });
                         canvas.width = Math.floor(vp.width);
                         canvas.height = Math.floor(vp.height);
                         return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
@@ -332,154 +412,396 @@
                     .catch(function () { wrap.textContent = 'PDF'; });
             }
 
-            function openViewer(item) {
-                state.current = item;
-                els.dTitle.textContent = item.title;
-                els.dCredit.textContent = [item.licence, item.credit, item.source].filter(Boolean).join(' · ');
-                els.dOpen.href = urlOf(item.path);
-                els.dBody.innerHTML = '';
-                if (item.kind === 'pdf') {
-                    var frame = document.createElement('iframe');
-                    frame.src = urlOf(item.path) + '#view=FitH';
-                    frame.title = item.title;
-                    els.dBody.appendChild(frame);
-                } else {
-                    var img = document.createElement('img');
-                    img.alt = item.title;
-                    img.src = urlOf(item.path);
-                    els.dBody.appendChild(img);
-                }
-                renderViewerTags();
-                if (typeof els.dialog.showModal === 'function') els.dialog.showModal();
-                else window.open(urlOf(item.path), '_blank');
-            }
-
-            // Tags in the viewer: folder tags are fixed, device tags can be added and removed.
-            function renderViewerTags() {
-                var item = state.current;
-                if (!item) return;
-                els.dTags.innerHTML = '';
-                item.tags.forEach(function (t) {
-                    var s = document.createElement('span');
-                    s.className = 'badge';
-                    s.textContent = t + ' (folder)';
-                    els.dTags.appendChild(s);
-                });
-                userTagsOf(item).forEach(function (t) {
-                    var b = document.createElement('button');
-                    b.className = 'plain';
-                    b.textContent = t + ' ×';
-                    b.title = 'Remove this tag from this device';
-                    b.addEventListener('click', function () { removeUserTag(item, t); });
-                    els.dTags.appendChild(b);
-                });
-                var input = document.createElement('input');
-                input.type = 'text';
-                input.placeholder = 'Add a tag';
-                input.setAttribute('aria-label', 'Add a tag on this device');
-                input.maxLength = 40;
-                var add = document.createElement('button');
-                add.className = 'plain';
-                add.textContent = 'Add tag';
-                function commit() {
-                    var t = input.value.trim();
-                    if (!t) return;
-                    addUserTag(item, t);
-                }
-                add.addEventListener('click', commit);
-                input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); commit(); } });
-                els.dTags.appendChild(input);
-                els.dTags.appendChild(add);
-                if (!storageOk) {
-                    var warn = document.createElement('span');
-                    warn.className = 'badge warn';
-                    warn.textContent = 'Tags cannot be saved in this browser';
-                    els.dTags.appendChild(warn);
-                }
-            }
-
-            function addUserTag(item, tag) {
-                var list = userTagsOf(item).slice();
-                if (list.indexOf(tag) < 0) list.push(tag);
-                userTags[item.path] = list;
-                writeJSON(TAG_KEY, userTags);
-                renderViewerTags();
-                render();
-            }
-
-            function removeUserTag(item, tag) {
-                var list = userTagsOf(item).filter(function (t) { return t !== tag; });
-                if (list.length) userTags[item.path] = list; else delete userTags[item.path];
-                writeJSON(TAG_KEY, userTags);
-                state.tags = state.tags.filter(function (t) { return t !== tag || tagsOf(item).indexOf(t) >= 0; });
-                renderViewerTags();
-                render();
-            }
-
             function renderGrid(list) {
                 els.grid.innerHTML = '';
-                list.forEach(function (item) {
+                list.forEach(function (e) {
                     var card = document.createElement('article');
                     card.className = 'card';
                     card.tabIndex = 0;
                     card.setAttribute('role', 'button');
-                    card.setAttribute('aria-label', 'Open ' + item.title);
+                    card.setAttribute('aria-label', 'Open ' + e.title);
 
-                    var thumb = makeThumb(item);
                     var title = document.createElement('div');
                     title.className = 'card-title';
-                    title.textContent = item.title;
+                    title.textContent = e.title;
 
                     var meta = document.createElement('div');
                     meta.className = 'meta';
                     var kind = document.createElement('span');
                     kind.className = 'badge';
-                    kind.textContent = kindLabel(item.kind);
+                    kind.textContent = kindLabel(e.kind);
                     meta.appendChild(kind);
-                    meta.appendChild(document.createTextNode(item.folder || 'unsorted'));
+                    meta.appendChild(document.createTextNode(e.source === 'cloud' ? 'cloud' : (e.source === 'local' ? 'this device' : (e.folder || 'unsorted'))));
                     var lic = document.createElement('span');
-                    lic.className = 'badge' + (item.licence === 'unverified' ? ' warn' : '');
-                    lic.textContent = item.licence;
-                    lic.title = item.credit ? 'Credit: ' + item.credit : (item.licence === 'unverified' ? 'No licence recorded in licences.json' : '');
+                    lic.className = 'badge' + (e.licence === 'unverified' ? ' warn' : '');
+                    lic.textContent = e.licence;
                     meta.appendChild(lic);
 
-                    var tagLine = document.createElement('div');
-                    tagLine.className = 'meta';
-                    userTagsOf(item).forEach(function (t) {
-                        var u = document.createElement('span');
-                        u.className = 'user-tag';
-                        u.textContent = t;
-                        tagLine.appendChild(u);
-                    });
-
-                    card.appendChild(thumb);
+                    card.appendChild(makeThumb(e));
                     card.appendChild(title);
                     card.appendChild(meta);
-                    if (tagLine.childNodes.length) card.appendChild(tagLine);
-                    card.addEventListener('click', function () { openViewer(item); });
-                    card.addEventListener('keydown', function (e) {
-                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openViewer(item); }
+                    if (e.userTags.length) {
+                        var tl = document.createElement('div');
+                        tl.className = 'meta';
+                        e.userTags.forEach(function (t) {
+                            var u = document.createElement('span');
+                            u.className = 'user-tag';
+                            u.textContent = t;
+                            tl.appendChild(u);
+                        });
+                        card.appendChild(tl);
+                    }
+                    card.addEventListener('click', function () { openViewer(e); });
+                    card.addEventListener('keydown', function (ev) {
+                        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openViewer(e); }
                     });
                     els.grid.appendChild(card);
 
-                    if (item.kind === 'pdf' && observer) observer.observe(thumb);
-                    else if (item.kind === 'pdf') thumb.dispatchEvent(new Event('show'));
+                    var thumb = card.firstChild;
+                    if (thumb.classList.contains('thumb') && thumb.querySelector('canvas') && observer) observer.observe(thumb);
+                    else if (thumb.querySelector('canvas')) thumb.dispatchEvent(new Event('show'));
                 });
             }
 
-            function render() {
-                var list = sortItems(items.filter(matches));
-                els.count.textContent = list.length === items.length
-                    ? items.length + (items.length === 1 ? ' file' : ' files')
-                    : list.length + ' of ' + items.length + ' files';
-                renderTags();
-                renderGrid(list);
-                els.empty.textContent = items.length ? 'Nothing matches.' : 'No files yet. Add images, SVGs or PDFs under images/raw/, then run generate_library.py.';
-                els.empty.hidden = list.length > 0;
+            // ---- Cloud panel ----
+            function renderCloudBox() {
+                els.cloudbox.innerHTML = '';
+                els.cloudbox.hidden = state.view !== 'cloud';
+                if (state.view !== 'cloud') return;
+                if (!C || !C.ready()) {
+                    els.cloudbox.appendChild(p('The cloud library did not load. Check the connection and reload. Local items still work.', 'warn'));
+                    return;
+                }
+                if (!state.session) {
+                    var email = input('email', 'Email', 'owner account email');
+                    var pass = input('password', 'Password', 'Password');
+                    var go = button('Sign in', 'primary', function () {
+                        if (!email.value.trim() || !pass.value) { els.note.textContent = 'Enter your email and password.'; return; }
+                        C.signIn(email.value.trim(), pass.value).then(function () {
+                            pass.value = '';
+                            els.note.textContent = 'Signed in.';
+                            refresh();
+                        }).catch(function (err) { els.note.textContent = 'Could not sign in: ' + err.message; });
+                    });
+                    var row = document.createElement('div');
+                    row.className = 'row';
+                    row.appendChild(email); row.appendChild(pass); row.appendChild(go);
+                    els.cloudbox.appendChild(p('Sign in with the owner account, the same as Quick Detail. Only that account can read or write the cloud library.', ''));
+                    els.cloudbox.appendChild(row);
+                    if (state.cloudError) els.cloudbox.appendChild(p(state.cloudError, 'warn'));
+                    return;
+                }
+                var who = document.createElement('div');
+                who.className = 'row';
+                who.appendChild(p('Signed in as ' + (state.session.user && state.session.user.email ? state.session.user.email : 'owner') + '.', ''));
+                who.appendChild(button('Sign out', '', function () {
+                    C.signOut().then(function () { state.session = null; state.cloudRows = null; refresh(); })
+                        .catch(function (err) { els.note.textContent = 'Could not sign out: ' + err.message; });
+                }));
+                els.cloudbox.appendChild(who);
+                if (state.cloudError) els.cloudbox.appendChild(p(state.cloudError, 'warn'));
+            }
+
+            function p(text, cls) {
+                var el = document.createElement('p');
+                el.className = 'note' + (cls ? ' ' + cls : '');
+                el.textContent = text;
+                return el;
+            }
+            function input(type, label, placeholder) {
+                var i = document.createElement('input');
+                i.type = type;
+                i.placeholder = placeholder;
+                i.setAttribute('aria-label', label);
+                return i;
+            }
+            function button(text, cls, fn) {
+                var b = document.createElement('button');
+                b.className = cls || 'plain';
+                b.textContent = text;
+                b.addEventListener('click', fn);
+                return b;
+            }
+
+            // ---- Viewer ----
+            function openViewer(e) {
+                state.current = e;
+                els.dTitle.textContent = e.title;
+                els.dName.value = e.title;
+                els.dCredit.textContent = [e.licence, e.credit, e.origin].filter(Boolean).join(' · ');
+                els.dMsg.textContent = '';
+                els.dBody.innerHTML = '';
+                if (e.source === 'repo') {
+                    els.dFile.href = urlOf(e.path);
+                    els.dFile.hidden = false;
+                } else {
+                    els.dFile.hidden = true;
+                }
+                els.dQd.hidden = e.source !== 'cloud';
+                showImage(e);
+                renderViewerTags();
+                renderActions();
+                if (typeof els.dialog.showModal === 'function') els.dialog.showModal();
+            }
+
+            function showImage(e) {
+                els.dBody.innerHTML = '';
+                if (e.kind === 'pdf') {
+                    var frame = document.createElement('iframe');
+                    frame.src = (e.source === 'repo' ? urlOf(e.path) : blobUrl(e)) + '#view=FitH';
+                    frame.title = e.title;
+                    els.dBody.appendChild(frame);
+                    return;
+                }
+                var img = document.createElement('img');
+                img.alt = e.title;
+                if (e.source === 'cloud') {
+                    els.dBody.appendChild(p('Loading the image from the cloud…', ''));
+                    C.loadImage(e.id).then(function (src) {
+                        if (state.current !== e) return;
+                        img.src = src;
+                        els.dBody.innerHTML = '';
+                        els.dBody.appendChild(img);
+                    }).catch(function (err) {
+                        if (state.current !== e) return;
+                        els.dBody.innerHTML = '';
+                        els.dBody.appendChild(p('Could not load the image: ' + err.message, 'warn'));
+                    });
+                    return;
+                }
+                img.src = srcOf(e);
+                els.dBody.appendChild(img);
+            }
+
+            function renderViewerTags() {
+                var e = state.current;
+                els.dTags.innerHTML = '';
+                if (!e) return;
+                e.folderTags.forEach(function (t) {
+                    var b = document.createElement('span');
+                    b.className = 'badge';
+                    b.textContent = t + ' (folder)';
+                    els.dTags.appendChild(b);
+                });
+                e.userTags.forEach(function (t) {
+                    els.dTags.appendChild(button(t + ' ×', 'plain', function () { removeTag(e, t); }));
+                });
+                var add = input('text', 'Add a tag', 'Add a tag');
+                add.maxLength = 40;
+                function commit() {
+                    var t = add.value.trim();
+                    if (t) addTag(e, t);
+                }
+                add.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); commit(); } });
+                els.dTags.appendChild(add);
+                els.dTags.appendChild(button('Add tag', 'plain', commit));
+            }
+
+            function setTagsFor(e, list) {
+                if (e.source === 'cloud') {
+                    e.userTags = list;
+                    return C.setTags(e.id, list).then(function () { refreshCloudRow(e); });
+                }
+                e.userTags = list;
+                S.setLocalTags(e.key, list);
+                return Promise.resolve();
+            }
+
+            function refreshCloudRow(e) {
+                if (state.cloudRows) state.cloudRows.forEach(function (r) { if (r.id === e.id) r.tags = e.userTags; });
+            }
+
+            function addTag(e, t) {
+                var list = unique(e.userTags.concat([t]));
+                setTagsFor(e, list).then(function () { renderViewerTags(); render(); })
+                    .catch(function (err) { els.dMsg.textContent = 'Could not save the tag: ' + err.message; });
+            }
+
+            function removeTag(e, t) {
+                var list = e.userTags.filter(function (x) { return x !== t; });
+                setTagsFor(e, list).then(function () { renderViewerTags(); render(); })
+                    .catch(function (err) { els.dMsg.textContent = 'Could not remove the tag: ' + err.message; });
+            }
+
+            function renameCurrent() {
+                var e = state.current;
+                var name = els.dName.value.trim();
+                if (!e || !name) return;
+                var job;
+                if (e.source === 'cloud') {
+                    job = C.rename(e.id, name).then(function () {
+                        if (state.cloudRows) state.cloudRows.forEach(function (r) { if (r.id === e.id) r.name = name; });
+                    });
+                } else {
+                    job = Promise.resolve(S.setName(e.key, name === e.originTitle ? '' : name));
+                }
+                job.then(function () {
+                    e.title = name;
+                    els.dTitle.textContent = name;
+                    els.dMsg.textContent = 'Name saved.';
+                    render();
+                }).catch(function (err) { els.dMsg.textContent = 'Could not save the name: ' + err.message; });
+            }
+
+            function renderActions() {
+                var e = state.current;
+                els.dActions.innerHTML = '';
+                if (!e) return;
+                if (e.source === 'repo' || e.source === 'local') {
+                    els.dActions.appendChild(button('Copy to cloud', 'plain', function () { copyToCloud(e); }));
+                }
+                if (e.source === 'cloud') {
+                    els.dActions.appendChild(button('Copy to this device', 'plain', function () { copyToLocal(e); }));
+                }
+                if (e.source === 'cloud') {
+                    els.dActions.appendChild(button('Open in Quick Detail', 'plain', openInQuickDetail));
+                }
+            }
+
+            function openInQuickDetail() {
+                var url = C && C.config.quickDetailUrl;
+                if (!url) {
+                    els.dMsg.textContent = 'Set the Quick Detail address (quickDetailUrl in library-cloud.js) to open it from here.';
+                    return;
+                }
+                window.open(url, '_blank', 'noopener');
+            }
+
+            // ---- Copies ----
+            function requireSession() {
+                if (!state.session) {
+                    els.dMsg.textContent = 'Sign in on the Cloud tab first.';
+                    return false;
+                }
+                return true;
+            }
+
+            function fetchBlob(e) {
+                if (e.source === 'local') return Promise.resolve(e.blob);
+                return fetch(urlOf(e.path)).then(function (r) {
+                    if (!r.ok) throw new Error('the file returned ' + r.status);
+                    return r.blob();
+                }).catch(function (err) {
+                    throw new Error('could not read the file (' + err.message + '). Copying to the cloud needs the library served over http, such as GitHub Pages or a local server.');
+                });
+            }
+
+            // Makes a JPEG of the first page or the whole image, and a small thumbnail. Works for PNG, JPEG, WEBP, GIF, SVG and PDF.
+            function toJpeg(blob, kind) {
+                if (kind === 'pdf') {
+                    if (!window.pdfjsLib) return Promise.reject(new Error('pdf.js did not load, so PDFs cannot be copied.'));
+                    return blob.arrayBuffer().then(function (buf) {
+                        return window.pdfjsLib.getDocument({ data: buf }).promise;
+                    }).then(function (doc) { return doc.getPage(1); }).then(function (page) {
+                        var base = page.getViewport({ scale: 1 });
+                        var scale = Math.min(1, MAX_PX / Math.max(base.width, base.height)) * 2;
+                        var vp = page.getViewport({ scale: scale });
+                        var c = document.createElement('canvas');
+                        c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+                        return page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise.then(function () {
+                            return drawResized(c, c.width, c.height);
+                        });
+                    });
+                }
+                var url = URL.createObjectURL(blob);
+                return loadImg(url).then(function (img) {
+                    var w = img.naturalWidth || 1000, h = img.naturalHeight || 1000;
+                    URL.revokeObjectURL(url);
+                    return drawResized(img, w, h);
+                });
+            }
+
+            function loadImg(url) {
+                return new Promise(function (resolve, reject) {
+                    var img = new Image();
+                    img.onload = function () { resolve(img); };
+                    img.onerror = function () { reject(new Error('the image could not be read')); };
+                    img.src = url;
+                });
+            }
+
+            function drawResized(source, w, h) {
+                var k = Math.min(1, MAX_PX / Math.max(w, h));
+                var cw = Math.max(1, Math.round(w * k)), ch = Math.max(1, Math.round(h * k));
+                var c = document.createElement('canvas');
+                c.width = cw; c.height = ch;
+                var ctx = c.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, cw, ch);
+                ctx.drawImage(source, 0, 0, cw, ch);
+                var t = Math.min(1, THUMB_PX / Math.max(cw, ch));
+                var tc = document.createElement('canvas');
+                tc.width = Math.max(1, Math.round(cw * t)); tc.height = Math.max(1, Math.round(ch * t));
+                var tctx = tc.getContext('2d');
+                tctx.fillStyle = '#ffffff';
+                tctx.fillRect(0, 0, tc.width, tc.height);
+                tctx.drawImage(c, 0, 0, tc.width, tc.height);
+                return {
+                    dataUrl: c.toDataURL('image/jpeg', 0.9),
+                    thumbUrl: tc.toDataURL('image/jpeg', 0.8),
+                    width: cw, height: ch
+                };
+            }
+
+            function copyToCloud(e) {
+                if (!requireSession()) return;
+                els.dMsg.textContent = 'Copying to the cloud…';
+                fetchBlob(e)
+                    .then(function (blob) { return toJpeg(blob, e.kind); })
+                    .then(function (image) { return C.save(e, image); })
+                    .then(function () {
+                        els.dMsg.textContent = 'Copied to the cloud. The original stays where it was.';
+                        state.cloudRows = null;
+                    })
+                    .catch(function (err) { els.dMsg.textContent = 'Copy failed: ' + err.message; });
+            }
+
+            function copyToLocal(e) {
+                els.dMsg.textContent = 'Copying to this device…';
+                C.loadImage(e.id)
+                    .then(function (dataUrl) { return fetch(dataUrl); })
+                    .then(function (r) { return r.blob(); })
+                    .then(function (blob) {
+                        var id = e.localId || C.rowIdFor(e.key);
+                        return S.putCopy({
+                            id: id, name: e.originTitle, kind: e.kind, mime: 'image/jpeg', blob: blob,
+                            licence: e.licence, credit: e.credit, source: e.origin, cloudId: e.id, created: Date.now()
+                        });
+                    })
+                    .then(function () {
+                        els.dMsg.textContent = 'Copied to this device. The cloud copy stays too.';
+                    })
+                    .catch(function (err) { els.dMsg.textContent = 'Copy failed: ' + err.message; });
+            }
+
+            function addFilesToDevice(fileList) {
+                var files = Array.prototype.slice.call(fileList || []);
+                if (!files.length || !S) return;
+                Promise.all(files.map(function (f) {
+                    var kind = kindOf(f.type, f.name);
+                    var id = 'f-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+                    return S.putCopy({ id: id, name: f.name.replace(/\.[^.]+$/, ''), kind: kind, mime: f.type, blob: f, licence: 'unverified', credit: '', source: '', created: Date.now() });
+                })).then(function () {
+                    els.note.textContent = 'Added ' + files.length + (files.length === 1 ? ' file' : ' files') + ' to this device. Set the licence in licences.json to show it on the repo side.';
+                    refresh();
+                }).catch(function (err) { els.note.textContent = 'Could not add the files: ' + err.message; });
+            }
+
+            // ---- Page-level wiring ----
+            function setView(view) {
+                state.view = view;
+                document.querySelectorAll('[data-view]').forEach(function (b) {
+                    var on = b.getAttribute('data-view') === view;
+                    b.classList.toggle('on', on);
+                    b.setAttribute('aria-selected', String(on));
+                });
+                state.tags = [];
+                var pk = document.getElementById('picker');
+                if (pk) pk.hidden = view !== 'local';
+                refresh();
             }
 
             function setBg(bg) {
-                state.bg = bg;
                 document.body.classList.toggle('bg-dark', bg === 'dark');
                 document.body.classList.toggle('bg-mono', bg === 'mono');
                 document.querySelectorAll('[data-bg]').forEach(function (b) {
@@ -487,30 +809,69 @@
                     b.classList.toggle('on', on);
                     b.setAttribute('aria-pressed', String(on));
                 });
-                writeJSON(BG_KEY, bg);
+                if (S) S.writeBg(bg);
             }
 
-            els.search.addEventListener('input', function () {
-                state.query = els.search.value.trim().toLowerCase();
-                render();
-            });
+            function render() {
+                renderCloudBox();
+                var list = sortEntries(state.entries.filter(matches));
+                var total = state.entries.length;
+                els.count.textContent = list.length === total
+                    ? total + (total === 1 ? ' item' : ' items')
+                    : list.length + ' of ' + total + ' items';
+                renderTags();
+                renderGrid(list);
+                if (state.view === 'cloud' && !state.session && !state.cloudError) {
+                    els.empty.textContent = 'Sign in above to see your cloud copies.';
+                } else if (total === 0) {
+                    els.empty.textContent = state.view === 'cloud'
+                        ? 'No cloud copies yet. Open an item on the Local tab and choose Copy to cloud.'
+                        : 'No files yet. Add images, SVGs or PDFs under images/raw/, or add files to this device.';
+                } else {
+                    els.empty.textContent = 'Nothing matches.';
+                }
+                els.empty.hidden = list.length > 0;
+            }
+
+            els.search.addEventListener('input', function () { state.query = els.search.value.trim().toLowerCase(); render(); });
             els.kind.addEventListener('change', function () { state.kind = els.kind.value; render(); });
-            els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
             els.licence.addEventListener('change', function () { state.licence = els.licence.value; render(); });
+            els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
+            document.querySelectorAll('[data-view]').forEach(function (b) {
+                b.addEventListener('click', function () { setView(b.getAttribute('data-view')); });
+            });
             document.querySelectorAll('[data-bg]').forEach(function (b) {
                 b.addEventListener('click', function () { setBg(b.getAttribute('data-bg')); });
             });
+            els.dRename.addEventListener('click', renameCurrent);
+            els.dName.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); renameCurrent(); } });
+            els.dQd.addEventListener('click', openInQuickDetail);
             els.dClose.addEventListener('click', function () { els.dialog.close(); });
-            els.dialog.addEventListener('click', function (e) { if (e.target === els.dialog) els.dialog.close(); });
-            els.dialog.addEventListener('close', function () { els.dBody.innerHTML = ''; state.current = null; });
+            els.dialog.addEventListener('click', function (ev) { if (ev.target === els.dialog) els.dialog.close(); });
+            els.dialog.addEventListener('close', function () {
+                els.dBody.innerHTML = '';
+                state.current = null;
+                render();
+            });
+
+            // A file input on the local tab adds files from this device.
+            var picker = document.createElement('input');
+            picker.type = 'file';
+            picker.multiple = true;
+            picker.accept = 'image/png,image/jpeg,image/webp,image/gif,image/svg+xml,application/pdf';
+            picker.id = 'picker';
+            picker.setAttribute('aria-label', 'Add files to this device');
+            picker.addEventListener('change', function () { addFilesToDevice(picker.files); picker.value = ''; });
+            els.note.parentNode.insertBefore(picker, els.note);
+            picker.hidden = true;
 
             if (window.pdfjsLib) {
-                window.pdfjsLib.GlobalWorkerOptions.workerSrc =
-                    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
             }
 
-            setBg(readJSON(BG_KEY, 'sheet') === 'dark' || readJSON(BG_KEY, 'sheet') === 'mono' ? readJSON(BG_KEY, 'sheet') : 'sheet');
-            render();
+            if (S) setBg(S.readBg());
+            if (S && !S.status.storage) els.note.textContent = 'Browser storage is blocked, so names, tags and copies on this device will not be kept.';
+            refresh();
         })();
     </script>
 </body>
