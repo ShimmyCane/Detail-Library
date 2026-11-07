@@ -5,85 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Library</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        #filters { margin-bottom: 20px; padding: 10px; background: #f4f4f4; border-radius: 5px; }
-        .tag-btn { margin: 5px; padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 3px; background: white; }
-        .tag-btn.active { background: #007bff; color: white; border-color: #0056b3; }
-        #search-bar { width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; }
-        #details-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .detail-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
-        img { width: 100%; height: auto; border-radius: 4px; }
+        :root { --paper: #fbfbf8; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d9d2; --card: #ffffff; --accent: #2a5db0; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; }
+        }
+        :root[data-theme="dark"] { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 24px 16px; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.45; }
+        main { max-width: 760px; margin: 0 auto; }
+        h1 { font-size: 26px; margin: 0 0 4px; }
+        .lead { color: var(--muted); margin: 0 0 24px; }
+        .options { display: grid; gap: 12px; }
+        .option {
+            display: block;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px 18px;
+            color: var(--ink);
+            text-decoration: none;
+        }
+        .option:hover { border-color: var(--accent); }
+        .option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .option .num { color: var(--muted); font-size: 13px; }
+        .option h2 { font-size: 17px; margin: 2px 0 4px; color: var(--accent); }
+        .option p { margin: 0; color: var(--muted); font-size: 14px; }
+        .sub { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; font-size: 14px; }
+        .sub a { color: var(--accent); }
+        .foot { margin-top: 28px; color: var(--muted); font-size: 13px; }
+        .foot a { color: var(--muted); }
     </style>
 </head>
 <body>
-    <h1>Detail Library</h1>
-    <input type="text" id="search-bar" placeholder="Search descriptions or tags...">
-    <div id="filters">
-        <strong>Filter by tags:</strong>
-        <div id="tag-container"></div>
-    </div>
-    <div id="details-list"></div>
+    <main>
+        <h1>Detail Library</h1>
+        <p class="lead">Start here. Choose where to go.</p>
 
-    <script>
-        let allData = [];
-        let activeTags = new Set();
-        let searchQuery = "";
+        <nav class="options" aria-label="Choose a section">
+            <a class="option" href="reference/manufacturer-details.html">
+                <span class="num">1</span>
+                <h2>Manufacturer details</h2>
+                <p>Sortable index of manufacturer detail downloads, by CSI division and section. Links only.</p>
+            </a>
 
-        fetch('details.json')
-            .then(res => res.json())
-            .then(data => {
-                allData = data.sort((a, b) => b.filename.localeCompare(a.filename));
-                renderTags();
-                renderGallery();
-            });
+            <div class="option">
+                <span class="num">2</span>
+                <h2>Review assets</h2>
+                <p>Images, SVGs and PDFs in the site's files.</p>
+                <div class="sub">
+                    <a href="library.html">Browse on this site</a>
+                    <a href="https://github.com/ShimmyCane/Detail-Library/tree/claude/friendly-curie-xk14vk/images/raw" target="_blank" rel="noopener noreferrer">View the folders on GitHub</a>
+                </div>
+            </div>
 
-        document.getElementById('search-bar').addEventListener('input', (e) => {
-            searchQuery = e.target.value.toLowerCase();
-            renderGallery();
-        });
+            <a class="option" href="https://supabase.com/dashboard/project/xabgankckrcuhcgdolrg" target="_blank" rel="noopener noreferrer">
+                <span class="num">3</span>
+                <h2>Cloud library (Architecture database)</h2>
+                <p>The Supabase project behind Quick Detail. Opens the Supabase dashboard; sign-in required.</p>
+            </a>
+        </nav>
 
-        function renderTags() {
-            const container = document.getElementById('tag-container');
-            const tags = new Set();
-            allData.forEach(item => (item.tags || []).forEach(t => tags.add(t)));
-            
-            tags.forEach(tag => {
-                const btn = document.createElement('button');
-                btn.className = 'tag-btn';
-                btn.innerText = tag;
-                btn.onclick = () => {
-                    if (activeTags.has(tag)) activeTags.delete(tag);
-                    else activeTags.add(tag);
-                    btn.classList.toggle('active');
-                    renderGallery();
-                };
-                container.appendChild(btn);
-            });
-        }
-
-        function renderGallery() {
-            const list = document.getElementById('details-list');
-            list.innerHTML = '';
-            
-            const filtered = allData.filter(item => {
-                const matchesTags = activeTags.size === 0 || [...activeTags].every(tag => (item.tags || []).includes(tag));
-                const matchesSearch = item.description.toLowerCase().includes(searchQuery) || 
-                                      (item.tags || []).some(t => t.toLowerCase().includes(searchQuery));
-                return matchesTags && matchesSearch;
-            });
-
-            filtered.forEach(detail => {
-                const div = document.createElement('div');
-                div.className = 'detail-card';
-                div.innerHTML = `
-                    <img src="images/${detail.filename}" alt="${detail.filename}" onerror="this.style.display='none'">
-                    <h3>${detail.filename}</h3>
-                    <p>${detail.description || 'No description'}</p>
-                    <small>Tags: ${(detail.tags || []).join(', ')}</small>
-                `;
-                list.appendChild(div);
-            });
-        }
-    </script>
+        <p class="foot">The earlier gallery page is kept as <a href="index-legacy.html">index-legacy.html</a>.</p>
+    </main>
 </body>
 </html>

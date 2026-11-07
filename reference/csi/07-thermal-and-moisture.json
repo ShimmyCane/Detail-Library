@@ -1,0 +1,135 @@
+{
+  "division": "07",
+  "title": "Thermal and Moisture Protection",
+  "source_note": "Links only. Each file belongs to its manufacturer; check terms and current revision.",
+  "entries": [
+    {
+      "csi": "07 52 00",
+      "title": "Typical roofing details (modified bitumen)",
+      "maker": "Sika Sarnafil",
+      "format": "PDF / DWG",
+      "url": "https://usa.sika.com/sarnafil/en/downloads/typical-roofing-details-modified-bitumen.html",
+      "note": "Download page. Includes cross section and inside corner (cant strip)"
+    },
+    {
+      "csi": "07 54 00",
+      "title": "Typical roofing details (TPO / PVC)",
+      "maker": "Sika Sarnafil",
+      "format": "PDF / DWG",
+      "url": "https://usa.sika.com/sarnafil/en/downloads/typical-roofing-details.html",
+      "note": "Download page. Metal edge, counterflashing, vent stacks, scuppers, roof-to-wall tie-in"
+    },
+    {
+      "csi": "07 54 00",
+      "title": "Sikaplan parapet wall termination",
+      "maker": "Sika",
+      "format": "PDF",
+      "url": "https://usa.sika.com/dms/getdocument.get/2e79155d-286a-4692-bd12-d08c8aa92c36/sikaplan-parapet-wall-termination.pdf",
+      "note": "Direct PDF. Applies only under the stated Sikaplan system warranty; check the revision date"
+    },
+    {
+      "csi": "07 54 00",
+      "title": "Sikaplan details (15-1)",
+      "maker": "Sika",
+      "format": "PDF",
+      "url": "https://usa.sika.com/content/dam/dms/us01/t/Sikaplan-Details-15-1.pdf",
+      "note": "Direct PDF. Sika says it reviews details for warranty only, not system design"
+    },
+    {
+      "csi": "07 50 00",
+      "title": "Liquid-applied roofing details",
+      "maker": "Sika",
+      "format": "PDF / DWG",
+      "url": "https://usa.sika.com/en/construction/liquid-applied-roofing/Downloads/details.html",
+      "note": "Download page. Flashing for PVC membrane, roof joints, gutter encapsulation"
+    },
+    {
+      "csi": "07 52 00",
+      "title": "Detail 301: MB/BUR wall flashing, supported deck",
+      "maker": "GAF",
+      "format": "PDF",
+      "url": "https://www.gaf.com/en-us/document-library/documents/details/detail---301-mb-bur-wall-flashing-detail-for-supported-deck.pdf",
+      "note": "Direct PDF. Parapets over 24 in. refer to the high-parapet detail"
+    },
+    {
+      "csi": "07 52 00",
+      "title": "Detail 307: MB/BUR alternate high parapet wall",
+      "maker": "GAF",
+      "format": "PDF",
+      "url": "https://www.gaf.com/en-us/document-library/documents/details/detail---307-mb-bur-alternate-high-parapet-wall-detail.pdf",
+      "note": "Direct PDF. High-parapet condition"
+    },
+    {
+      "csi": "07 52 00",
+      "title": "Detail 317A: high wall flashing with 10 ft sheets",
+      "maker": "GAF",
+      "format": "PDF",
+      "url": "https://www.gaf.com/en-us/document-library/documents/details/detail---317a-high-wall-flashing-with-10'-sheets.pdf",
+      "note": "Direct PDF. Parapet height limit depends on sheet width"
+    },
+    {
+      "csi": "07 60 00",
+      "title": "Detail 321: MB/BUR scupper flashing",
+      "maker": "GAF",
+      "format": "PDF",
+      "url": "https://www.gaf.com/en-us/document-library/documents/details/detail---321-mb-bur-scupper-flashing-detail.pdf",
+      "note": "Direct PDF. Flashing and sheet metal"
+    },
+    {
+      "csi": "07 50 00",
+      "title": "Silicone roof coatings: unreinforced details guide",
+      "maker": "GAF",
+      "format": "PDF",
+      "url": "https://www.gaf.com/en-us/document-library/documents/details/gaf-silicone-roof-coatings-unreinforced-details-guide.pdf",
+      "note": "Direct PDF guide"
+    },
+    {
+      "csi": "07 53 00",
+      "title": "SAT EPDM details: parapet curb flashing (SAT-12D)",
+      "maker": "Carlisle SynTec",
+      "format": "PDF / DWG",
+      "url": "https://www.carlislesyntec.com/document-viewer/sat-epdm-details---parapet-curb-flashing-sat-12d/ex112HjwD0OoCGWkvGLLhA",
+      "note": "Document viewer page for one detail"
+    },
+    {
+      "csi": "07 10 00",
+      "title": "A-BSW-P-06 waterproofing detail",
+      "maker": "Tremco",
+      "format": "PDF",
+      "url": "https://tremcosealants.com/fileshare/waterproofing_Details/A-BSW-P-06.pdf",
+      "note": "Direct PDF. Subject to change without notice; confirm the current revision with Tremco"
+    },
+    {
+      "csi": "07 50 00",
+      "title": "CAD details (synthetic shake and slate roofing)",
+      "maker": "EcoStar (via ARCAT)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/company/ecostar-llc-41887/cad",
+      "note": "Listing page with download options. ARCAT downloads are subject to its licence agreement"
+    },
+    {
+      "csi": "07 50 00",
+      "title": "CAD construction detail PDFs and DWGs (zip)",
+      "maker": "Eagle Roofing",
+      "format": "PDF / DWG",
+      "url": "https://eagleroofing.com/specifiers/specifier-tools/cad-details",
+      "note": "Download page with zip files of all details"
+    },
+    {
+      "csi": "07 50 00",
+      "title": "Technical details download center",
+      "maker": "Englert",
+      "format": "PDF / DWG",
+      "url": "https://englertinc.com/technical-details",
+      "note": "Download center page"
+    },
+    {
+      "csi": "07 50 00",
+      "title": "DesignMaster CAD library (roofing)",
+      "maker": "BMI",
+      "format": "PDF / DWG",
+      "url": "https://www.bmigroup.com/ie/downloads/design-master-cad-library/",
+      "note": "Download page for the free CAD library"
+    }
+  ]
+}

@@ -14,7 +14,10 @@
         body { margin: 0; padding: 16px; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.4; }
         h1 { font-size: 20px; margin: 0 0 4px; }
         .note { color: var(--muted); font-size: 13px; margin: 0 0 14px; max-width: 80ch; }
-        input[type="search"] { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: min(100%, 360px); margin-bottom: 12px; }
+        .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        input[type="search"], select { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+        input[type="search"] { width: min(100%, 360px); }
+        .home { display: inline-block; margin-bottom: 12px; color: var(--accent); }
         .wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
         table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; }
         th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -31,10 +34,15 @@
     </style>
 </head>
 <body>
+    <a class="home" href="index.html">← Detail Library home</a>
     <h1>Manufacturer details: index</h1>
     <p class="note">Links to manufacturer-published detail drawings, sorted by CSI MasterFormat section. This page holds no drawings itself. Each file belongs to its manufacturer, and their terms apply. Check the current revision on the manufacturer's site before using a detail. CSI numbers are assigned by this index and should be checked against the project specification.</p>
 
-    <input type="search" id="filter" placeholder="Filter by section, title, manufacturer or type" aria-label="Filter the index">
+    <div class="controls">
+        <input type="search" id="filter" placeholder="Filter by section, title, manufacturer or type" aria-label="Filter the index">
+        <select id="division" aria-label="Filter by CSI division"><option value="">All divisions</option></select>
+    </div>
+    <p class="note" id="status" role="status"></p>
 
     <div class="wrap">
         <table>
@@ -55,46 +63,15 @@
 
     <script>
         'use strict';
-        // Each entry: CSI MasterFormat section, title, manufacturer, format, URL as shown in search results, and a note.
-        var DETAILS = [
-            { csi: '07 52 00', title: 'Typical roofing details (modified bitumen)', maker: 'Sika Sarnafil', format: 'PDF / DWG',
-              url: 'https://usa.sika.com/sarnafil/en/downloads/typical-roofing-details-modified-bitumen.html', note: 'Download page. Includes cross section and inside corner (cant strip)' },
-            { csi: '07 54 00', title: 'Typical roofing details (TPO / PVC)', maker: 'Sika Sarnafil', format: 'PDF / DWG',
-              url: 'https://usa.sika.com/sarnafil/en/downloads/typical-roofing-details.html', note: 'Download page. Metal edge, counterflashing, vent stacks, scuppers, roof-to-wall tie-in' },
-            { csi: '07 54 00', title: 'Sikaplan parapet wall termination', maker: 'Sika', format: 'PDF',
-              url: 'https://usa.sika.com/dms/getdocument.get/2e79155d-286a-4692-bd12-d08c8aa92c36/sikaplan-parapet-wall-termination.pdf', note: 'Direct PDF. Applies only under the stated Sikaplan system warranty; check the revision date' },
-            { csi: '07 54 00', title: 'Sikaplan details (15-1)', maker: 'Sika', format: 'PDF',
-              url: 'https://usa.sika.com/content/dam/dms/us01/t/Sikaplan-Details-15-1.pdf', note: 'Direct PDF. Sika says it reviews details for warranty only, not system design' },
-            { csi: '07 50 00', title: 'Liquid-applied roofing details', maker: 'Sika', format: 'PDF / DWG',
-              url: 'https://usa.sika.com/en/construction/liquid-applied-roofing/Downloads/details.html', note: 'Download page. Flashing for PVC membrane, roof joints, gutter encapsulation' },
-            { csi: '07 52 00', title: 'Detail 301: MB/BUR wall flashing, supported deck', maker: 'GAF', format: 'PDF',
-              url: 'https://www.gaf.com/en-us/document-library/documents/details/detail---301-mb-bur-wall-flashing-detail-for-supported-deck.pdf', note: 'Direct PDF. Parapets over 24 in. refer to the high-parapet detail' },
-            { csi: '07 52 00', title: 'Detail 307: MB/BUR alternate high parapet wall', maker: 'GAF', format: 'PDF',
-              url: 'https://www.gaf.com/en-us/document-library/documents/details/detail---307-mb-bur-alternate-high-parapet-wall-detail.pdf', note: 'Direct PDF. High-parapet condition' },
-            { csi: '07 52 00', title: 'Detail 317A: high wall flashing with 10 ft sheets', maker: 'GAF', format: 'PDF',
-              url: "https://www.gaf.com/en-us/document-library/documents/details/detail---317a-high-wall-flashing-with-10'-sheets.pdf", note: 'Direct PDF. Parapet height limit depends on sheet width' },
-            { csi: '07 60 00', title: 'Detail 321: MB/BUR scupper flashing', maker: 'GAF', format: 'PDF',
-              url: 'https://www.gaf.com/en-us/document-library/documents/details/detail---321-mb-bur-scupper-flashing-detail.pdf', note: 'Direct PDF. Flashing and sheet metal' },
-            { csi: '07 50 00', title: 'Silicone roof coatings: unreinforced details guide', maker: 'GAF', format: 'PDF',
-              url: 'https://www.gaf.com/en-us/document-library/documents/details/gaf-silicone-roof-coatings-unreinforced-details-guide.pdf', note: 'Direct PDF guide' },
-            { csi: '07 53 00', title: 'SAT EPDM details: parapet curb flashing (SAT-12D)', maker: 'Carlisle SynTec', format: 'PDF / DWG',
-              url: 'https://www.carlislesyntec.com/document-viewer/sat-epdm-details---parapet-curb-flashing-sat-12d/ex112HjwD0OoCGWkvGLLhA', note: 'Document viewer page for one detail' },
-            { csi: '07 10 00', title: 'A-BSW-P-06 waterproofing detail', maker: 'Tremco', format: 'PDF',
-              url: 'https://tremcosealants.com/fileshare/waterproofing_Details/A-BSW-P-06.pdf', note: 'Direct PDF. Subject to change without notice; confirm the current revision with Tremco' },
-            { csi: '07 50 00', title: 'CAD details (synthetic shake and slate roofing)', maker: 'EcoStar (via ARCAT)', format: 'PDF / DWG',
-              url: 'https://www.arcat.com/company/ecostar-llc-41887/cad', note: 'Listing page with download options. ARCAT downloads are subject to its licence agreement' },
-            { csi: '07 50 00', title: 'CAD construction detail PDFs and DWGs (zip)', maker: 'Eagle Roofing', format: 'PDF / DWG',
-              url: 'https://eagleroofing.com/specifiers/specifier-tools/cad-details', note: 'Download page with zip files of all details' },
-            { csi: '07 50 00', title: 'Technical details download center', maker: 'Englert', format: 'PDF / DWG',
-              url: 'https://englertinc.com/technical-details', note: 'Download center page' },
-            { csi: '07 50 00', title: 'DesignMaster CAD library (roofing)', maker: 'BMI', format: 'PDF / DWG',
-              url: 'https://www.bmigroup.com/ie/downloads/design-master-cad-library/', note: 'Download page for the free CAD library' }
-        ];
-
+        // Reads reference/csi/manifest.json, then every division file it lists. Each entry: csi, title, maker, format, url, note.
+        // Fetching JSON needs the page served over http(s), e.g. GitHub Pages or a local server, not file://.
+        var DETAILS = [];
         var state = { key: 'csi', dir: 1 };
         var rows = document.getElementById('rows');
         var empty = document.getElementById('empty');
         var filter = document.getElementById('filter');
+        var division = document.getElementById('division');
+        var statusEl = document.getElementById('status');
 
         function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
@@ -108,8 +85,10 @@
 
         function render() {
             var q = filter.value.trim().toLowerCase();
+            var div = division.value;
             var list = sorted(DETAILS.filter(function (d) {
-                return !q || [d.csi, d.title, d.maker, d.format, d.note].join(' ').toLowerCase().indexOf(q) >= 0;
+                if (div && d.csi.slice(0, 2) !== div) return false;
+                return !q || [d.csi, d.title, d.maker, d.format, d.note, d.division_title].join(' ').toLowerCase().indexOf(q) >= 0;
             }));
             rows.innerHTML = list.map(function (d) {
                 return '<tr>' +
@@ -122,10 +101,43 @@
                     '</tr>';
             }).join('');
             empty.hidden = list.length > 0;
+            statusEl.textContent = list.length + ' of ' + DETAILS.length + ' entries';
             document.querySelectorAll('th button').forEach(function (b) {
                 var th = b.parentNode;
                 if (b.getAttribute('data-key') === state.key) th.setAttribute('aria-sort', state.dir > 0 ? 'ascending' : 'descending');
                 else th.removeAttribute('aria-sort');
+            });
+        }
+
+        function addDivisionOption(code, title) {
+            var o = document.createElement('option');
+            o.value = code;
+            o.textContent = code + ' ' + title;
+            division.appendChild(o);
+        }
+
+        function load() {
+            fetch('csi/manifest.json').then(function (r) {
+                if (!r.ok) throw new Error('manifest ' + r.status);
+                return r.json();
+            }).then(function (m) {
+                return Promise.all(m.files.map(function (f) {
+                    return fetch('csi/' + f).then(function (r) {
+                        if (!r.ok) throw new Error(f + ' ' + r.status);
+                        return r.json();
+                    });
+                }));
+            }).then(function (docs) {
+                docs.sort(function (a, b) { return a.division.localeCompare(b.division); });
+                docs.forEach(function (doc) {
+                    addDivisionOption(doc.division, doc.title);
+                    doc.entries.forEach(function (e) {
+                        DETAILS.push(Object.assign({}, e, { division_title: doc.title }));
+                    });
+                });
+                render();
+            }).catch(function (e) {
+                statusEl.textContent = 'Could not load the index (' + e.message + '). Serve this folder over http, not file://.';
             });
         }
 
@@ -137,7 +149,8 @@
             });
         });
         filter.addEventListener('input', render);
-        render();
+        division.addEventListener('change', render);
+        load();
     </script>
 </body>
 </html>

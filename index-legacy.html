@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Library</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #filters { margin-bottom: 20px; padding: 10px; background: #f4f4f4; border-radius: 5px; }
+        .tag-btn { margin: 5px; padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; border-radius: 3px; background: white; }
+        .tag-btn.active { background: #007bff; color: white; border-color: #0056b3; }
+        #search-bar { width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box; }
+        #details-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .detail-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        img { width: 100%; height: auto; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Detail Library</h1>
+    <input type="text" id="search-bar" placeholder="Search descriptions or tags...">
+    <div id="filters">
+        <strong>Filter by tags:</strong>
+        <div id="tag-container"></div>
+    </div>
+    <div id="details-list"></div>
+
+    <script>
+        let allData = [];
+        let activeTags = new Set();
+        let searchQuery = "";
+
+        fetch('details.json')
+            .then(res => res.json())
+            .then(data => {
+                allData = data.sort((a, b) => b.filename.localeCompare(a.filename));
+                renderTags();
+                renderGallery();
+            });
+
+        document.getElementById('search-bar').addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase();
+            renderGallery();
+        });
+
+        function renderTags() {
+            const container = document.getElementById('tag-container');
+            const tags = new Set();
+            allData.forEach(item => (item.tags || []).forEach(t => tags.add(t)));
+            
+            tags.forEach(tag => {
+                const btn = document.createElement('button');
+                btn.className = 'tag-btn';
+                btn.innerText = tag;
+                btn.onclick = () => {
+                    if (activeTags.has(tag)) activeTags.delete(tag);
+                    else activeTags.add(tag);
+                    btn.classList.toggle('active');
+                    renderGallery();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderGallery() {
+            const list = document.getElementById('details-list');
+            list.innerHTML = '';
+            
+            const filtered = allData.filter(item => {
+                const matchesTags = activeTags.size === 0 || [...activeTags].every(tag => (item.tags || []).includes(tag));
+                const matchesSearch = item.description.toLowerCase().includes(searchQuery) || 
+                                      (item.tags || []).some(t => t.toLowerCase().includes(searchQuery));
+                return matchesTags && matchesSearch;
+            });
+
+            filtered.forEach(detail => {
+                const div = document.createElement('div');
+                div.className = 'detail-card';
+                div.innerHTML = `
+                    <img src="images/${detail.filename}" alt="${detail.filename}" onerror="this.style.display='none'">
+                    <h3>${detail.filename}</h3>
+                    <p>${detail.description || 'No description'}</p>
+                    <small>Tags: ${(detail.tags || []).join(', ')}</small>
+                `;
+                list.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
