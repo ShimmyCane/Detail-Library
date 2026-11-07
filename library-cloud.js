@@ -12,7 +12,7 @@
         // Public values, the same ones Quick Detail ships. Row level security protects the data.
         key: 'sb_publishable_kncKodoYJZ6ByexwWM_TtQ_OpW68M5f',
         // Set this to the Quick Detail app's address, so "Open in Quick Detail" opens it in a new tab.
-        quickDetailUrl: '',
+        quickDetailUrl: 'https://shimmycane.github.io/Quick-Detail/',
         source: 'detail-library'
     };
 
