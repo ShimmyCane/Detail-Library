@@ -1,0 +1,63 @@
+{
+  "division": "06",
+  "title": "Wood, Plastics, and Composites",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "06 16 00",
+      "title": "APA panel wall sheathing",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/apa-panel-wall-sheathing/",
+      "note": "Typical detail page. Sheathing in two orientations with WRB and siding"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "R20 wall: 2x4 framing",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/r20-wall-2x4-framing/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "R21 wall: advanced framing techniques",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/r21-wall-advanced-framing-techniques/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "R20 wall: insulated headers",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/r20-wall-insulated-headers/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 16 00",
+      "title": "Wood structural panel overlap",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/wood-structural-panel-overlap/",
+      "note": "Typical detail page. Overlap for raised-heel trusses"
+    },
+    {
+      "csi": "06 11 00",
+      "title": "Method CS-PF: continuously sheathed portal frame panel",
+      "maker": "APA – The Engineered Wood Association",
+      "format": "DWG / RVT / PDF",
+      "url": "https://www.apawood.org/guides-tools-training/technical-document-library/typical-details/method-cs-pf-continuously-sheathed-portal-frame-panel-construction/",
+      "note": "Typical detail page"
+    },
+    {
+      "csi": "06 05 23",
+      "title": "CAD library (connectors and framing details)",
+      "maker": "Simpson Strong-Tie (Australia regional site)",
+      "format": "DWG",
+      "url": "https://direct.strongtie.com.au/resources/cad",
+      "note": "CAD library page with a downloadable table of connector drawings. Regional site, so check the matching US library for US models"
+    }
+  ]
+}

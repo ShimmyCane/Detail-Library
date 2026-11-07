@@ -1,5 +1,8 @@
 {
   "files": [
-    "07-thermal-and-moisture.json"
+    "04-masonry.json",
+    "06-wood-plastics-composites.json",
+    "07-thermal-and-moisture.json",
+    "08-openings.json"
   ]
 }
