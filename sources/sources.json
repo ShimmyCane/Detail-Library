@@ -1,0 +1,156 @@
+{
+  "_about": "Sources the Detail Library can pull public-domain architectural details from. Only sources marked public domain (or CC0) go into images/raw/. 'reachable_from_sandbox' records what the build sandbox could reach on the test date; a False value means download manually or from a machine with access. Lower priority number = try first.",
+  "updated": "2026-11-07",
+  "sources": [
+    {
+      "id": "wikimedia-commons",
+      "name": "Wikimedia Commons",
+      "kind": "api",
+      "api": "https://commons.wikimedia.org/w/api.php",
+      "site": "https://commons.wikimedia.org/",
+      "licence_filter": "imageinfo extmetadata LicenseShortName contains 'Public domain', 'CC0' or 'PD'",
+      "formats": [
+        "image/tiff",
+        "image/png",
+        "image/jpeg",
+        "image/svg+xml",
+        "application/pdf"
+      ],
+      "good_for": [
+        "HABS measured drawings (US government, public domain)",
+        "Navy and DPLA architectural sections and details",
+        "pre-1929 architectural plates"
+      ],
+      "pull_method": "commons API search, then file download",
+      "reachable_from_sandbox": true,
+      "download_status": "API works. Original-file host returned HTTP 429 and thumbnail host is refused by the proxy, as of 2026-11-07.",
+      "tested": "2026-11-07",
+      "priority": 1
+    },
+    {
+      "id": "loc-habs",
+      "name": "Library of Congress HABS/HAER",
+      "kind": "archive",
+      "site": "https://www.loc.gov/pictures/collection/hh/",
+      "licence_filter": "US government work, public domain per LoC (confirm on each record)",
+      "good_for": [
+        "Measured architectural drawings, sections and details (1933 onward)"
+      ],
+      "pull_method": "manual, or loc.gov JSON API (fo=json)",
+      "reachable_from_sandbox": false,
+      "download_status": "Proxy refuses www.loc.gov (403).",
+      "tested": "2026-11-07",
+      "priority": 1,
+      "note": "Many of the same HABS drawings are mirrored on Wikimedia Commons."
+    },
+    {
+      "id": "met-open-access",
+      "name": "The Met Open Access",
+      "kind": "api",
+      "api": "https://collectionapi.metmuseum.org/public/collection/v1/",
+      "site": "https://www.metmuseum.org/art/collection/search?showOnly=openAccess",
+      "licence_filter": "isPublicDomain = true (CC0 metadata)",
+      "good_for": [
+        "Architectural drawings and plans in the department of Drawings and Prints"
+      ],
+      "pull_method": "API search with departmentId, then primaryImage URL",
+      "reachable_from_sandbox": false,
+      "download_status": "Not reachable from sandbox (not in egress allowlist).",
+      "tested": "2026-11-07",
+      "priority": 2
+    },
+    {
+      "id": "artic-open-access",
+      "name": "Art Institute of Chicago Open Access",
+      "kind": "api",
+      "api": "https://api.artic.edu/api/v1",
+      "site": "https://www.artic.edu/open-access/open-access-images",
+      "licence_filter": "is_public_domain = true (CC0 designation)",
+      "good_for": [
+        "Architectural drawings, including the Chicago Architects Design holdings"
+      ],
+      "pull_method": "API search, then IIIF image URL",
+      "reachable_from_sandbox": false,
+      "download_status": "Not reachable from sandbox (not in egress allowlist).",
+      "tested": "2026-11-07",
+      "priority": 2
+    },
+    {
+      "id": "smithsonian-open-access",
+      "name": "Smithsonian Open Access",
+      "kind": "api",
+      "api": "https://api.si.edu/openaccess/api/v1.0/search",
+      "site": "https://www.si.edu/openaccess",
+      "licence_filter": "CC0 designation per item (check each record)",
+      "good_for": [
+        "Architectural drawings in NMAH, NMAAHC and archives collections"
+      ],
+      "pull_method": "API search with api.data.gov key",
+      "reachable_from_sandbox": false,
+      "download_status": "Not reachable from sandbox. Needs a key from api.data.gov.",
+      "tested": "2026-11-07",
+      "priority": 3
+    },
+    {
+      "id": "internet-archive",
+      "name": "Internet Archive",
+      "kind": "archive",
+      "site": "https://archive.org/",
+      "licence_filter": "pre-1929 US publications (public domain); check each item's licenseurl",
+      "good_for": [
+        "Radford, Portfolio of Details of Building Construction (1911)",
+        "Other pre-1929 construction manuals"
+      ],
+      "pull_method": "advancedsearch API, then djvu/pdf download",
+      "reachable_from_sandbox": false,
+      "download_status": "Proxy refuses archive.org (403).",
+      "tested": "2026-11-07",
+      "priority": 2
+    },
+    {
+      "id": "nrel-doe",
+      "name": "NREL and DOE building publications",
+      "kind": "site",
+      "site": "https://www.nrel.gov/",
+      "licence_filter": "US federal work, public domain; third-party material inside a report may be copyrighted",
+      "good_for": [
+        "Building America and building-envelope details, wall and roof assemblies"
+      ],
+      "pull_method": "manual",
+      "reachable_from_sandbox": false,
+      "download_status": "Not reachable from sandbox.",
+      "tested": "2026-11-07",
+      "priority": 3
+    },
+    {
+      "id": "nist",
+      "name": "NIST publications",
+      "kind": "site",
+      "site": "https://www.nist.gov/",
+      "licence_filter": "US federal work, public domain; check for copyrighted third-party figures",
+      "good_for": [
+        "Building envelope and flashing test reports (NBS Report 2683 and related)"
+      ],
+      "pull_method": "manual",
+      "reachable_from_sandbox": false,
+      "download_status": "Not reachable from sandbox.",
+      "tested": "2026-11-07",
+      "priority": 3
+    },
+    {
+      "id": "manufacturer-sites",
+      "name": "Manufacturer detail libraries (Sika, GAF, Carlisle, Tremco, others)",
+      "kind": "site",
+      "licence_filter": "NOT public domain. Excluded from images/raw. Link only, in reference/csi/ JSON files.",
+      "good_for": [
+        "Current roofing and waterproofing details"
+      ],
+      "pull_method": "none (links only)",
+      "reachable_from_sandbox": null,
+      "download_status": "Excluded by the public-domain rule.",
+      "tested": "2026-11-07",
+      "priority": null,
+      "excluded_from_library": true
+    }
+  ]
+}
