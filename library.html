@@ -664,7 +664,9 @@
                     els.dMsg.textContent = 'Set the Quick Detail address (quickDetailUrl in library-cloud.js) to open it from here.';
                     return;
                 }
-                window.open(url, '_blank', 'noopener');
+                var e = state.current;
+                if (!e || !e.localId) { els.dMsg.textContent = 'Copy this item to the cloud first.'; return; }
+                window.open(url + '#import=' + encodeURIComponent(e.localId), '_blank', 'noopener');
             }
 
             // ---- Copies ----
