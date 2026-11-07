@@ -1,6 +1,8 @@
 # Manufacturer detail index: to-do
 
-Last reviewed: 2026-11-07 (after PR #2 merged to `main`). Counts below come from the division files, not from memory. Regenerate them with the script in "Checking the counts" if you edit the JSON.
+Last reviewed: 2026-11-07 (after PR #2 merged to `main`).
+
+After editing any division file or `leads.json`, run `python3 tools/build_reference.py`. The index reads the bundled `.js` files so it also works when opened from disk. Counts below come from the division files, not from memory. Regenerate them with the script in "Checking the counts" if you edit the JSON.
 
 Goal: fill the index with download pages for the spec sections used most often. One JSON file per division (`reference/csi/NN-name.json`), listed in `manifest.json`.
 

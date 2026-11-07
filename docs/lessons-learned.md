@@ -40,6 +40,10 @@ Short notes from the build sessions, so the same problems are not solved twice.
 
 ## Later sessions
 
+- **Pages opened from disk.** `fetch` of JSON fails on `file://`, so a page that works from a server can look empty when opened from disk. The user saw missing divisions this way. Bundle data as `.js` files (`tools/build_reference.py`) and test with a `file://` URL as well as a server.
+- **Local tags.** Tags a user adds are kept in localStorage, keyed by file path, and never written to the repo. Folder tags stay the shared tags.
+- **Merge the duplicate items.** When the user asks for two home links to be "just library", merge them and renumber, rather than keeping two links to the same page.
+
 - **Follow the user's format preference.** The user asked for PDFs and no new ARCAT links. Search for PDFs first and filter out ARCAT results. Existing ARCAT entries stay until asked to remove them.
 - **JPG detail images are rare.** Manufacturers publish PDF or DWG. Export images from the PDF or DWG yourself. Manufacturer images stay link-only in the index unless the owner releases them under an allowed licence.
 - **Counts drift.** Hand-written counts in the to-do went stale after several rounds. Read them from the JSON (see the to-do's counting script) before reporting progress.

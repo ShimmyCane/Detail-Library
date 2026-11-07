@@ -13,144 +13,102 @@
             --card: #ffffff;
             --accent: #2a5db0;
             --accent-ink: #ffffff;
+            --sheet: #ffffff;
         }
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
-                --paper: #151515;
-                --ink: #ececea;
-                --muted: #9a9a94;
-                --line: #333331;
-                --card: #1f1f1e;
-                --accent: #6f9be0;
-                --accent-ink: #0d0d0d;
+                --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331;
+                --card: #1f1f1e; --accent: #6f9be0; --accent-ink: #0d0d0d; --sheet: #ffffff;
             }
         }
         :root[data-theme="dark"] {
-            --paper: #151515;
-            --ink: #ececea;
-            --muted: #9a9a94;
-            --line: #333331;
-            --card: #1f1f1e;
-            --accent: #6f9be0;
-            --accent-ink: #0d0d0d;
+            --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331;
+            --card: #1f1f1e; --accent: #6f9be0; --accent-ink: #0d0d0d; --sheet: #ffffff;
         }
         * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            background: var(--paper);
-            color: var(--ink);
-            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-            line-height: 1.4;
-        }
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            background: var(--paper);
-            border-bottom: 1px solid var(--line);
-            padding: 16px;
-        }
-        h1 { font-size: 20px; margin: 0 0 12px; font-weight: 600; }
-        h1 span { color: var(--muted); font-weight: 400; font-size: 14px; margin-left: 8px; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.4; }
+        a { color: var(--accent); }
+        header { position: sticky; top: 0; z-index: 2; background: var(--paper); border-bottom: 1px solid var(--line); padding: 14px 16px; }
+        .title-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+        h1 { font-size: 20px; margin: 0; font-weight: 600; }
+        .count { color: var(--muted); font-size: 14px; }
+        .home { margin-left: auto; font-size: 14px; }
         .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-        input[type="search"], select {
-            font: inherit;
-            color: var(--ink);
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            padding: 8px 10px;
+        input[type="search"], input[type="text"], select {
+            font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px;
         }
-        input[type="search"] { flex: 1 1 220px; min-width: 0; }
+        input[type="search"] { flex: 1 1 200px; min-width: 0; }
         .chip {
-            font: inherit;
-            font-size: 13px;
-            color: var(--ink);
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 4px 12px;
-            cursor: pointer;
+            font: inherit; font-size: 13px; color: var(--ink); background: var(--card);
+            border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer;
         }
         .chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+        .seg { display: inline-flex; gap: 0; }
+        .seg .chip { border-radius: 0; }
+        .seg .chip:first-child { border-radius: 999px 0 0 999px; }
+        .seg .chip:last-child { border-radius: 0 999px 999px 0; }
         .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .local-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
         main { padding: 16px; }
         .empty { color: var(--muted); padding: 40px 0; text-align: center; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
         .card {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 10px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            min-width: 0;
+            background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+            cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0;
         }
-        .card:focus-visible, .chip:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .card:focus-visible, .chip:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+            outline: 2px solid var(--accent); outline-offset: 2px;
+        }
         .thumb {
-            aspect-ratio: 4 / 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #ffffff;
-            border-radius: 4px;
-            overflow: hidden;
+            aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+            background: var(--sheet); border-radius: 4px; overflow: hidden;
         }
         .thumb img, .thumb canvas { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+        body.bg-dark .thumb { background: #111111; }
+        body.bg-mono .thumb img, body.bg-mono .thumb canvas { filter: grayscale(1) contrast(1.1); }
         .card-title { font-weight: 600; font-size: 14px; overflow-wrap: anywhere; }
         .meta { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-        .badge.warn { color: #9a5b00; border-color: #9a5b00; }
         .badge {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            border: 1px solid var(--line);
-            border-radius: 4px;
-            padding: 0 5px;
+            font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
+            border: 1px solid var(--line); border-radius: 4px; padding: 0 5px;
         }
+        .badge.warn { color: #9a5b00; border-color: #9a5b00; }
+        .user-tag { font-size: 11px; background: var(--paper); border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; padding: 0 5px; }
         dialog {
-            width: min(96vw, 1200px);
-            height: min(92vh, 900px);
-            padding: 0;
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            background: var(--card);
-            color: var(--ink);
+            width: min(96vw, 1200px); height: min(92vh, 900px); padding: 0;
+            border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink);
         }
         dialog::backdrop { background: rgba(0, 0, 0, 0.6); }
         .viewer { display: flex; flex-direction: column; height: 100%; }
-        .viewer-head {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--line);
-        }
+        .viewer-head { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
         .viewer-head h2 { font-size: 16px; margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
-        .viewer-body { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: #ffffff; }
-        .viewer-credit { font-size: 12px; color: var(--muted); padding: 6px 14px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+        .viewer-body { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: var(--sheet); }
         .viewer-body img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .viewer-body iframe { width: 100%; height: 100%; border: 0; }
+        .viewer-foot { border-top: 1px solid var(--line); padding: 8px 14px; display: grid; gap: 6px; }
+        .viewer-credit { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+        .tag-editor { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+        .tag-editor input { flex: 1 1 160px; min-width: 0; }
         .link-btn { color: var(--accent); text-decoration: none; font-size: 14px; }
         .link-btn:hover { text-decoration: underline; }
         .close-btn { font: inherit; background: none; border: 0; color: var(--ink); font-size: 22px; cursor: pointer; line-height: 1; }
+        button.plain { font: inherit; font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
         @media (max-width: 480px) {
             header, main { padding: 12px; }
             .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+            .home { margin-left: 0; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Detail Library <span id="count"></span></h1>
+        <div class="title-row">
+            <h1>Library</h1>
+            <span class="count" id="count"></span>
+            <a class="home" href="index.html">← Home</a>
+        </div>
         <div class="controls">
-            <input type="search" id="search" placeholder="Search title or folder" aria-label="Search the library">
+            <input type="search" id="search" placeholder="Search title, folder or tag" aria-label="Search the library">
             <select id="kind" aria-label="File type">
                 <option value="all">All types</option>
                 <option value="raster">Images</option>
@@ -168,9 +126,17 @@
             <select id="sort" aria-label="Sort">
                 <option value="name">Name</option>
                 <option value="folder">Folder</option>
+                <option value="licence">Licence</option>
+                <option value="type">Type</option>
             </select>
+            <div class="seg" role="group" aria-label="Card background">
+                <button class="chip" data-bg="sheet">On white</button>
+                <button class="chip" data-bg="dark">Dark</button>
+                <button class="chip" data-bg="mono">Black on white</button>
+            </div>
         </div>
-        <div class="tags" id="tags" role="group" aria-label="Filter by folder"></div>
+        <div class="tags" id="tags" role="group" aria-label="Filter by folder or tag"></div>
+        <p class="local-note">Folder tags come from images/raw/. Tags you add are kept in this browser only.</p>
     </header>
     <main>
         <div class="grid" id="grid"></div>
@@ -185,7 +151,10 @@
                 <button class="close-btn" id="viewer-close" aria-label="Close">×</button>
             </div>
             <div class="viewer-body" id="viewer-body"></div>
-            <div class="viewer-credit" id="viewer-credit"></div>
+            <div class="viewer-foot">
+                <div class="viewer-credit" id="viewer-credit"></div>
+                <div class="tag-editor" id="viewer-tags"></div>
+            </div>
         </div>
     </dialog>
 
@@ -198,7 +167,10 @@
             'use strict';
 
             var items = Array.isArray(window.LIBRARY_ITEMS) ? window.LIBRARY_ITEMS : [];
-            var state = { query: '', kind: 'all', licence: 'all', sort: 'name', tags: [] };
+            var TAG_KEY = 'detailLibrary.tags.v1';
+            var BG_KEY = 'detailLibrary.bg.v1';
+            var state = { query: '', kind: 'all', licence: 'all', sort: 'name', tags: [], bg: 'sheet', current: null };
+            var storageOk = true;
 
             var els = {
                 count: document.getElementById('count'),
@@ -214,8 +186,30 @@
                 dOpen: document.getElementById('viewer-open'),
                 dCredit: document.getElementById('viewer-credit'),
                 dBody: document.getElementById('viewer-body'),
+                dTags: document.getElementById('viewer-tags'),
                 dClose: document.getElementById('viewer-close')
             };
+
+            // Local storage can be blocked or full. Everything still works without it; tags just are not kept.
+            function readJSON(key, fallback) {
+                try {
+                    var raw = window.localStorage.getItem(key);
+                    return raw ? JSON.parse(raw) : fallback;
+                } catch (e) {
+                    storageOk = false;
+                    return fallback;
+                }
+            }
+            function writeJSON(key, value) {
+                try {
+                    window.localStorage.setItem(key, JSON.stringify(value));
+                } catch (e) {
+                    storageOk = false;
+                }
+            }
+
+            var userTags = readJSON(TAG_KEY, {});
+            if (!userTags || typeof userTags !== 'object') userTags = {};
 
             // Encodes each part of a path so names with spaces or # still resolve.
             function urlOf(path) {
@@ -226,12 +220,24 @@
                 return kind === 'raster' ? 'image' : kind === 'vector' ? 'svg' : 'pdf';
             }
 
+            function userTagsOf(item) {
+                var t = userTags[item.path];
+                return Array.isArray(t) ? t : [];
+            }
+
+            // Folder tags from images/raw/ plus tags added on this device.
+            function tagsOf(item) {
+                var out = item.tags.slice();
+                userTagsOf(item).forEach(function (t) { if (out.indexOf(t) < 0) out.push(t); });
+                return out;
+            }
+
             function sortItems(list) {
                 var copy = list.slice();
                 copy.sort(function (a, b) {
-                    if (state.sort === 'folder') {
-                        return a.folder.localeCompare(b.folder) || a.title.localeCompare(b.title);
-                    }
+                    if (state.sort === 'folder') return a.folder.localeCompare(b.folder) || a.title.localeCompare(b.title);
+                    if (state.sort === 'licence') return a.licence.localeCompare(b.licence) || a.title.localeCompare(b.title);
+                    if (state.sort === 'type') return a.kind.localeCompare(b.kind) || a.title.localeCompare(b.title);
                     return a.title.localeCompare(b.title) || a.folder.localeCompare(b.folder);
                 });
                 return copy;
@@ -240,18 +246,19 @@
             function matches(item) {
                 if (state.kind !== 'all' && item.kind !== state.kind) return false;
                 if (state.licence !== 'all' && item.licence !== state.licence) return false;
+                var own = tagsOf(item);
                 for (var i = 0; i < state.tags.length; i++) {
-                    if (item.tags.indexOf(state.tags[i]) < 0) return false;
+                    if (own.indexOf(state.tags[i]) < 0) return false;
                 }
                 if (!state.query) return true;
-                return (item.title + ' ' + item.folder).toLowerCase().indexOf(state.query) >= 0;
+                return (item.title + ' ' + item.folder + ' ' + own.join(' ')).toLowerCase().indexOf(state.query) >= 0;
             }
 
-            // Every folder name, once, for the tag chips. Picking several tags keeps files that have all of them.
+            // Every folder and device tag, once, for the chips. Picking several keeps files that have all of them.
             function allTags() {
                 var seen = {};
                 items.forEach(function (item) {
-                    item.tags.forEach(function (t) { seen[t] = true; });
+                    tagsOf(item).forEach(function (t) { seen[t] = true; });
                 });
                 return Object.keys(seen).sort(function (a, b) { return a.localeCompare(b); });
             }
@@ -260,7 +267,7 @@
                 els.tags.innerHTML = '';
                 var all = document.createElement('button');
                 all.className = 'chip' + (state.tags.length ? '' : ' on');
-                all.textContent = 'All folders';
+                all.textContent = 'All';
                 all.addEventListener('click', function () { state.tags = []; render(); });
                 els.tags.appendChild(all);
                 allTags().forEach(function (tag) {
@@ -296,7 +303,6 @@
                 if (item.kind === 'pdf') {
                     var canvas = document.createElement('canvas');
                     wrap.appendChild(canvas);
-                    wrap.dataset.kind = 'pdf';
                     wrap.addEventListener('show', function () { renderPdfThumb(item, canvas, wrap); });
                 } else {
                     var img = document.createElement('img');
@@ -318,8 +324,7 @@
                     .then(function (page) {
                         var base = page.getViewport({ scale: 1 });
                         var width = wrap.clientWidth || 260;
-                        var scale = width / base.width;
-                        var vp = page.getViewport({ scale: scale });
+                        var vp = page.getViewport({ scale: width / base.width });
                         canvas.width = Math.floor(vp.width);
                         canvas.height = Math.floor(vp.height);
                         return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
@@ -328,6 +333,7 @@
             }
 
             function openViewer(item) {
+                state.current = item;
                 els.dTitle.textContent = item.title;
                 els.dCredit.textContent = [item.licence, item.credit, item.source].filter(Boolean).join(' · ');
                 els.dOpen.href = urlOf(item.path);
@@ -343,8 +349,71 @@
                     img.src = urlOf(item.path);
                     els.dBody.appendChild(img);
                 }
+                renderViewerTags();
                 if (typeof els.dialog.showModal === 'function') els.dialog.showModal();
                 else window.open(urlOf(item.path), '_blank');
+            }
+
+            // Tags in the viewer: folder tags are fixed, device tags can be added and removed.
+            function renderViewerTags() {
+                var item = state.current;
+                if (!item) return;
+                els.dTags.innerHTML = '';
+                item.tags.forEach(function (t) {
+                    var s = document.createElement('span');
+                    s.className = 'badge';
+                    s.textContent = t + ' (folder)';
+                    els.dTags.appendChild(s);
+                });
+                userTagsOf(item).forEach(function (t) {
+                    var b = document.createElement('button');
+                    b.className = 'plain';
+                    b.textContent = t + ' ×';
+                    b.title = 'Remove this tag from this device';
+                    b.addEventListener('click', function () { removeUserTag(item, t); });
+                    els.dTags.appendChild(b);
+                });
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'Add a tag';
+                input.setAttribute('aria-label', 'Add a tag on this device');
+                input.maxLength = 40;
+                var add = document.createElement('button');
+                add.className = 'plain';
+                add.textContent = 'Add tag';
+                function commit() {
+                    var t = input.value.trim();
+                    if (!t) return;
+                    addUserTag(item, t);
+                }
+                add.addEventListener('click', commit);
+                input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); commit(); } });
+                els.dTags.appendChild(input);
+                els.dTags.appendChild(add);
+                if (!storageOk) {
+                    var warn = document.createElement('span');
+                    warn.className = 'badge warn';
+                    warn.textContent = 'Tags cannot be saved in this browser';
+                    els.dTags.appendChild(warn);
+                }
+            }
+
+            function addUserTag(item, tag) {
+                var list = userTagsOf(item).slice();
+                if (list.indexOf(tag) < 0) list.push(tag);
+                userTags[item.path] = list;
+                writeJSON(TAG_KEY, userTags);
+                renderViewerTags();
+                render();
+            }
+
+            function removeUserTag(item, tag) {
+                var list = userTagsOf(item).filter(function (t) { return t !== tag; });
+                if (list.length) userTags[item.path] = list; else delete userTags[item.path];
+                writeJSON(TAG_KEY, userTags);
+                state.tags = state.tags.filter(function (t) { return t !== tag || tagsOf(item).indexOf(t) >= 0; });
+                renderViewerTags();
+                render();
             }
 
             function renderGrid(list) {
@@ -360,12 +429,13 @@
                     var title = document.createElement('div');
                     title.className = 'card-title';
                     title.textContent = item.title;
+
                     var meta = document.createElement('div');
                     meta.className = 'meta';
-                    var badge = document.createElement('span');
-                    badge.className = 'badge';
-                    badge.textContent = kindLabel(item.kind);
-                    meta.appendChild(badge);
+                    var kind = document.createElement('span');
+                    kind.className = 'badge';
+                    kind.textContent = kindLabel(item.kind);
+                    meta.appendChild(kind);
                     meta.appendChild(document.createTextNode(item.folder || 'unsorted'));
                     var lic = document.createElement('span');
                     lic.className = 'badge' + (item.licence === 'unverified' ? ' warn' : '');
@@ -373,20 +443,27 @@
                     lic.title = item.credit ? 'Credit: ' + item.credit : (item.licence === 'unverified' ? 'No licence recorded in licences.json' : '');
                     meta.appendChild(lic);
 
+                    var tagLine = document.createElement('div');
+                    tagLine.className = 'meta';
+                    userTagsOf(item).forEach(function (t) {
+                        var u = document.createElement('span');
+                        u.className = 'user-tag';
+                        u.textContent = t;
+                        tagLine.appendChild(u);
+                    });
+
                     card.appendChild(thumb);
                     card.appendChild(title);
                     card.appendChild(meta);
+                    if (tagLine.childNodes.length) card.appendChild(tagLine);
                     card.addEventListener('click', function () { openViewer(item); });
                     card.addEventListener('keydown', function (e) {
                         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openViewer(item); }
                     });
                     els.grid.appendChild(card);
 
-                    if (item.kind === 'pdf' && observer) {
-                        observer.observe(thumb);
-                    } else if (item.kind === 'pdf') {
-                        thumb.dispatchEvent(new Event('show'));
-                    }
+                    if (item.kind === 'pdf' && observer) observer.observe(thumb);
+                    else if (item.kind === 'pdf') thumb.dispatchEvent(new Event('show'));
                 });
             }
 
@@ -401,6 +478,18 @@
                 els.empty.hidden = list.length > 0;
             }
 
+            function setBg(bg) {
+                state.bg = bg;
+                document.body.classList.toggle('bg-dark', bg === 'dark');
+                document.body.classList.toggle('bg-mono', bg === 'mono');
+                document.querySelectorAll('[data-bg]').forEach(function (b) {
+                    var on = b.getAttribute('data-bg') === bg;
+                    b.classList.toggle('on', on);
+                    b.setAttribute('aria-pressed', String(on));
+                });
+                writeJSON(BG_KEY, bg);
+            }
+
             els.search.addEventListener('input', function () {
                 state.query = els.search.value.trim().toLowerCase();
                 render();
@@ -408,15 +497,19 @@
             els.kind.addEventListener('change', function () { state.kind = els.kind.value; render(); });
             els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
             els.licence.addEventListener('change', function () { state.licence = els.licence.value; render(); });
+            document.querySelectorAll('[data-bg]').forEach(function (b) {
+                b.addEventListener('click', function () { setBg(b.getAttribute('data-bg')); });
+            });
             els.dClose.addEventListener('click', function () { els.dialog.close(); });
             els.dialog.addEventListener('click', function (e) { if (e.target === els.dialog) els.dialog.close(); });
-            els.dialog.addEventListener('close', function () { els.dBody.innerHTML = ''; });
+            els.dialog.addEventListener('close', function () { els.dBody.innerHTML = ''; state.current = null; });
 
             if (window.pdfjsLib) {
                 window.pdfjsLib.GlobalWorkerOptions.workerSrc =
                     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
             }
 
+            setBg(readJSON(BG_KEY, 'sheet') === 'dark' || readJSON(BG_KEY, 'sheet') === 'mono' ? readJSON(BG_KEY, 'sheet') : 'sheet');
             render();
         })();
     </script>
