@@ -163,6 +163,19 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 - [ ] 32 13 13 Concrete paving (Oldcastle, Smith-Midland)
 - [ ] 32 32 00 Retaining walls (Allan Block, Keystone)
 
+## Requested next (round 3)
+
+- [ ] Ceiling details: perimeter, wall angle, soffit, drop-ceiling access (USG, Rockfon, CertainTeed, Armstrong)
+- [ ] Exterior site details: paving edge, drainage, curbs, unit pavers (Belgard, Unilock, Oldcastle, ACO)
+- [ ] Curtain wall details: head, sill, jamb, mullion, anchor (YKK AP, Tubelite, Oldcastle, EFCO)
+- [ ] Firestop details: head-of-wall, joint, penetration (Hilti, STI, 3M, Tremco)
+- [ ] Finish details, tile interior: edge trim, transitions, substrate (Schluter, Laticrete, Mapei)
+- [ ] Wood cladding, interior: panel and trim details (Architectural Woodwork references, Kebony, Accoya)
+- [ ] Stone cladding, interior: veneer and anchor details (Eldorado, Boral, Coronado)
+- [ ] Skylight details: curb, glazing, flashing (Velux commercial, Kalwall, Major Industries)
+- [ ] Shingle details: installation and flashing (GAF, Owens Corning, CertainTeed)
+- [ ] Signage details: mounting, ADA sizing (ASI, Mohawk signage, ADA references)
+
 ## Notes
 
 - Some divisions have few manufacturers that publish free details (e.g. 22, 23, 26). For those, a manufacturer's installation guide or a CAD library page is a fine entry.
