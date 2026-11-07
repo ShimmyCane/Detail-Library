@@ -40,6 +40,7 @@
         button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); border-radius: 6px; }
         .chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
         .seg { display: inline-flex; }
+        .chip.icon { padding: 4px 11px; font-size: 16px; line-height: 1; }
         .seg .chip { border-radius: 0; }
         .seg .chip:first-child { border-radius: 999px 0 0 999px; }
         .seg .chip:last-child { border-radius: 0 999px 999px 0; }
@@ -104,6 +105,7 @@
                 <button class="chip on" role="tab" data-view="local" aria-selected="true">Local</button>
                 <button class="chip" role="tab" data-view="cloud" aria-selected="false">Cloud</button>
             </div>
+            <button class="chip icon" id="upload" hidden title="Upload images to this device" aria-label="Upload images to this device">↑</button>
             <a class="home" href="index.html">← Home</a>
         </div>
         <div class="controls">
@@ -798,8 +800,8 @@
                     b.setAttribute('aria-selected', String(on));
                 });
                 state.tags = [];
-                var pk = document.getElementById('picker');
-                if (pk) pk.hidden = view !== 'local';
+                var up = document.getElementById('upload');
+                if (up) up.hidden = view !== 'local';
                 refresh();
             }
 
@@ -866,6 +868,8 @@
             picker.addEventListener('change', function () { addFilesToDevice(picker.files); picker.value = ''; });
             els.note.parentNode.insertBefore(picker, els.note);
             picker.hidden = true;
+            document.getElementById('upload').addEventListener('click', function () { picker.click(); });
+            document.getElementById('upload').hidden = state.view !== 'local';
 
             if (window.pdfjsLib) {
                 window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
