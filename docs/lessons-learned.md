@@ -38,6 +38,17 @@ Short notes from the build sessions, so the same problems are not solved twice.
 - The cloud library is the Supabase project "Architecture" (`xabgankckrcuhcgdolrg`). Quick Detail owns the `sketch_*` tables. The Quick Detail code is in `ShimmyCane/quick-detail` (read-only from this session).
 - Do not write to Supabase from the library. The library is GitHub files only.
 
+## Later sessions
+
+- **Follow the user's format preference.** The user asked for PDFs and no new ARCAT links. Search for PDFs first and filter out ARCAT results. Existing ARCAT entries stay until asked to remove them.
+- **JPG detail images are rare.** Manufacturers publish PDF or DWG. Export images from the PDF or DWG yourself. Manufacturer images stay link-only in the index unless the owner releases them under an allowed licence.
+- **Counts drift.** Hand-written counts in the to-do went stale after several rounds. Read them from the JSON (see the to-do's counting script) before reporting progress.
+- **Merging with `main`.** When `main` has a merge commit the branch lacks, merge `main` into the branch first, then open the PR. The PR is then clean and merges with a normal merge commit.
+- **Draft PRs.** Mark a draft ready (`draft: false`) before merging. Creating the PR with `draft: false` avoids the second step.
+- **Subscription notices are not CI.** The PR-activity wakes for PR #1 and PR #2 carried no check runs. Check the PR directly before reporting status.
+- **Third-party aggregators.** aecinfo, CADdetails and LADetails host manufacturer files, and designscad/cadbull host unverified uploads. Label each one, and keep the manufacturer's own page as the first choice.
+- **Browser checks on static pages.** A quick Playwright pass (load, click, sort, filter, reload, phone width) caught real bugs each time. Keep a short check script per page in the scratchpad.
+
 ## Interpretation log
 
 - "Egyptian for the fire ratings" was read as "especially for the fire ratings".
