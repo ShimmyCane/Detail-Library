@@ -127,9 +127,9 @@
       "csi": "07 50 00",
       "title": "DesignMaster CAD library (roofing)",
       "maker": "BMI",
-      "format": "PDF / DWG",
+      "format": "PDF / DWG / JPG (some)",
       "url": "https://www.bmigroup.com/ie/downloads/design-master-cad-library/",
-      "note": "Download page for the free CAD library"
+      "note": "Download page for the free DesignMaster CAD library. Some flashing sheets are listed as JPG (per search; not opened)"
     },
     {
       "csi": "07 84 00",
