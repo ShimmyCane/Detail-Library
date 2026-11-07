@@ -50,6 +50,54 @@
       "format": "PDF / DWG",
       "url": "https://www.arcat.com/content-type/cad/openings-08/glazed-aluminum-curtain-walls-084413",
       "note": "Listing page. ARCAT downloads require its licence agreement"
+    },
+    {
+      "csi": "08 11 13",
+      "title": "Standard steel door and frame profiles and anchor details (SDI drawings)",
+      "maker": "Steel Door Institute",
+      "format": "DWG",
+      "url": "https://steeldoor.org/drawings/",
+      "note": "Standard profiles, not Steelcraft-specific. Use with the manufacturer's current catalogue"
+    },
+    {
+      "csi": "08 11 13",
+      "title": "Metal doors and frames: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/content-type/cad/openings-08/metal-doors-and-frames-081100",
+      "note": "Listing page. Filter by manufacturer. Licence agreement applies"
+    },
+    {
+      "csi": "08 42 00",
+      "title": "Entrance systems CAD listing (sliding and swing automatic doors)",
+      "maker": "ASSA ABLOY Entrance Systems (via ARCAT)",
+      "format": "DWG",
+      "url": "https://www.arcat.com/company/assa-abloy-entrance-systems-30906/cad/assa-abloy-entrance-systems--2703",
+      "note": "ARCAT listing for ASSA ABLOY entrance products. Licence agreement applies"
+    },
+    {
+      "csi": "08 42 00",
+      "title": "Surface-mounted sliding doors (SL500) CAD",
+      "maker": "ASSA ABLOY (via ARCAT)",
+      "format": "DWG",
+      "url": "https://www.arcat.com/product/surface-mounted-sliding-doors-125778/cad?tree=true",
+      "note": "ARCAT product CAD page"
+    },
+    {
+      "csi": "08 52 00",
+      "title": "Essential picture window: technical specifications and architectural detail manual",
+      "maker": "Marvin",
+      "format": "PDF / DXF / Revit",
+      "url": "https://www.marvin.com/support/technical-specifications/essential-picture-window",
+      "note": "Support page. Architectural detail manual and detail files (DXF) listed on the page"
+    },
+    {
+      "csi": "08 52 00",
+      "title": "Essential double-hung window: technical specifications",
+      "maker": "Marvin",
+      "format": "PDF / DXF / Revit",
+      "url": "https://www.marvin.com/support/technical-specifications/essential-double-hung-window",
+      "note": "Support page with detail files"
     }
   ]
 }

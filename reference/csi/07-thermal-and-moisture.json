@@ -162,6 +162,150 @@
       "format": "PDF / DWG",
       "url": "https://www.arcat.com/details/malarkey/prod2093.html",
       "note": "Product CAD page on ARCAT. Licence agreement applies"
+    },
+    {
+      "csi": "07 10 00",
+      "title": "Wall to below-grade detail (12788)",
+      "maker": "Tremco",
+      "format": "PDF",
+      "url": "https://tremcosealants.com/fileshare/waterproofing_details/Wall%20to%20Below%20Grade%20-%2012788.pdf",
+      "note": "Direct PDF, dated 3/29/2017. Tremco points to a separate site for current product data"
+    },
+    {
+      "csi": "07 10 00",
+      "title": "Deck to below-grade wall transition (C-201 60-T-03)",
+      "maker": "Tremco",
+      "format": "PDF",
+      "url": "https://tremcosealants.com/fileshare/waterproofing_details/C-201%2060-T-03.pdf",
+      "note": "Direct PDF"
+    },
+    {
+      "csi": "07 10 00",
+      "title": "Below-grade drainage composite CAD details",
+      "maker": "Carlisle Coatings & Waterproofing (via ARCAT)",
+      "format": "PDF / DWG",
+      "url": "https://www.arcat.com/details/carlwatr/prod3048.html",
+      "note": "ARCAT product CAD page. Licence agreement applies; confirm the file format on the page"
+    },
+    {
+      "csi": "07 46 00",
+      "title": "HardiePanel siding CAD details (steel and wood framing, windows, sills, parapets)",
+      "maker": "James Hardie (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/product/hardie-panel-siding-120669/cad",
+      "note": "ARCAT listing of Hardie detail sets. Check James Hardie's site for current revisions"
+    },
+    {
+      "csi": "07 46 00",
+      "title": "HardieShingle siding CAD details",
+      "maker": "James Hardie (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/product/hardie-shingle-siding-120673/cad",
+      "note": "ARCAT listing. Check James Hardie's site for current revisions"
+    },
+    {
+      "csi": "07 84 00",
+      "title": "Firestop CAD detail sheets and library (Knowhow resources)",
+      "maker": "Specified Technologies (STI)",
+      "format": "PDF / DWG",
+      "url": "https://stifirestop.com/resources",
+      "note": "STI resource library: guide specs, approvals, BIM objects. CAD detail sheets are in the Knowhow site; it may need a project selection"
+    },
+    {
+      "csi": "07 84 00",
+      "title": "Penetration firestopping CAD downloads (STI)",
+      "maker": "Specified Technologies (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/downloads/35657-specifie/cad/Q:penetration%20firestopping?mf=04",
+      "note": "ARCAT download listing for STI. Licence agreement applies"
+    },
+    {
+      "csi": "07 21 00",
+      "title": "Below-grade foundation wall details with Foamular Insul-Drain",
+      "maker": "Owens Corning",
+      "format": "DWG / BIM / PDF",
+      "url": "https://owenscorning.com/insulation/commercial/enclosure/below-grade-foundation-wall-foamular-insul-drain",
+      "note": "Download page for foundation system CAD and BIM files. Below-grade only"
+    },
+    {
+      "csi": "07 21 00",
+      "title": "BID 340: JM Corbond III continuous insulation, cavity walls",
+      "maker": "Johns Manville",
+      "format": "PDF",
+      "url": "https://www.jm.com/content/dam/jm/global/en/building-insulation/Files/BI%20Toolbox/BID-340-JM-Corbond-III-Continuous-Insulation-Cavity-Walls.pdf",
+      "note": "Direct PDF. Building insulation detail"
+    },
+    {
+      "csi": "07 21 00",
+      "title": "Continuous insulation resources (JM)",
+      "maker": "Johns Manville",
+      "format": "PDF",
+      "url": "https://www.jm.com/en/building-insulation/commercial/continuous-insulation-resources/",
+      "note": "Resource page with installation guides and details"
+    },
+    {
+      "csi": "07 21 00",
+      "title": "Board insulation CAD listing",
+      "maker": "ARCAT (Johns Manville and others)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/content-type/cad/thermal-and-moisture-protection-07/board-insulation-072113",
+      "note": "Listing page. Licence agreement applies"
+    },
+    {
+      "csi": "07 42 13",
+      "title": "Aluminum composite panel rainscreen details (Alucobond / 3A Composites)",
+      "maker": "3A Composites (Alucobond) via ARCAT",
+      "format": "DWG / DXF / PDF",
+      "url": "https://www.arcat.com/details/aluscomp/prod1619.html",
+      "note": "Sill and window head details. Licence agreement applies"
+    },
+    {
+      "csi": "07 42 13",
+      "title": "Aluminum-faced composite wall panels: rainscreen II details",
+      "maker": "3A Composites (Alucobond) via ARCAT",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/details/aluscomp/prod2195.html?coid=30331",
+      "note": "ARCAT product CAD page"
+    },
+    {
+      "csi": "07 46 00",
+      "title": "Architectural wall panels: design review guide (Q1 2026)",
+      "maker": "Nichiha",
+      "format": "PDF",
+      "url": "https://www.nichiha.com/docs/Nichiha_DesignReviewGuide_Q1_2026.pdf",
+      "note": "Direct PDF. Panel profiles, trims and assemblies are listed as AutoCAD, Revit and PDF on the detail library"
+    },
+    {
+      "csi": "07 46 00",
+      "title": "Nichiha resources (CAD and detail library)",
+      "maker": "Nichiha",
+      "format": "PDF / DWG / Revit",
+      "url": "https://www.nichiha.com/resources",
+      "note": "Resource hub. Architectural detail library is linked from here"
+    },
+    {
+      "csi": "07 95 00",
+      "title": "Horizontal to vertical expansion joint (PMR 6-05)",
+      "maker": "Sika",
+      "format": "PDF",
+      "url": "https://usa.sika.com/dam/dms/us01/6/PMR_6_05%20Horizontal%20to%20Vertical%20Expansion%20Joint.pdf",
+      "note": "Direct PDF. US Sika roofing and waterproofing detail"
+    },
+    {
+      "csi": "07 95 00",
+      "title": "Roof joint expansion joint (22-02 Emseal)",
+      "maker": "Sika Emseal",
+      "format": "PDF",
+      "url": "https://usa.sika.com/dms/getdocument.get/ac94a28a-9870-46fb-976e-21721654ccca/22-02%20Emseal%20RoofJoint%20Expansion%20Joint.pdf",
+      "note": "Direct PDF"
+    },
+    {
+      "csi": "07 95 00",
+      "title": "Expansion joint specification and detail review (Emseal)",
+      "maker": "Sika Emseal",
+      "format": "Service page",
+      "url": "https://www.emseal.com/expansion-joint-design-detail-specification-review/",
+      "note": "Design review service. Expansion joint CAD and BIM details via the service"
     }
   ]
 }

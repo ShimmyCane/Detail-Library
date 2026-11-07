@@ -58,6 +58,38 @@
       "format": "PDF / DWG",
       "url": "https://sweets.construction.com/QuickLinks/caddetails",
       "note": "Sweets CAD details hub. Choose the manufacturer and product; Sweets requires an account"
+    },
+    {
+      "csi": "09 22 16",
+      "title": "CDBS Pilot Trak rim board connection",
+      "maker": "ClarkDietrich",
+      "format": "PDF",
+      "url": "https://www.clarkdietrich.com/sites/default/files/media/cad/CDBS_Pilot_Trak_Rim%20Board.pdf",
+      "note": "Direct PDF from ClarkDietrich's CAD library"
+    },
+    {
+      "csi": "09 22 16",
+      "title": "CDBS Pilot Trak box header connection",
+      "maker": "ClarkDietrich",
+      "format": "PDF",
+      "url": "https://www.clarkdietrich.com/sites/default/files/media/cad/CDBS_Pilot_Trak_BoxHeader_Connection.pdf",
+      "note": "Direct PDF from ClarkDietrich's CAD library"
+    },
+    {
+      "csi": "09 22 16",
+      "title": "CAD framing details library (500+ details)",
+      "maker": "ClarkDietrich",
+      "format": "PDF / DWG / Revit",
+      "url": "https://www.clarkdietrich.com/cad-framing-details",
+      "note": "Download hub for ClarkDietrich framing details. Revit families on the architects resources page"
+    },
+    {
+      "csi": "09 21 16",
+      "title": "UL U419 fire-rated assembly (Design Studio)",
+      "maker": "USG Design Studio",
+      "format": "DWG / Revit / PDF",
+      "url": "https://www.usg.com/content/usgcom/en/design-studio/wall-assemblies/assembly-detail.30198.html",
+      "note": "USG Design Studio assembly page. Confirm the UL design number and listing in UL Product iQ before use"
     }
   ]
 }

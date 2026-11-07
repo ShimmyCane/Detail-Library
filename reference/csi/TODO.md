@@ -27,9 +27,9 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 | 06 | Wood, Plastics and Composites | [~] APA and Simpson |
 | 07 | Thermal and Moisture Protection | [~] roofing and waterproofing only |
 | 08 | Openings | [~] Andersen and Kawneer curtain wall |
-| 03 | Concrete | [ ] |
+| 03 | Concrete | [~] Nudura ICF and Sika watertight concrete |
 | 05 | Metals | [ ] |
-| 09 | Finishes | [~] Armstrong ceilings and Sweets hub |
+| 09 | Finishes | [~] Armstrong, ClarkDietrich, USG Design Studio, Sweets hub |
 | 10 | Specialties | [ ] |
 | 11 | Equipment | [ ] |
 | 12 | Furnishings | [ ] |
@@ -81,7 +81,7 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 - [ ] 07 26 00 Vapor retarders (Stego, Fortifiber)
 - [ ] 07 41 00 Metal roof panels (Centria, Metl-Span, Firestone Metal)
 - [ ] 07 42 00 Metal wall panels (Centria, Metl-Span, Kingspan)
-- [ ] 07 46 00 Siding (James Hardie, LP, Nichiha)
+- [~] 07 46 00 Siding: Hardie and Nichiha added (LP still to do)
 - [~] 07 50 00 / 07 52 00 / 07 54 00 Roofing membranes: Sika, GAF, Carlisle, EcoStar, Eagle, Englert, BMI added; Carlisle and Firestone need more
 - [~] 07 60 00 Flashing and sheet metal: GAF scupper and Canada Brick added
 - [ ] 07 62 00 Sheet metal flashing and trim (Berger, Metal-Era)
@@ -90,17 +90,17 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 - [~] 07 84 00 Firestopping: Hilti added (3M, Specified Technologies still to do)
 - [ ] 07 92 00 Joint sealants (Tremco, Sika, Dow, Pecora, BASF)
 - [~] 07 10 00 Waterproofing: Tremco A-BSW-P-06 added
-- [ ] 07 95 00 Expansion control (Watson Bowman, Emseal)
+- [~] 07 95 00 Expansion control: Sika and Emseal added
 
 ### 08 Openings
 - [~] 08 50 00 Windows: Andersen via dealer added
-- [ ] 08 51 00 Metal windows (Pella, Kawneer, Milgard, Marvin)
-- [ ] 08 52 00 Wood and clad windows (Marvin, Andersen, Pella)
-- [ ] 08 11 00 Metal doors and frames (Steelcraft, Ceco, Curries)
+- [~] 08 51 00 Metal windows: Marvin added (Pella not found)
+- [~] 08 52 00 Wood and clad windows: Marvin added
+- [~] 08 11 00 Metal doors and frames: SDI drawings and ARCAT listing added (Steelcraft not found)
 - [ ] 08 14 00 Wood doors (Masonite, JELD-WEN)
 - [ ] 08 41 00 Storefronts (Kawneer, YKK AP, EFCO, Oldcastle)
 - [~] 08 44 00 Curtain walls: Kawneer KCAD indexes added (YKK AP, Tubelite still to do)
-- [ ] 08 71 00 Door hardware (Schlage, Assa Abloy, Hager)
+- [ ] 08 71 00 Door hardware (Schlage, Assa Abloy, Hager): not found yet
 - [ ] 08 80 00 Glazing (Viracon, Guardian, PPG, Vitro)
 
 ### 09 Finishes

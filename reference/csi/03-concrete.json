@@ -1,0 +1,23 @@
+{
+  "division": "03",
+  "title": "Concrete",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "03 11 13",
+      "title": "Below-grade ICF detail (LC-BG-P-01)",
+      "maker": "Nudura",
+      "format": "PDF",
+      "url": "https://www.nudura.com/fileshare/Technical_Resources/Detail_Drawings/Light_Com_Res/LC-BG-P-01.pdf",
+      "note": "Direct PDF. Insulated concrete form, light commercial residential below-grade detail"
+    },
+    {
+      "csi": "03 30 00",
+      "title": "Watertight concrete and SikaProof A CAD drawings (Sika Ireland)",
+      "maker": "Sika",
+      "format": "DWG / PDF",
+      "url": "https://irl.sika.com/en/construction/waterproofing/cad-drawings/sika-proof-a.html",
+      "note": "Download page. Waterproofing admixture details. Regional site; confirm the US equivalent"
+    }
+  ]
+}
