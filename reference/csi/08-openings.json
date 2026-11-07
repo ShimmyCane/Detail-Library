@@ -98,6 +98,78 @@
       "format": "PDF / DXF / Revit",
       "url": "https://www.marvin.com/support/technical-specifications/essential-double-hung-window",
       "note": "Support page with detail files"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "YWE 60T window wall details (head, sill, jamb, corners)",
+      "maker": "YKK AP",
+      "format": "DXF / PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/windowwall/ywe60t/details/1422",
+      "note": "Product details page. Download DXF from the page. Check the revision"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "YHC 300IG curtain wall details",
+      "maker": "YKK AP",
+      "format": "DXF / PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/curtainwall/yhc300ig/details/2890",
+      "note": "Product details page with anchor details"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "YCW 750IG curtain wall details (anchors)",
+      "maker": "YKK AP",
+      "format": "DXF / PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/curtainwall/ycw750ig/details/2866449",
+      "note": "Product details page"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "Field-glazed sill capture: installation manual",
+      "maker": "YKK AP",
+      "format": "PDF",
+      "url": "https://www.ykkap.com/commercial/productguide/instman/03-4014-11_old_sill_fieldglazed_capt.pdf",
+      "note": "Direct PDF. Note: the sill filler is being discontinued from Aug 2025. Confirm you have the current sill version"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "AP-Series IGU curtain wall: head, sill and jamb details",
+      "maker": "Riot Glass Framing (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/product/ap-series-igu-214411/cad",
+      "note": "ARCAT product CAD page. Full-frame and surface-mount jamb details. Licence agreement applies"
+    },
+    {
+      "csi": "08 44 00",
+      "title": "PS 400TU spec sheet (head and horizontal details)",
+      "maker": "Tubelite",
+      "format": "PDF",
+      "url": "https://media.tubeliteusa.com/wp-content/uploads/2024/10/19135628/PS_400TU_SG_7.5_Alum_PP.pdf",
+      "note": "Direct PDF. Product spec with standard head and horizontal details. Contact Tubelite engineering for expansion details"
+    },
+    {
+      "csi": "08 62 00",
+      "title": "Commercial skylight CAD and BIM downloads",
+      "maker": "VELUX America",
+      "format": "DWG / BIM / PDF",
+      "url": "https://veluxusa.com/professional/cases",
+      "note": "Professional CAD drawings section. Filter for commercial curb-mount units"
+    },
+    {
+      "csi": "08 62 00",
+      "title": "Professional tools: drawings and specifications",
+      "maker": "VELUX America",
+      "format": "Web page",
+      "url": "https://www.veluxusa.com/professional/tools",
+      "note": "Professional tools hub. Flashing and installation resources"
+    },
+    {
+      "csi": "08 62 00",
+      "title": "Longlight modular skylight cross-section (DWG)",
+      "maker": "DesignsCAD (third-party, paid)",
+      "format": "DWG",
+      "url": "https://designscad.com/downloads/velux-longlight-modular-skylight-cross-section-cad-detail/",
+      "note": "Third-party paid file. Section view, not a curb detail. Verify against VELUX"
     }
   ]
 }

@@ -90,6 +90,54 @@
       "format": "DWG / Revit / PDF",
       "url": "https://www.usg.com/content/usgcom/en/design-studio/wall-assemblies/assembly-detail.30198.html",
       "note": "USG Design Studio assembly page. Confirm the UL design number and listing in UL Product iQ before use"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Creating transitions with Infinity (perimeter tech note)",
+      "maker": "Rockfon",
+      "format": "PDF",
+      "url": "https://www.rockfon.com/syssiteassets/rockfon-na/installation/tech-datanote/rockfon_technote_creating_transitions_with_infinity.pdf",
+      "note": "Direct PDF. Wall angle and trim perimeter. Shows 1 in. x 2 in. wall angle with Infinity trim"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Chicago Metallic 4200 Integrity perimeter tech note",
+      "maker": "Rockfon (Chicago Metallic)",
+      "format": "PDF",
+      "url": "https://www.rockfon.com/syssiteassets/rockfon-na/installation/tech-datanote/rockfon_tech_note_chi_metallic_4200_integrity_perimeter_v3-3.pdf",
+      "note": "Direct PDF. Perimeter details with 1480 wall angle, shadowline and seismic clip options"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Concealed ceiling systems CDX seismic installation guide",
+      "maker": "Rockfon",
+      "format": "PDF",
+      "url": "https://www.rockfon.com/syssiteassets/rockfon-na/installation/install-guide/rockfon-concealed-acoustical-ceiling-systems-cdx-for-seismic-category-d-e-f-applications-installation-guide.pdf",
+      "note": "Direct PDF. Includes 1420 wall angle and 1454 concealed boxed wall angle"
+    },
+    {
+      "csi": "09 51 00",
+      "title": "Rockfon ceiling construction details (CAD)",
+      "maker": "Rockfon (via heinze.de)",
+      "format": "DWG / DXF",
+      "url": "https://www.heinze.de/cad-details-von/rockfon/4741388/",
+      "note": "CAD portal, German. Some files need a free login"
+    },
+    {
+      "csi": "09 30 00",
+      "title": "Tile setting materials and accessories: CAD listing",
+      "maker": "Schluter Systems (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/downloads/35372-schluter/cad/Q:tile%20setting%20materials%20and%20accessories?mf=04",
+      "note": "ARCAT listing of Schluter profiles (SCHIENE, QUADEC, JOLLY). Licence agreement applies"
+    },
+    {
+      "csi": "09 30 00",
+      "title": "Thin-set quarry tiling: CAD listing",
+      "maker": "Schluter Systems (via ARCAT)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/downloads/35372-schluter/cad/Q:thin%20set%20quarry%20tiling?mf=04",
+      "note": "ARCAT listing. Licence agreement applies"
     }
   ]
 }

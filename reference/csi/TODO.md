@@ -30,7 +30,7 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 | 03 | Concrete | [~] Nudura ICF and Sika watertight concrete |
 | 05 | Metals | [ ] |
 | 09 | Finishes | [~] Armstrong, ClarkDietrich, USG Design Studio, Sweets hub |
-| 10 | Specialties | [ ] |
+| 10 | Specialties | [~] ADA signage mounting |
 | 11 | Equipment | [ ] |
 | 12 | Furnishings | [ ] |
 | 13 | Special Construction | [ ] |
@@ -40,7 +40,7 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 | 23 | HVAC | [ ] |
 | 26 | Electrical | [ ] |
 | 28 | Electronic Safety and Security | [ ] |
-| 32 | Exterior Improvements | [ ] |
+| 32 | Exterior Improvements | [~] Unilock and Belgard |
 
 ## Frequently used sections, by division
 
@@ -165,16 +165,16 @@ Candidate manufacturers are from memory and are **unverified**. Search each one 
 
 ## Requested next (round 3)
 
-- [ ] Ceiling details: perimeter, wall angle, soffit, drop-ceiling access (USG, Rockfon, CertainTeed, Armstrong)
-- [ ] Exterior site details: paving edge, drainage, curbs, unit pavers (Belgard, Unilock, Oldcastle, ACO)
-- [ ] Curtain wall details: head, sill, jamb, mullion, anchor (YKK AP, Tubelite, Oldcastle, EFCO)
-- [ ] Firestop details: head-of-wall, joint, penetration (Hilti, STI, 3M, Tremco)
-- [ ] Finish details, tile interior: edge trim, transitions, substrate (Schluter, Laticrete, Mapei)
-- [ ] Wood cladding, interior: panel and trim details (Architectural Woodwork references, Kebony, Accoya)
-- [ ] Stone cladding, interior: veneer and anchor details (Eldorado, Boral, Coronado)
-- [ ] Skylight details: curb, glazing, flashing (Velux commercial, Kalwall, Major Industries)
-- [ ] Shingle details: installation and flashing (GAF, Owens Corning, CertainTeed)
-- [ ] Signage details: mounting, ADA sizing (ASI, Mohawk signage, ADA references)
+- [~] Ceiling details: Rockfon perimeter notes and CDX guide added (USG and CertainTeed still to do)
+- [~] Exterior site details: Unilock paver CAD added (Belgard via LADetails only; drainage and curbs still to do)
+- [~] Curtain wall details: YKK AP, Tubelite and Riot Glass added (Oldcastle, EFCO still to do)
+- [~] Firestop details: Hilti head-of-wall Q&A only; no new CAD pages (Tremco and 3M not found)
+- [~] Finish details, tile: Schluter ARCAT listings added (Laticrete, Mapei still to do)
+- [~] Wood cladding: Kebony file and Mataverde added (Accoya not found; interior panels still to do)
+- [~] Stone cladding: Coronado guide and drawings page added (Eldorado and Boral CAD not found)
+- [~] Skylight details: VELUX pages added (Kalwall and Major not searched yet)
+- [~] Shingle details: CertainTeed and ARCAT listings added (GAF and Owens Corning not found)
+- [~] Signage details: 290signs and Intersign added (ASI drawings restricted)
 
 ## Notes
 

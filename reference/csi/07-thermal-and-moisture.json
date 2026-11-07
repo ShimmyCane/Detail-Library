@@ -306,6 +306,54 @@
       "format": "Service page",
       "url": "https://www.emseal.com/expansion-joint-design-detail-specification-review/",
       "note": "Design review service. Expansion joint CAD and BIM details via the service"
+    },
+    {
+      "csi": "07 46 00",
+      "title": "Click-in cladding product file (Kebony)",
+      "maker": "Kebony",
+      "format": "PDF",
+      "url": "https://kebony.com/us/system/files/prodfiles/EN-2405.pdf",
+      "note": "Direct PDF product file. Kebony CCS Details CAD (DWG zip) is on its product page; open the page to find the link"
+    },
+    {
+      "csi": "07 46 00",
+      "title": "Wood rainscreen cladding: architectural details (blog)",
+      "maker": "Mataverde",
+      "format": "Web page",
+      "url": "https://mataverdedecking.com/blog/bid/116450/new-architectural-details-for-wood-rain-screen-cladding-system",
+      "note": "Blog post about its rainscreen detail set. Check the download link on the page"
+    },
+    {
+      "csi": "07 31 13",
+      "title": "Construction details (asphalt shingles)",
+      "maker": "CertainTeed (Canada)",
+      "format": "Web page",
+      "url": "https://www.certainteed.ca/construction-details",
+      "note": "Construction details page. CertainTeed notes that changes to its drawings are the user's responsibility. Check US equivalents"
+    },
+    {
+      "csi": "07 31 00",
+      "title": "Shingles and shakes: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/content-type/cad/thermal-and-moisture-protection-07/shingles-and-shakes-073100",
+      "note": "Listing page. Licence agreement applies"
+    },
+    {
+      "csi": "07 31 29",
+      "title": "Wood shingles and shakes: CAD listing",
+      "maker": "ARCAT (Cedar Shake and Shingle Bureau and others)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/content-type/cad/thermal-and-moisture-protection-07/wood-shingles-and-shakes-073129",
+      "note": "Listing page. Valley and saddle flashing figures. Licence agreement applies"
+    },
+    {
+      "csi": "07 31 26",
+      "title": "Slate shingles: CAD listing",
+      "maker": "ARCAT (multiple manufacturers)",
+      "format": "DWG / PDF",
+      "url": "https://www.arcat.com/content-type/cad/thermal-and-moisture-protection-07/slate-shingles-073126",
+      "note": "Listing page. Includes EcoStar synthetic slate flashing. Licence agreement applies"
     }
   ]
 }

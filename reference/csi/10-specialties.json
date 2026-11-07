@@ -1,0 +1,31 @@
+{
+  "division": "10",
+  "title": "Specialties",
+  "source_note": "Links only. Each file belongs to its manufacturer or publisher; check terms and the current revision.",
+  "entries": [
+    {
+      "csi": "10 14 00",
+      "title": "ADA sign mounting instructions",
+      "maker": "290signs",
+      "format": "PDF",
+      "url": "https://www.290signs.com/wp-content/uploads/2021/09/ADA-Signage-Mounting-Instructions.pdf",
+      "note": "Direct PDF. Manufacturer mounting instructions. Check against 2010 ADA Standards 216 and 703"
+    },
+    {
+      "csi": "10 14 00",
+      "title": "Installation guide (signage)",
+      "maker": "Intersign",
+      "format": "Web page",
+      "url": "https://www.intersign.com/installation-guide",
+      "note": "Manufacturer installation guide page"
+    },
+    {
+      "csi": "10 14 00",
+      "title": "Campus wayfinding mounting standards",
+      "maker": "Rochester Institute of Technology (institution standard)",
+      "format": "PDF",
+      "url": "https://www.rit.edu/facilitiesmanagement/sites/rit.edu.facilitiesmanagement/files/Vendor%20Contractor%20Info/ROC0001_RITCampusWayfinding_MountingStandards.pdf",
+      "note": "Institution standard, not a manufacturer detail. Check the publisher's terms before reuse"
+    }
+  ]
+}
