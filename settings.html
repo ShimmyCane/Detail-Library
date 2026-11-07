@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Library: Settings</title>
+    <style>
+        :root { --paper: #fbfbf8; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d9d2; --card: #ffffff; --accent: #2a5db0; --warn: #9a5b00; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; --warn: #e0b060; }
+        }
+        :root[data-theme="dark"] { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; --warn: #e0b060; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 20px 16px; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.45; }
+        main { max-width: 760px; margin: 0 auto; }
+        a { color: var(--accent); }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        h1 { font-size: 22px; margin: 8px 0 4px; }
+        h2 { font-size: 17px; margin: 28px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+        .muted { color: var(--muted); font-size: 14px; }
+        .warn { color: var(--warn); font-size: 14px; }
+        .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+        textarea, input[type="text"], select {
+            font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%;
+        }
+        textarea { min-height: 84px; resize: vertical; }
+        .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+        .row > * { flex: 0 0 auto; }
+        .row .grow { flex: 1 1 200px; }
+        button { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+        button.primary { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+        button.link { border: 0; background: none; color: var(--accent); padding: 0 4px; }
+        .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+        .seg button { border: 0; border-radius: 0; }
+        .seg button[aria-pressed="true"] { background: var(--accent); color: #ffffff; }
+        ul.notes { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+        li.note { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: start; }
+        li.note.done .text { color: var(--muted); text-decoration: line-through; }
+        li.note input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); }
+        .text { white-space: pre-wrap; overflow-wrap: anywhere; }
+        .meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+        .tag { font-size: 11px; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; margin-right: 4px; }
+        .empty { color: var(--muted); padding: 10px 0; }
+        dl.log { margin: 0; display: grid; gap: 12px; }
+        dl.log dt { font-weight: 600; }
+        dl.log dt span { font-weight: 400; color: var(--muted); font-size: 13px; margin-left: 6px; }
+        dl.log dd { margin: 4px 0 0 0; }
+        dl.log ul { margin: 4px 0 0 18px; padding: 0; }
+        .home { display: inline-block; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+<main>
+    <a class="home" href="index.html">← Detail Library home</a>
+    <h1>Settings</h1>
+    <p class="muted">Notes are saved in this browser only (localStorage). They do not sync to other devices or to the cloud library, and clearing site data will remove them.</p>
+
+    <h2>Notes</h2>
+    <div class="panel">
+        <label for="note-text" class="muted">New note</label>
+        <textarea id="note-text" placeholder="What needs doing?"></textarea>
+        <div class="row">
+            <input type="text" id="note-where" class="grow" placeholder="Where (optional), e.g. Roof details, library" aria-label="Where this note applies">
+            <button class="primary" id="note-add">Add note</button>
+        </div>
+        <p class="warn" id="storage-warning" hidden></p>
+    </div>
+
+    <div class="row" style="margin-top:14px">
+        <div class="seg" role="group" aria-label="Show notes">
+            <button data-filter="open" aria-pressed="true">Open</button>
+            <button data-filter="done" aria-pressed="false">Done</button>
+            <button data-filter="all" aria-pressed="false">All</button>
+        </div>
+        <span class="grow"></span>
+        <button id="clear-done">Delete all done</button>
+    </div>
+    <ul class="notes" id="notes"></ul>
+    <p class="empty" id="notes-empty" hidden>No notes here.</p>
+
+    <h2>Version log</h2>
+    <dl class="log" id="log"></dl>
+</main>
+
+<script>
+    'use strict';
+    var KEY = 'detailLibrary.notes.v1';
+
+    // Newest first. Add an entry here for each change worth noting.
+    var VERSION_LOG = [
+        { version: '0.7', date: '2026-11-07', changes: ['Settings page with notes (saved in this browser) and this version log', 'Home page links to the V3 previous version'] },
+        { version: '0.6', date: '2026-11-07', changes: ['Side-by-side preview on the manufacturer index: hover, focus or click Preview to view a detail', 'Preview links are anchors, so a URL with the hash opens that item'] },
+        { version: '0.5', date: '2026-11-07', changes: ['Home page with links to the manufacturer index, assets, cloud library and V3', 'Per-division CSI JSON files (division 07 first) with a manifest', 'Manufacturer index loads every division file and filters by division'] },
+        { version: '0.4', date: '2026-11-07', changes: ['Manufacturer detail index sortable by CSI section (links only, no drawings copied)'] },
+        { version: '0.3', date: '2026-11-07', changes: ['Static library page (library.html) for images, SVGs and PDFs under images/raw/', 'generate_library.py writes library-data.js from the folders; folders become tags', 'RAW category framework with a README stating the public-domain rule'] },
+        { version: '0.2', date: '2026-11-07', changes: ['Starting point: the existing Detail Library files, including the gallery (now index-legacy.html) and the V1-V3 history'] }
+    ];
+
+    var filterMode = 'open';
+    var notes = [];
+    var storageOk = true;
+
+    function load() {
+        try {
+            var raw = window.localStorage.getItem(KEY);
+            notes = raw ? JSON.parse(raw) : [];
+            if (!Array.isArray(notes)) notes = [];
+        } catch (e) {
+            storageOk = false;
+            notes = [];
+        }
+        if (!storageOk) {
+            var w = document.getElementById('storage-warning');
+            w.textContent = 'Local storage is not available in this browser, so notes cannot be saved.';
+            w.hidden = false;
+        }
+    }
+
+    function save() {
+        try {
+            window.localStorage.setItem(KEY, JSON.stringify(notes));
+        } catch (e) {
+            storageOk = false;
+            var w = document.getElementById('storage-warning');
+            w.textContent = 'Could not save notes: ' + e.message;
+            w.hidden = false;
+        }
+    }
+
+    function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+    function fmt(ts) {
+        return new Date(ts).toLocaleString([], { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+    }
+
+    function renderNotes() {
+        var list = document.getElementById('notes');
+        var shown = notes.filter(function (n) {
+            if (filterMode === 'all') return true;
+            if (filterMode === 'done') return n.done;
+            return !n.done;
+        }).sort(function (a, b) { return b.created - a.created; });
+        list.innerHTML = shown.map(function (n) {
+            return '<li class="note' + (n.done ? ' done' : '') + '" data-id="' + n.id + '">' +
+                '<input type="checkbox" aria-label="Mark as done" ' + (n.done ? 'checked ' : '') + 'data-act="toggle">' +
+                '<div><div class="text">' + esc(n.text) + '</div>' +
+                '<div class="meta">' + (n.where ? '<span class="tag">' + esc(n.where) + '</span>' : '') +
+                'Added ' + esc(fmt(n.created)) + (n.done && n.doneAt ? ' · Done ' + esc(fmt(n.doneAt)) : '') + '</div></div>' +
+                '<button class="link" data-act="delete" aria-label="Delete note">Delete</button>' +
+                '</li>';
+        }).join('');
+        document.getElementById('notes-empty').hidden = shown.length > 0;
+        document.getElementById('clear-done').disabled = !notes.some(function (n) { return n.done; });
+        document.querySelectorAll('.seg button').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === filterMode));
+        });
+    }
+
+    function renderLog() {
+        document.getElementById('log').innerHTML = VERSION_LOG.map(function (v) {
+            return '<div><dt>Version ' + esc(v.version) + '<span>' + esc(v.date) + '</span></dt>' +
+                '<dd><ul>' + v.changes.map(function (c) { return '<li>' + esc(c) + '</li>'; }).join('') + '</ul></dd></div>';
+        }).join('');
+    }
+
+    document.getElementById('note-add').addEventListener('click', function () {
+        var text = document.getElementById('note-text').value.trim();
+        if (!text) return;
+        notes.push({
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+            text: text,
+            where: document.getElementById('note-where').value.trim(),
+            created: Date.now(),
+            done: false,
+            doneAt: null
+        });
+        save();
+        document.getElementById('note-text').value = '';
+        filterMode = 'open';
+        renderNotes();
+    });
+
+    document.getElementById('notes').addEventListener('change', function (e) {
+        if (e.target.getAttribute('data-act') !== 'toggle') return;
+        var id = e.target.closest('li').getAttribute('data-id');
+        notes.forEach(function (n) {
+            if (n.id === id) { n.done = e.target.checked; n.doneAt = n.done ? Date.now() : null; }
+        });
+        save();
+        renderNotes();
+    });
+
+    document.getElementById('notes').addEventListener('click', function (e) {
+        if (e.target.getAttribute('data-act') !== 'delete') return;
+        var id = e.target.closest('li').getAttribute('data-id');
+        notes = notes.filter(function (n) { return n.id !== id; });
+        save();
+        renderNotes();
+    });
+
+    document.getElementById('clear-done').addEventListener('click', function () {
+        var n = notes.filter(function (x) { return x.done; }).length;
+        if (!n || !window.confirm('Delete ' + n + ' done note' + (n === 1 ? '' : 's') + '?')) return;
+        notes = notes.filter(function (x) { return !x.done; });
+        save();
+        renderNotes();
+    });
+
+    document.querySelectorAll('.seg button').forEach(function (b) {
+        b.addEventListener('click', function () { filterMode = b.getAttribute('data-filter'); renderNotes(); });
+    });
+
+    load();
+    renderNotes();
+    renderLog();
+</script>
+</body>
+</html>

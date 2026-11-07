@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturer Details: Index</title>
+    <style>
+        :root { --paper: #fbfbf8; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d9d2; --card: #ffffff; --accent: #2a5db0; --hi: #eef3fb; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; --hi: #23293a; }
+        }
+        :root[data-theme="dark"] { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; --hi: #23293a; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 16px; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.4; }
+        h1 { font-size: 20px; margin: 0 0 4px; }
+        .note { color: var(--muted); font-size: 13px; margin: 0 0 14px; max-width: 80ch; }
+        .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        input[type="search"], select, button.plain { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+        input[type="search"] { width: min(100%, 360px); }
+        .home { display: inline-block; margin-bottom: 12px; color: var(--accent); }
+        a { color: var(--accent); }
+        a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        /* Side by side: index on the left, preview on the right. Stacked on narrow screens. */
+        .split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+        .list { min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--card); overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 14px; }
+        th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        th { position: sticky; top: 0; background: var(--card); font-weight: 600; white-space: nowrap; }
+        th button { font: inherit; font-weight: 600; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; }
+        th[aria-sort="ascending"]::after { content: " ▲"; color: var(--accent); }
+        th[aria-sort="descending"]::after { content: " ▼"; color: var(--accent); }
+        tbody tr:hover, tbody tr.active { background: var(--hi); }
+        tbody tr.active td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+        td.code { font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .muted { color: var(--muted); }
+        .badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
+        .empty { padding: 24px; color: var(--muted); text-align: center; }
+
+        .preview { position: sticky; top: 12px; min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--card); overflow: hidden; }
+        .preview-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+        .preview-head h2 { font-size: 15px; margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+        .preview-body { height: min(74vh, 780px); background: #ffffff; }
+        .preview-body iframe, .preview-body img { width: 100%; height: 100%; border: 0; display: block; object-fit: contain; }
+        .preview-body .placeholder { height: 100%; display: flex; align-items: center; justify-content: center; color: var(--muted); padding: 24px; text-align: center; background: var(--card); }
+        .preview-foot { padding: 8px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); }
+
+        @media (max-width: 900px) {
+            .split { grid-template-columns: minmax(0, 1fr); }
+            .preview { position: static; }
+            .preview-body { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+    <a class="home" href="../index.html">← Detail Library home</a>
+    <h1>Manufacturer details: index</h1>
+    <p class="note">Links to manufacturer-published detail drawings, sorted by CSI MasterFormat section. This page holds no drawings itself. Each file belongs to its manufacturer, and their terms apply. Check the current revision on the manufacturer's site before using a detail. CSI numbers are assigned by this index and should be checked against the project specification.</p>
+
+    <div class="controls">
+        <input type="search" id="filter" placeholder="Filter by section, title, manufacturer or type" aria-label="Filter the index">
+        <select id="division" aria-label="Filter by CSI division"><option value="">All divisions</option></select>
+    </div>
+    <p class="note" id="status" role="status"></p>
+
+    <div class="split">
+        <div class="list">
+            <table>
+                <thead>
+                    <tr>
+                        <th><button data-key="csi" aria-label="Sort by CSI section">CSI section</button></th>
+                        <th><button data-key="title" aria-label="Sort by title">Detail</button></th>
+                        <th><button data-key="maker" aria-label="Sort by manufacturer">Manufacturer</button></th>
+                        <th><button data-key="format" aria-label="Sort by format">Format</button></th>
+                        <th>Link</th>
+                        <th><button data-key="note" aria-label="Sort by note">Note</button></th>
+                    </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+            </table>
+            <p class="empty" id="empty" hidden>Nothing matches.</p>
+        </div>
+
+        <aside class="preview" id="preview" aria-label="Preview" aria-live="polite">
+            <div class="preview-head">
+                <h2 id="pv-title">Hover or select a detail to preview it</h2>
+                <a id="pv-open" href="#" target="_blank" rel="noopener noreferrer" hidden>Open ↗</a>
+            </div>
+            <div class="preview-body" id="pv-body">
+                <div class="placeholder">Previews load here. Some manufacturer sites block embedding; if a preview stays blank, use Open.</div>
+            </div>
+            <div class="preview-foot" id="pv-note"></div>
+        </aside>
+    </div>
+
+    <script>
+        'use strict';
+        // Reads csi/manifest.json, then every division file it lists. Each entry: csi, title, maker, format, url, note.
+        // Fetching needs http(s), not file://. Each row has an id (#entry-…); its Preview link points there and loads the
+        // item into the preview pane. Opening the page with that hash shows the item straight away.
+        var DETAILS = [];
+        var state = { key: 'csi', dir: 1, active: null };
+        var rows = document.getElementById('rows');
+        var empty = document.getElementById('empty');
+        var filter = document.getElementById('filter');
+        var division = document.getElementById('division');
+        var statusEl = document.getElementById('status');
+        var pvTitle = document.getElementById('pv-title');
+        var pvOpen = document.getElementById('pv-open');
+        var pvBody = document.getElementById('pv-body');
+        var pvNote = document.getElementById('pv-note');
+        var hoverTimer = 0;
+
+        function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+        // A stable id from the CSI number and title, e.g. entry-07-52-00-detail-301-mb-bur-wall-flashing.
+        function idOf(d) {
+            return 'entry-' + (d.csi + '-' + d.title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+        }
+
+        function sorted(list) {
+            return list.slice().sort(function (a, b) {
+                var x = (a[state.key] || '').toLowerCase(), y = (b[state.key] || '').toLowerCase();
+                if (x === y) return a.csi.localeCompare(b.csi) || a.title.localeCompare(b.title);
+                return x < y ? -state.dir : state.dir;
+            });
+        }
+
+        function visible() {
+            var q = filter.value.trim().toLowerCase();
+            var div = division.value;
+            return sorted(DETAILS.filter(function (d) {
+                if (div && d.csi.slice(0, 2) !== div) return false;
+                return !q || [d.csi, d.title, d.maker, d.format, d.note, d.division_title].join(' ').toLowerCase().indexOf(q) >= 0;
+            }));
+        }
+
+        function render() {
+            var list = visible();
+            rows.innerHTML = list.map(function (d) {
+                var id = idOf(d);
+                return '<tr id="' + id + '" data-id="' + id + '"' + (state.active === id ? ' class="active"' : '') + '>' +
+                    '<td class="code">' + esc(d.csi) + '</td>' +
+                    '<td>' + esc(d.title) + '</td>' +
+                    '<td>' + esc(d.maker) + '</td>' +
+                    '<td><span class="badge">' + esc(d.format) + '</span></td>' +
+                    '<td><a href="#' + id + '" data-preview="' + id + '">Preview</a> · <a href="' + esc(d.url) + '" target="_blank" rel="noopener noreferrer">Open ↗</a></td>' +
+                    '<td class="muted">' + esc(d.note) + '</td>' +
+                    '</tr>';
+            }).join('');
+            empty.hidden = list.length > 0;
+            statusEl.textContent = list.length + ' of ' + DETAILS.length + ' entries';
+            document.querySelectorAll('th button').forEach(function (b) {
+                var th = b.parentNode;
+                if (b.getAttribute('data-key') === state.key) th.setAttribute('aria-sort', state.dir > 0 ? 'ascending' : 'descending');
+                else th.removeAttribute('aria-sort');
+            });
+        }
+
+        function findById(id) {
+            for (var i = 0; i < DETAILS.length; i++) if (idOf(DETAILS[i]) === id) return DETAILS[i];
+            return null;
+        }
+
+        // Shows an item in the preview pane. Same item again does nothing, so hovering does not reload the frame.
+        function show(id) {
+            var d = findById(id);
+            if (!d || state.active === id) return;
+            state.active = id;
+            pvTitle.textContent = d.title + ' · ' + d.maker;
+            pvOpen.href = d.url;
+            pvOpen.hidden = false;
+            pvNote.textContent = d.csi + ' · ' + d.format + ' · ' + d.note;
+            pvBody.innerHTML = '';
+            if (/\.(png|jpe?g|gif|webp|svg)(\?|$)/i.test(d.url)) {
+                var img = document.createElement('img');
+                img.alt = d.title;
+                img.src = d.url;
+                pvBody.appendChild(img);
+            } else {
+                var frame = document.createElement('iframe');
+                frame.src = d.url;
+                frame.title = d.title;
+                frame.loading = 'lazy';
+                frame.referrerPolicy = 'no-referrer';
+                pvBody.appendChild(frame);
+            }
+            document.querySelectorAll('tbody tr').forEach(function (tr) {
+                tr.classList.toggle('active', tr.getAttribute('data-id') === id);
+            });
+        }
+
+        // Hover waits briefly, so passing over several rows does not load each one.
+        rows.addEventListener('pointerover', function (e) {
+            var tr = e.target.closest('tr[data-id]');
+            if (!tr) return;
+            clearTimeout(hoverTimer);
+            var id = tr.getAttribute('data-id');
+            hoverTimer = setTimeout(function () { show(id); }, 180);
+        });
+        rows.addEventListener('pointerout', function (e) {
+            if (e.target.closest('tr[data-id]')) clearTimeout(hoverTimer);
+        });
+        rows.addEventListener('focusin', function (e) {
+            var tr = e.target.closest('tr[data-id]');
+            if (tr) show(tr.getAttribute('data-id'));
+        });
+        // Preview links are in-page anchors: follow them without scrolling the page away from the row.
+        rows.addEventListener('click', function (e) {
+            var a = e.target.closest('a[data-preview]');
+            if (!a) return;
+            e.preventDefault();
+            var id = a.getAttribute('data-preview');
+            show(id);
+            history.replaceState(null, '', '#' + id);
+        });
+
+        window.addEventListener('hashchange', function () {
+            var id = location.hash.slice(1);
+            if (findById(id)) show(id);
+        });
+
+        function addDivisionOption(code, title) {
+            var o = document.createElement('option');
+            o.value = code;
+            o.textContent = code + ' ' + title;
+            division.appendChild(o);
+        }
+
+        function load() {
+            fetch('csi/manifest.json').then(function (r) {
+                if (!r.ok) throw new Error('manifest ' + r.status);
+                return r.json();
+            }).then(function (m) {
+                return Promise.all(m.files.map(function (f) {
+                    return fetch('csi/' + f).then(function (r) {
+                        if (!r.ok) throw new Error(f + ' ' + r.status);
+                        return r.json();
+                    });
+                }));
+            }).then(function (docs) {
+                docs.sort(function (a, b) { return a.division.localeCompare(b.division); });
+                docs.forEach(function (doc) {
+                    addDivisionOption(doc.division, doc.title);
+                    doc.entries.forEach(function (e) {
+                        DETAILS.push(Object.assign({}, e, { division_title: doc.title }));
+                    });
+                });
+                render();
+                var id = location.hash.slice(1);
+                if (findById(id)) show(id);
+            }).catch(function (e) {
+                statusEl.textContent = 'Could not load the index (' + e.message + '). Serve this folder over http, not file://.';
+            });
+        }
+
+        document.querySelectorAll('th button').forEach(function (b) {
+            b.addEventListener('click', function () {
+                var key = b.getAttribute('data-key');
+                if (state.key === key) state.dir = -state.dir; else { state.key = key; state.dir = 1; }
+                render();
+            });
+        });
+        filter.addEventListener('input', render);
+        division.addEventListener('change', render);
+        load();
+    </script>
+</body>
+</html>
