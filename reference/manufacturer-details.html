@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturer Details: Index</title>
+    <style>
+        :root { --paper: #fbfbf8; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d9d2; --card: #ffffff; --accent: #2a5db0; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; }
+        }
+        :root[data-theme="dark"] { --paper: #151515; --ink: #ececea; --muted: #9a9a94; --line: #333331; --card: #1f1f1e; --accent: #6f9be0; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 16px; background: var(--paper); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.4; }
+        h1 { font-size: 20px; margin: 0 0 4px; }
+        .note { color: var(--muted); font-size: 13px; margin: 0 0 14px; max-width: 80ch; }
+        input[type="search"] { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: min(100%, 360px); margin-bottom: 12px; }
+        .wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+        table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; }
+        th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        th { position: sticky; top: 0; background: var(--card); font-weight: 600; white-space: nowrap; }
+        th button { font: inherit; font-weight: 600; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; }
+        th button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        th[aria-sort="ascending"]::after { content: " ▲"; color: var(--accent); }
+        th[aria-sort="descending"]::after { content: " ▼"; color: var(--accent); }
+        td.code { font-variant-numeric: tabular-nums; white-space: nowrap; }
+        a { color: var(--accent); }
+        .muted { color: var(--muted); }
+        .badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
+        .empty { padding: 24px; color: var(--muted); text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Manufacturer details: index</h1>
+    <p class="note">Links to manufacturer-published detail drawings, sorted by CSI MasterFormat section. This page holds no drawings itself. Each file belongs to its manufacturer, and their terms apply. Check the current revision on the manufacturer's site before using a detail. CSI numbers are assigned by this index and should be checked against the project specification.</p>
+
+    <input type="search" id="filter" placeholder="Filter by section, title, manufacturer or type" aria-label="Filter the index">
+
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th><button data-key="csi" aria-label="Sort by CSI section">CSI section</button></th>
+                    <th><button data-key="title" aria-label="Sort by title">Detail</button></th>
+                    <th><button data-key="maker" aria-label="Sort by manufacturer">Manufacturer</button></th>
+                    <th><button data-key="format" aria-label="Sort by format">Format</button></th>
+                    <th>Link</th>
+                    <th><button data-key="note" aria-label="Sort by note">Note</button></th>
+                </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+        </table>
+        <p class="empty" id="empty" hidden>Nothing matches.</p>
+    </div>
+
+    <script>
+        'use strict';
+        // Each entry: CSI MasterFormat section, title, manufacturer, format, URL as shown in search results, and a note.
+        var DETAILS = [
+            { csi: '07 52 00', title: 'Typical roofing details (modified bitumen)', maker: 'Sika Sarnafil', format: 'PDF / DWG',
+              url: 'https://usa.sika.com/sarnafil/en/downloads/typical-roofing-details-modified-bitumen.html', note: 'Download page. Includes cross section and inside corner (cant strip)' },
+            { csi: '07 54 00', title: 'Typical roofing details (TPO / PVC)', maker: 'Sika Sarnafil', format: 'PDF / DWG',
+              url: 'https://usa.sika.com/sarnafil/en/downloads/typical-roofing-details.html', note: 'Download page. Metal edge, counterflashing, vent stacks, scuppers, roof-to-wall tie-in' },
+            { csi: '07 54 00', title: 'Sikaplan parapet wall termination', maker: 'Sika', format: 'PDF',
+              url: 'https://usa.sika.com/dms/getdocument.get/2e79155d-286a-4692-bd12-d08c8aa92c36/sikaplan-parapet-wall-termination.pdf', note: 'Direct PDF. Applies only under the stated Sikaplan system warranty; check the revision date' },
+            { csi: '07 54 00', title: 'Sikaplan details (15-1)', maker: 'Sika', format: 'PDF',
+              url: 'https://usa.sika.com/content/dam/dms/us01/t/Sikaplan-Details-15-1.pdf', note: 'Direct PDF. Sika says it reviews details for warranty only, not system design' },
+            { csi: '07 50 00', title: 'Liquid-applied roofing details', maker: 'Sika', format: 'PDF / DWG',
+              url: 'https://usa.sika.com/en/construction/liquid-applied-roofing/Downloads/details.html', note: 'Download page. Flashing for PVC membrane, roof joints, gutter encapsulation' },
+            { csi: '07 52 00', title: 'Detail 301: MB/BUR wall flashing, supported deck', maker: 'GAF', format: 'PDF',
+              url: 'https://www.gaf.com/en-us/document-library/documents/details/detail---301-mb-bur-wall-flashing-detail-for-supported-deck.pdf', note: 'Direct PDF. Parapets over 24 in. refer to the high-parapet detail' },
+            { csi: '07 52 00', title: 'Detail 307: MB/BUR alternate high parapet wall', maker: 'GAF', format: 'PDF',
+              url: 'https://www.gaf.com/en-us/document-library/documents/details/detail---307-mb-bur-alternate-high-parapet-wall-detail.pdf', note: 'Direct PDF. High-parapet condition' },
+            { csi: '07 52 00', title: 'Detail 317A: high wall flashing with 10 ft sheets', maker: 'GAF', format: 'PDF',
+              url: "https://www.gaf.com/en-us/document-library/documents/details/detail---317a-high-wall-flashing-with-10'-sheets.pdf", note: 'Direct PDF. Parapet height limit depends on sheet width' },
+            { csi: '07 60 00', title: 'Detail 321: MB/BUR scupper flashing', maker: 'GAF', format: 'PDF',
+              url: 'https://www.gaf.com/en-us/document-library/documents/details/detail---321-mb-bur-scupper-flashing-detail.pdf', note: 'Direct PDF. Flashing and sheet metal' },
+            { csi: '07 50 00', title: 'Silicone roof coatings: unreinforced details guide', maker: 'GAF', format: 'PDF',
+              url: 'https://www.gaf.com/en-us/document-library/documents/details/gaf-silicone-roof-coatings-unreinforced-details-guide.pdf', note: 'Direct PDF guide' },
+            { csi: '07 53 00', title: 'SAT EPDM details: parapet curb flashing (SAT-12D)', maker: 'Carlisle SynTec', format: 'PDF / DWG',
+              url: 'https://www.carlislesyntec.com/document-viewer/sat-epdm-details---parapet-curb-flashing-sat-12d/ex112HjwD0OoCGWkvGLLhA', note: 'Document viewer page for one detail' },
+            { csi: '07 10 00', title: 'A-BSW-P-06 waterproofing detail', maker: 'Tremco', format: 'PDF',
+              url: 'https://tremcosealants.com/fileshare/waterproofing_Details/A-BSW-P-06.pdf', note: 'Direct PDF. Subject to change without notice; confirm the current revision with Tremco' },
+            { csi: '07 50 00', title: 'CAD details (synthetic shake and slate roofing)', maker: 'EcoStar (via ARCAT)', format: 'PDF / DWG',
+              url: 'https://www.arcat.com/company/ecostar-llc-41887/cad', note: 'Listing page with download options. ARCAT downloads are subject to its licence agreement' },
+            { csi: '07 50 00', title: 'CAD construction detail PDFs and DWGs (zip)', maker: 'Eagle Roofing', format: 'PDF / DWG',
+              url: 'https://eagleroofing.com/specifiers/specifier-tools/cad-details', note: 'Download page with zip files of all details' },
+            { csi: '07 50 00', title: 'Technical details download center', maker: 'Englert', format: 'PDF / DWG',
+              url: 'https://englertinc.com/technical-details', note: 'Download center page' },
+            { csi: '07 50 00', title: 'DesignMaster CAD library (roofing)', maker: 'BMI', format: 'PDF / DWG',
+              url: 'https://www.bmigroup.com/ie/downloads/design-master-cad-library/', note: 'Download page for the free CAD library' }
+        ];
+
+        var state = { key: 'csi', dir: 1 };
+        var rows = document.getElementById('rows');
+        var empty = document.getElementById('empty');
+        var filter = document.getElementById('filter');
+
+        function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+        function sorted(list) {
+            return list.slice().sort(function (a, b) {
+                var x = (a[state.key] || '').toLowerCase(), y = (b[state.key] || '').toLowerCase();
+                if (x === y) return a.csi.localeCompare(b.csi) || a.title.localeCompare(b.title);
+                return x < y ? -state.dir : state.dir;
+            });
+        }
+
+        function render() {
+            var q = filter.value.trim().toLowerCase();
+            var list = sorted(DETAILS.filter(function (d) {
+                return !q || [d.csi, d.title, d.maker, d.format, d.note].join(' ').toLowerCase().indexOf(q) >= 0;
+            }));
+            rows.innerHTML = list.map(function (d) {
+                return '<tr>' +
+                    '<td class="code">' + esc(d.csi) + '</td>' +
+                    '<td>' + esc(d.title) + '</td>' +
+                    '<td>' + esc(d.maker) + '</td>' +
+                    '<td><span class="badge">' + esc(d.format) + '</span></td>' +
+                    '<td><a href="' + esc(d.url) + '" target="_blank" rel="noopener noreferrer">Open</a></td>' +
+                    '<td class="muted">' + esc(d.note) + '</td>' +
+                    '</tr>';
+            }).join('');
+            empty.hidden = list.length > 0;
+            document.querySelectorAll('th button').forEach(function (b) {
+                var th = b.parentNode;
+                if (b.getAttribute('data-key') === state.key) th.setAttribute('aria-sort', state.dir > 0 ? 'ascending' : 'descending');
+                else th.removeAttribute('aria-sort');
+            });
+        }
+
+        document.querySelectorAll('th button').forEach(function (b) {
+            b.addEventListener('click', function () {
+                var key = b.getAttribute('data-key');
+                if (state.key === key) state.dir = -state.dir; else { state.key = key; state.dir = 1; }
+                render();
+            });
+        });
+        filter.addEventListener('input', render);
+        render();
+    </script>
+</body>
+</html>
