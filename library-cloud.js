@@ -121,6 +121,13 @@
             .then(function (r) { if (r.error) throw r.error; });
     }
 
+    // Deletes a cloud copy. It is marked deleted (the list skips these rows) rather than removed outright.
+    function remove(id) {
+        var now = new Date().toISOString();
+        return sb().from('sketch_details').update({ deleted_at: now, updated_at: now }).eq('id', id)
+            .then(function (r) { if (r.error) throw r.error; });
+    }
+
     root.DLCloud = {
         config: CFG,
         ready: ready,
@@ -132,6 +139,7 @@
         save: save,
         setTags: setTags,
         rename: rename,
+        remove: remove,
         rowIdFor: rowIdFor
     };
 })(typeof window !== 'undefined' ? window : globalThis);

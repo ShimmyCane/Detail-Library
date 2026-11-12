@@ -49,6 +49,7 @@
         .note { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
         .warn { color: #9a5b00; }
         .cloudbox { border: 1px solid var(--line); border-radius: 10px; background: var(--card); padding: 12px; margin-bottom: 14px; display: grid; gap: 8px; }
+        .cloudbox[hidden] { display: none; }
         .cloudbox .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
         .cloudbox input { flex: 1 1 180px; min-width: 0; }
         main { padding: 16px; }
@@ -89,6 +90,30 @@
         .inline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
         .inline input { flex: 1 1 200px; min-width: 0; }
         .close-btn { font: inherit; background: none; border: 0; color: var(--ink); font-size: 22px; cursor: pointer; line-height: 1; }
+        button.danger { background: #b3261e; border-color: #b3261e; color: #ffffff; border-radius: 6px; font: inherit; font-size: 13px; padding: 4px 12px; cursor: pointer; }
+        .card { position: relative; }
+        .pick { position: absolute; top: 14px; left: 14px; width: 20px; height: 20px; margin: 0; accent-color: var(--accent); pointer-events: none; display: none; }
+        body.selecting .pick { display: block; }
+        body.selecting .card { cursor: pointer; }
+        .card.selected { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+        .panel {
+            position: fixed; top: 0; right: 0; bottom: 0; width: min(380px, 100vw); z-index: 5;
+            background: var(--card); border-left: 1px solid var(--line); box-shadow: -8px 0 24px rgba(0, 0, 0, 0.25);
+            padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;
+            transform: translateX(105%); visibility: hidden; transition: transform 0.2s ease, visibility 0.2s;
+        }
+        .panel.open { transform: none; visibility: visible; }
+        .panel h2 { font-size: 16px; margin: 0; flex: 1; }
+        .panel h3 { font-size: 12px; margin: 0 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+        .panel-head { display: flex; align-items: center; gap: 8px; }
+        .panel .inline input { flex: 1 1 140px; }
+        .panel-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .panel .spacer { flex: 1; }
+        .panel-foot { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+        dialog.confirm { width: min(92vw, 420px); height: auto; padding: 18px; }
+        dialog.confirm p { margin: 0 0 14px; }
+        dialog.confirm .inline { justify-content: flex-end; }
+        @media (prefers-reduced-motion: reduce) { .panel { transition: none; } }
         @media (max-width: 480px) {
             header, main { padding: 12px; }
             .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -105,6 +130,7 @@
                 <button class="chip on" role="tab" data-view="local" aria-selected="true">Local</button>
                 <button class="chip" role="tab" data-view="cloud" aria-selected="false">Cloud</button>
             </div>
+            <button class="chip" id="select-mode" aria-pressed="false" title="Select several details to tag or delete them">Select</button>
             <button class="chip icon" id="upload" hidden title="Upload images to this device" aria-label="Upload images to this device">↑</button>
             <a class="home" href="index.html">← Home</a>
         </div>
@@ -144,6 +170,48 @@
         <div class="grid" id="grid"></div>
         <p class="empty" id="empty" hidden></p>
     </main>
+
+    <aside class="panel" id="panel" aria-label="Selected details" aria-hidden="true">
+        <div class="panel-head">
+            <h2 id="panel-title">0 selected</h2>
+            <button class="plain" id="panel-all" title="Select every detail that matches the current filters">Select shown</button>
+            <button class="close-btn" id="panel-close" aria-label="Clear the selection">×</button>
+        </div>
+        <div>
+            <h3>Tags to add</h3>
+            <div class="panel-tags" id="panel-staged"></div>
+            <p class="note" id="panel-staged-empty">Pick tags below or type your own.</p>
+        </div>
+        <div>
+            <h3>Popular</h3>
+            <div class="panel-tags" id="panel-popular"></div>
+        </div>
+        <div>
+            <h3>Recent</h3>
+            <div class="panel-tags" id="panel-recent"></div>
+        </div>
+        <div>
+            <h3>Type tags, separated by commas</h3>
+            <div class="inline">
+                <input type="text" id="panel-manual" placeholder="wall, footing, flashing" aria-label="Tags separated by commas">
+                <button class="plain" id="panel-stage">Add to list</button>
+            </div>
+        </div>
+        <div class="panel-foot">
+            <button class="primary" id="panel-apply">Add tags</button>
+            <button class="danger" id="panel-delete">Delete selected</button>
+            <p class="note" id="panel-msg" role="status"></p>
+        </div>
+    </aside>
+
+    <dialog class="confirm" id="confirm" aria-label="Confirm delete">
+        <p id="confirm-text"></p>
+        <p class="note">After you confirm, delete will not ask again for 5 minutes.</p>
+        <div class="inline">
+            <button class="plain" id="confirm-cancel">Cancel</button>
+            <button class="danger" id="confirm-ok">Delete</button>
+        </div>
+    </dialog>
 
     <dialog id="viewer" aria-label="Detail viewer">
         <div class="viewer">
@@ -187,8 +255,11 @@
 
             var state = {
                 view: 'local', query: '', kind: 'all', licence: 'all', sort: 'name', tags: [],
-                entries: [], cloudRows: null, cloudError: '', session: null, current: null, urls: {}
+                entries: [], cloudRows: null, cloudError: '', session: null, current: null, urls: {},
+                selecting: false, selected: {}, staged: [], noConfirmUntil: 0
             };
+            var CONFIRM_QUIET_MS = 5 * 60 * 1000;
+            var cardEls = {};
 
             var els = {
                 count: document.getElementById('count'),
@@ -238,7 +309,7 @@
 
             // ---- Entries: one shape for repo files, local copies and cloud copies ----
             function repoEntries() {
-                return repoItems.map(function (item) {
+                return repoItems.filter(function (item) { return !(S && S.isHidden('repo:' + item.path)); }).map(function (item) {
                     var key = 'repo:' + item.path;
                     var title = S.nameOverride(key) || item.title;
                     return {
@@ -310,7 +381,11 @@
                     : loadCloud();
                 return job.then(function (list) {
                     state.entries = list;
+                    var keys = {};
+                    list.forEach(function (e) { keys[e.key] = true; });
+                    Object.keys(state.selected).forEach(function (k) { if (!keys[k]) delete state.selected[k]; });
                     render();
+                    renderPanel();
                 });
             }
 
@@ -416,12 +491,22 @@
 
             function renderGrid(list) {
                 els.grid.innerHTML = '';
+                cardEls = {};
                 list.forEach(function (e) {
                     var card = document.createElement('article');
-                    card.className = 'card';
+                    card.className = 'card' + (state.selected[e.key] ? ' selected' : '');
+                    cardEls[e.key] = card;
+                    var pick = document.createElement('input');
+                    pick.type = 'checkbox';
+                    pick.className = 'pick';
+                    pick.tabIndex = -1;
+                    pick.checked = !!state.selected[e.key];
+                    pick.setAttribute('aria-hidden', 'true');
+                    card.appendChild(pick);
                     card.tabIndex = 0;
                     card.setAttribute('role', 'button');
-                    card.setAttribute('aria-label', 'Open ' + e.title);
+                    card.setAttribute('aria-label', (state.selecting ? 'Select ' : 'Open ') + e.title);
+                    card.setAttribute('aria-pressed', state.selecting ? String(!!state.selected[e.key]) : 'false');
 
                     var title = document.createElement('div');
                     title.className = 'card-title';
@@ -439,7 +524,8 @@
                     lic.textContent = e.licence;
                     meta.appendChild(lic);
 
-                    card.appendChild(makeThumb(e));
+                    var thumbEl = makeThumb(e);
+                    card.appendChild(thumbEl);
                     card.appendChild(title);
                     card.appendChild(meta);
                     if (e.userTags.length) {
@@ -453,15 +539,15 @@
                         });
                         card.appendChild(tl);
                     }
-                    card.addEventListener('click', function () { openViewer(e); });
+                    function activate() { if (state.selecting) toggleSelected(e.key); else openViewer(e); }
+                    card.addEventListener('click', activate);
                     card.addEventListener('keydown', function (ev) {
-                        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openViewer(e); }
+                        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(); }
                     });
                     els.grid.appendChild(card);
 
-                    var thumb = card.firstChild;
-                    if (thumb.classList.contains('thumb') && thumb.querySelector('canvas') && observer) observer.observe(thumb);
-                    else if (thumb.querySelector('canvas')) thumb.dispatchEvent(new Event('show'));
+                    if (thumbEl.querySelector('canvas') && observer) observer.observe(thumbEl);
+                    else if (thumbEl.querySelector('canvas')) thumbEl.dispatchEvent(new Event('show'));
                 });
             }
 
@@ -658,6 +744,14 @@
                 if (e.source === 'cloud') {
                     els.dActions.appendChild(button('Open in Quick Detail', 'plain', openInQuickDetail));
                 }
+                els.dActions.appendChild(button('Delete', 'danger', function () {
+                    confirmDelete([e], function () {
+                        deleteEntries([e]).then(function (r) {
+                            els.dialog.close();
+                            els.note.textContent = deleteSummary(r);
+                        });
+                    });
+                }));
             }
 
             function openInQuickDetail() {
@@ -791,6 +885,206 @@
                 }).catch(function (err) { els.note.textContent = 'Could not add the files: ' + err.message; });
             }
 
+            // ---- Selecting several details: tags panel and delete ----
+            var panel = {
+                root: document.getElementById('panel'),
+                title: document.getElementById('panel-title'),
+                staged: document.getElementById('panel-staged'),
+                stagedEmpty: document.getElementById('panel-staged-empty'),
+                popular: document.getElementById('panel-popular'),
+                recent: document.getElementById('panel-recent'),
+                manual: document.getElementById('panel-manual'),
+                apply: document.getElementById('panel-apply'),
+                msg: document.getElementById('panel-msg')
+            };
+            var selectBtn = document.getElementById('select-mode');
+
+            function selectedEntries() {
+                return state.entries.filter(function (e) { return state.selected[e.key]; });
+            }
+
+            function splitTags(text) {
+                return unique(String(text || '').split(',').map(function (t) { return t.trim().slice(0, 40); }));
+            }
+
+            function setSelecting(on) {
+                state.selecting = on;
+                if (!on) { state.selected = {}; state.staged = []; panel.msg.textContent = ''; }
+                document.body.classList.toggle('selecting', on);
+                selectBtn.classList.toggle('on', on);
+                selectBtn.setAttribute('aria-pressed', String(on));
+                selectBtn.textContent = on ? 'Done' : 'Select';
+                render();
+                renderPanel();
+            }
+
+            function toggleSelected(key) {
+                if (state.selected[key]) delete state.selected[key]; else state.selected[key] = true;
+                var card = cardEls[key];
+                if (card) {
+                    card.classList.toggle('selected', !!state.selected[key]);
+                    card.querySelector('.pick').checked = !!state.selected[key];
+                    card.setAttribute('aria-pressed', String(!!state.selected[key]));
+                }
+                renderPanel();
+            }
+
+            function chipRow(host, tags, empty) {
+                host.innerHTML = '';
+                if (!tags.length) { host.appendChild(p(empty, '')); return; }
+                tags.forEach(function (t) {
+                    var on = state.staged.indexOf(t) >= 0;
+                    var b = document.createElement('button');
+                    b.className = 'chip' + (on ? ' on' : '');
+                    b.setAttribute('aria-pressed', String(on));
+                    b.textContent = t;
+                    b.addEventListener('click', function () { toggleStaged(t); });
+                    host.appendChild(b);
+                });
+            }
+
+            function toggleStaged(t) {
+                state.staged = state.staged.indexOf(t) >= 0 ? state.staged.filter(function (x) { return x !== t; }) : state.staged.concat([t]);
+                renderPanel();
+            }
+
+            function popularTags() {
+                var counts = {};
+                state.entries.forEach(function (e) { allTagsOf(e).forEach(function (t) { counts[t] = (counts[t] || 0) + 1; }); });
+                return Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); }).slice(0, 12);
+            }
+
+            function renderPanel() {
+                var n = selectedEntries().length;
+                var open = state.selecting && n > 0;
+                panel.root.classList.toggle('open', open);
+                panel.root.setAttribute('aria-hidden', String(!open));
+                panel.title.textContent = n + ' selected';
+                panel.staged.innerHTML = '';
+                state.staged.forEach(function (t) {
+                    panel.staged.appendChild(button(t + ' ×', 'plain', function () { toggleStaged(t); }));
+                });
+                panel.stagedEmpty.hidden = state.staged.length > 0;
+                chipRow(panel.popular, popularTags(), 'No tags yet.');
+                chipRow(panel.recent, S ? S.recentTags().slice(0, 12) : [], 'Nothing used recently.');
+                panel.apply.disabled = !n;
+                panel.apply.textContent = n === 1 ? 'Add tags to 1 detail' : 'Add tags to ' + n + ' details';
+            }
+
+            function stageManual() {
+                var list = splitTags(panel.manual.value);
+                list.forEach(function (t) { if (state.staged.indexOf(t) < 0) state.staged.push(t); });
+                panel.manual.value = '';
+                renderPanel();
+            }
+
+            function applyTags() {
+                stageManual();
+                var targets = selectedEntries();
+                if (!targets.length) return;
+                if (!state.staged.length) { panel.msg.textContent = 'Pick or type at least one tag first.'; return; }
+                var tags = state.staged.slice();
+                panel.apply.disabled = true;
+                panel.msg.textContent = 'Saving tags…';
+                Promise.all(targets.map(function (e) {
+                    return setTagsFor(e, unique(e.userTags.concat(tags))).then(function () { return null; }, function (err) { return err; });
+                })).then(function (errs) {
+                    var failed = errs.filter(Boolean);
+                    if (S) S.pushRecentTags(tags);
+                    state.staged = [];
+                    panel.msg.textContent = failed.length
+                        ? 'Tagged ' + (targets.length - failed.length) + ' of ' + targets.length + '. Could not save the rest: ' + failed[0].message
+                        : 'Added ' + tags.length + (tags.length === 1 ? ' tag' : ' tags') + ' to ' + targets.length + (targets.length === 1 ? ' detail.' : ' details.');
+                    render();
+                    renderPanel();
+                });
+            }
+
+            // Delete: asks once, then not again for 5 minutes.
+            var confirmEls = {
+                dialog: document.getElementById('confirm'),
+                text: document.getElementById('confirm-text'),
+                ok: document.getElementById('confirm-ok'),
+                cancel: document.getElementById('confirm-cancel')
+            };
+            var pendingDelete = null;
+
+            function confirmDelete(list, go) {
+                if (Date.now() < state.noConfirmUntil) { go(); return; }
+                var repo = list.filter(function (e) { return e.source === 'repo'; }).length;
+                var text = 'Delete ' + (list.length === 1 ? '“' + list[0].title + '”' : list.length + ' details') + '? This cannot be undone.';
+                if (repo) text += ' Files from the repo are hidden on this device, since the files themselves live in the repo.';
+                confirmEls.text.textContent = text;
+                pendingDelete = go;
+                if (typeof confirmEls.dialog.showModal === 'function') confirmEls.dialog.showModal();
+                confirmEls.cancel.focus();
+            }
+
+            confirmEls.cancel.addEventListener('click', function () { pendingDelete = null; confirmEls.dialog.close(); });
+            confirmEls.ok.addEventListener('click', function () {
+                var go = pendingDelete;
+                pendingDelete = null;
+                state.noConfirmUntil = Date.now() + CONFIRM_QUIET_MS;
+                confirmEls.dialog.close();
+                if (go) go();
+            });
+
+            function deleteOne(e) {
+                if (e.source === 'cloud') return C.remove(e.id);
+                if (e.source === 'local') {
+                    return S.deleteCopy(e.id).then(function () {
+                        S.forget(e.key);
+                        if (state.urls[e.key]) { URL.revokeObjectURL(state.urls[e.key]); delete state.urls[e.key]; }
+                    });
+                }
+                S.hide(e.key);
+                S.forget(e.key);
+                return Promise.resolve();
+            }
+
+            function deleteEntries(list) {
+                return Promise.all(list.map(function (e) {
+                    return deleteOne(e).then(function () { return null; }, function (err) { return err; });
+                })).then(function (errs) {
+                    var done = [];
+                    list.forEach(function (e, i) { if (!errs[i]) done.push(e.key); });
+                    done.forEach(function (k) { delete state.selected[k]; });
+                    var gone = {};
+                    done.forEach(function (k) { gone[k] = true; });
+                    state.entries = state.entries.filter(function (e) { return !gone[e.key]; });
+                    if (state.cloudRows) state.cloudRows = state.cloudRows.filter(function (r) { return !gone['cloud:' + r.id]; });
+                    render();
+                    renderPanel();
+                    return { deleted: done.length, failed: errs.filter(Boolean) };
+                });
+            }
+
+            function deleteSummary(r) {
+                if (r.failed.length) return 'Deleted ' + r.deleted + '. Could not delete ' + r.failed.length + ': ' + r.failed[0].message;
+                return 'Deleted ' + r.deleted + (r.deleted === 1 ? ' detail.' : ' details.');
+            }
+
+            function deleteSelected() {
+                var list = selectedEntries();
+                if (!list.length) return;
+                confirmDelete(list, function () {
+                    deleteEntries(list).then(function (r) { panel.msg.textContent = deleteSummary(r); });
+                });
+            }
+
+            selectBtn.addEventListener('click', function () { setSelecting(!state.selecting); });
+            document.getElementById('panel-close').addEventListener('click', function () { state.selected = {}; state.staged = []; render(); renderPanel(); });
+            document.getElementById('panel-all').addEventListener('click', function () {
+                state.entries.filter(matches).forEach(function (e) { state.selected[e.key] = true; });
+                render();
+                renderPanel();
+            });
+            document.getElementById('panel-stage').addEventListener('click', stageManual);
+            panel.manual.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); stageManual(); } });
+            panel.manual.addEventListener('input', function () { if (/,/.test(panel.manual.value)) stageManual(); });
+            panel.apply.addEventListener('click', applyTags);
+            document.getElementById('panel-delete').addEventListener('click', deleteSelected);
+
             // ---- Page-level wiring ----
             function setView(view) {
                 state.view = view;
@@ -800,6 +1094,7 @@
                     b.setAttribute('aria-selected', String(on));
                 });
                 state.tags = [];
+                state.selected = {};
                 var up = document.getElementById('upload');
                 if (up) up.hidden = view !== 'local';
                 refresh();
