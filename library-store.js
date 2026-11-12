@@ -11,6 +11,8 @@
     var NAMES_KEY = 'detailLibrary.names.v1';
     var TAGS_KEY = 'detailLibrary.tags.v1';
     var BG_KEY = 'detailLibrary.bg.v1';
+    var RECENT_KEY = 'detailLibrary.recentTags.v1';
+    var HIDDEN_KEY = 'detailLibrary.hidden.v1';
 
     var ok = { storage: true, idb: true };
 
@@ -52,6 +54,39 @@
     function setLocalTags(key, list) {
         if (list && list.length) tags[key] = list; else delete tags[key];
         return writeJSON(TAGS_KEY, tags);
+    }
+
+    // Drops the name and tags kept for an item (used when the item is deleted).
+    function forget(key) {
+        delete names[key];
+        delete tags[key];
+        writeJSON(NAMES_KEY, names);
+        writeJSON(TAGS_KEY, tags);
+    }
+
+    // ---- Recently used tags, newest first ----
+    var recent = readJSON(RECENT_KEY, []);
+    if (!Array.isArray(recent)) recent = [];
+    function recentTags() {
+        return recent.slice();
+    }
+    function pushRecentTags(list) {
+        list.forEach(function (t) {
+            recent = recent.filter(function (x) { return x !== t; });
+            recent.unshift(t);
+        });
+        recent = recent.slice(0, 30);
+        return writeJSON(RECENT_KEY, recent);
+    }
+
+    // ---- Repo files hidden on this device (the file itself lives in the repo, so it cannot be removed from here) ----
+    var hidden = readJSON(HIDDEN_KEY, {});
+    function isHidden(key) {
+        return hidden[key] === true;
+    }
+    function hide(key) {
+        hidden[key] = true;
+        return writeJSON(HIDDEN_KEY, hidden);
     }
 
     // ---- Background choice ----
@@ -120,6 +155,11 @@
         setName: setName,
         localTags: localTags,
         setLocalTags: setLocalTags,
+        forget: forget,
+        recentTags: recentTags,
+        pushRecentTags: pushRecentTags,
+        isHidden: isHidden,
+        hide: hide,
         readBg: readBg,
         writeBg: writeBg,
         putCopy: putCopy,
